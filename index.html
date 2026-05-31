@@ -3,11 +3,179 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>ZHIYU</title>
-    <meta http-equiv="refresh" content="0; url=website/toolbox.html" />
-    <script>window.location.replace("website/toolbox.html");</script>
+    <meta name="robots" content="noindex,nofollow" />
+    <title>ZHIYU | 访问密钥</title>
+    <style>
+      :root {
+        color-scheme: light;
+        --paper: #fbf7ee;
+        --sheet: #fffdf7;
+        --ink: #20302d;
+        --muted: #68756f;
+        --green: #183f35;
+        --yellow: #f3d275;
+        --line: rgba(32, 48, 45, 0.16);
+        font-family: "Microsoft YaHei", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        min-height: 100vh;
+        margin: 0;
+        display: grid;
+        place-items: center;
+        padding: 22px;
+        color: var(--ink);
+        background:
+          linear-gradient(rgba(24, 63, 53, 0.045) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(24, 63, 53, 0.045) 1px, transparent 1px),
+          radial-gradient(circle at 20% 18%, rgba(243, 210, 117, 0.22), transparent 26%),
+          var(--paper);
+        background-size: 28px 28px, 28px 28px, auto, auto;
+      }
+
+      .lock-panel {
+        width: min(100%, 430px);
+        padding: 24px;
+        border: 1px solid var(--line);
+        border-radius: 14px;
+        background: rgba(255, 253, 247, 0.96);
+        box-shadow: 0 22px 64px rgba(24, 63, 53, 0.14);
+      }
+
+      .brand {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 18px;
+        color: var(--green);
+        font-weight: 1000;
+      }
+
+      .brand-mark {
+        display: inline-grid;
+        place-items: center;
+        width: 46px;
+        height: 46px;
+        border: 3px solid var(--green);
+        border-radius: 12px;
+        background: var(--yellow);
+      }
+
+      h1 {
+        margin: 0 0 10px;
+        color: var(--green);
+        font-size: 28px;
+        line-height: 1.18;
+        letter-spacing: 0;
+      }
+
+      p {
+        margin: 0 0 18px;
+        color: var(--muted);
+        line-height: 1.7;
+      }
+
+      label {
+        color: var(--green);
+        font-weight: 900;
+      }
+
+      .field {
+        display: grid;
+        gap: 8px;
+        margin-bottom: 12px;
+      }
+
+      input[type="password"] {
+        width: 100%;
+        min-height: 50px;
+        padding: 10px 12px;
+        border: 1px solid rgba(24, 63, 53, 0.24);
+        border-radius: 8px;
+        background: var(--sheet);
+        color: var(--ink);
+        font: inherit;
+      }
+
+      .remember {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        margin: 12px 0 16px;
+        line-height: 1.5;
+      }
+
+      .remember input {
+        width: 18px;
+        height: 18px;
+        accent-color: var(--green);
+      }
+
+      button {
+        width: 100%;
+        min-height: 50px;
+        border: 0;
+        border-radius: 8px;
+        background: var(--green);
+        color: #fff;
+        font: inherit;
+        font-weight: 1000;
+        cursor: pointer;
+      }
+
+      button:disabled {
+        opacity: 0.64;
+        cursor: progress;
+      }
+
+      .message {
+        min-height: 24px;
+        margin-top: 12px;
+        color: #68756f;
+        font-weight: 900;
+      }
+
+      .message[data-tone="error"] {
+        color: #b65b49;
+      }
+
+      .note {
+        margin-top: 12px;
+        padding-top: 12px;
+        border-top: 1px dashed rgba(24, 63, 53, 0.22);
+        color: var(--muted);
+        font-size: 13px;
+        line-height: 1.7;
+      }
+    </style>
+    <script src="./website/encrypted-page.js" defer></script>
   </head>
   <body>
-    <p><a href="website/toolbox.html">打开 ZHIYU Prompt 工具箱</a></p>
+    <main class="lock-panel" aria-labelledby="lock-title">
+      <div class="brand" aria-hidden="true">
+        <span class="brand-mark">Z</span>
+        <span>ZHIYU</span>
+      </div>
+      <h1 id="lock-title">输入访问密钥</h1>
+      <p>内容已加密。请输入密钥后在本机解码打开。</p>
+      <form data-lock-form>
+        <div class="field">
+          <label for="access-password">访问密钥</label>
+          <input id="access-password" type="password" autocomplete="current-password" inputmode="text" data-lock-password autofocus />
+        </div>
+        <label class="remember">
+          <input type="checkbox" data-lock-remember checked />
+          <span>在这台设备记住 30 天</span>
+        </label>
+        <button type="submit" data-lock-submit>打开 ZHIYU</button>
+        <p class="message" data-lock-message role="status" aria-live="polite"></p>
+      </form>
+      <p class="note">如果是共用设备，用完后可在网址后加 <strong>?logout=1</strong> 清除已记住的密钥。</p>
+    </main>
+    <script type="application/json" id="zhiyu-encrypted-payload">{"version":"2026-05-31-v2","salt":"E6FUblFycideRg4CbPQb4g==","iterations":250000,"iv":"3cHu0G/hT87yxQAD","ciphertext":"k2dPq5Ub1cJaE/Vb2VxalQdvP/aAUY0QyVyFu5VYx3/UyJ0i2WjnYGssO1OrAmAz6px/A2rfhgPqOsP7SNIM3ikGALcdpBFQk8sBQGcfBhVMIm3E7ea0bTt5p1m8nB5bQjmIaszEDYMzuswRrrsd92w+pvianiXob8d7gkTHw3E7QVo63GytVWgXDKw4uPZhKrQdOxau7Hvdds1u6O9v+ctXk28iAkjKiXesNcc70cPBMTMlcBPzTuw+rkFSaXQETKP2av2qwNltcFuuk+mtCdho4R3NFMM4HAa3zzYIPuNgjKf2oxBdp5lZuKvAkBuz6hFJAif1DjbyPHLQPZOH++2/YWsrELdInVzGEA2ZgZb8rN5pfQ2Vx5DfXEOlD9h1kzFMnQczG+mtW6wS7KmP5sVMzETDEAkhl5Feom6VaUhDmKJADCmTIpg4WufhtM5wPkmkw44x6hPQQX+17dLLMPFNQ+qr/1VCQFcd1F+3AhT5CqcdLHYxUtRXkS1KwMIl5By0FryEySf11nsoD9/vr5Eovs4aGV+DQ9hRgyEi7p4flsOmTfuqIYr5LGNoMNCrCPy7TE2D69mv5O3JQw=="}</script>
   </body>
 </html>

@@ -1,4 +1,4 @@
-const CACHE_NAME = "ai-home-learning-pwa-v18";
+const CACHE_NAME = "ai-home-learning-pwa-v19";
 
 const SITE_ROOT = new URL("../", self.location).pathname.replace(/\/\/+/g, "/");
 const APP_ROOT = new URL("./", self.location).pathname.replace(/\/\/+/g, "/");
@@ -19,6 +19,7 @@ const PRECACHE_URLS = [
   toAbs("toolbox.html"),
   toAbs("styles.css"),
   toAbs("script.js"),
+  toAbs("encrypted-page.js"),
   toAbs("site.webmanifest"),
   toAbs("offline.html"),
   toAbs("resource_packs/00_使用前先看/资料库首页-v0.1.html"),

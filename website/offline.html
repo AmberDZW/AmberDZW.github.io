@@ -3,158 +3,179 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>离线可用 | ZHIYU</title>
-    <link rel="stylesheet" href="./styles.css" />
-    <meta name="theme-color" content="#183f35" />
+    <meta name="robots" content="noindex,nofollow" />
+    <title>离线可用 | ZHIYU | 访问密钥</title>
+    <style>
+      :root {
+        color-scheme: light;
+        --paper: #fbf7ee;
+        --sheet: #fffdf7;
+        --ink: #20302d;
+        --muted: #68756f;
+        --green: #183f35;
+        --yellow: #f3d275;
+        --line: rgba(32, 48, 45, 0.16);
+        font-family: "Microsoft YaHei", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        min-height: 100vh;
+        margin: 0;
+        display: grid;
+        place-items: center;
+        padding: 22px;
+        color: var(--ink);
+        background:
+          linear-gradient(rgba(24, 63, 53, 0.045) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(24, 63, 53, 0.045) 1px, transparent 1px),
+          radial-gradient(circle at 20% 18%, rgba(243, 210, 117, 0.22), transparent 26%),
+          var(--paper);
+        background-size: 28px 28px, 28px 28px, auto, auto;
+      }
+
+      .lock-panel {
+        width: min(100%, 430px);
+        padding: 24px;
+        border: 1px solid var(--line);
+        border-radius: 14px;
+        background: rgba(255, 253, 247, 0.96);
+        box-shadow: 0 22px 64px rgba(24, 63, 53, 0.14);
+      }
+
+      .brand {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 18px;
+        color: var(--green);
+        font-weight: 1000;
+      }
+
+      .brand-mark {
+        display: inline-grid;
+        place-items: center;
+        width: 46px;
+        height: 46px;
+        border: 3px solid var(--green);
+        border-radius: 12px;
+        background: var(--yellow);
+      }
+
+      h1 {
+        margin: 0 0 10px;
+        color: var(--green);
+        font-size: 28px;
+        line-height: 1.18;
+        letter-spacing: 0;
+      }
+
+      p {
+        margin: 0 0 18px;
+        color: var(--muted);
+        line-height: 1.7;
+      }
+
+      label {
+        color: var(--green);
+        font-weight: 900;
+      }
+
+      .field {
+        display: grid;
+        gap: 8px;
+        margin-bottom: 12px;
+      }
+
+      input[type="password"] {
+        width: 100%;
+        min-height: 50px;
+        padding: 10px 12px;
+        border: 1px solid rgba(24, 63, 53, 0.24);
+        border-radius: 8px;
+        background: var(--sheet);
+        color: var(--ink);
+        font: inherit;
+      }
+
+      .remember {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        margin: 12px 0 16px;
+        line-height: 1.5;
+      }
+
+      .remember input {
+        width: 18px;
+        height: 18px;
+        accent-color: var(--green);
+      }
+
+      button {
+        width: 100%;
+        min-height: 50px;
+        border: 0;
+        border-radius: 8px;
+        background: var(--green);
+        color: #fff;
+        font: inherit;
+        font-weight: 1000;
+        cursor: pointer;
+      }
+
+      button:disabled {
+        opacity: 0.64;
+        cursor: progress;
+      }
+
+      .message {
+        min-height: 24px;
+        margin-top: 12px;
+        color: #68756f;
+        font-weight: 900;
+      }
+
+      .message[data-tone="error"] {
+        color: #b65b49;
+      }
+
+      .note {
+        margin-top: 12px;
+        padding-top: 12px;
+        border-top: 1px dashed rgba(24, 63, 53, 0.22);
+        color: var(--muted);
+        font-size: 13px;
+        line-height: 1.7;
+      }
+    </style>
+    <script src="./encrypted-page.js" defer></script>
   </head>
   <body>
-    <main style="min-height: 100vh; padding: 48px 16px; display: grid; align-content: center; background: var(--paper);">
-      <section style="max-width: 760px; margin: 0 auto; border-radius: 12px; padding: 24px; background: #fffdf7; border: 1px solid var(--line); box-shadow: var(--shadow);">
-        <h1 style="margin-top: 0; color: var(--green);">当前离线，已进入缓存模式</h1>
-        <p style="color: var(--muted); line-height: 1.8; margin-bottom: 16px;">
-        已缓存的首页、提示词卡片、安全包、新手 7 天和工具池仍可打开。恢复网络后，页面会继续更新最新版本。
-        </p>
-
-        <div id="offline-last-route" style="margin-bottom: 16px; display: none;">
-          <h2 style="margin: 0 0 10px; color: var(--green); font-size: 18px;">上次入口</h2>
-          <a id="offline-last-route-link" href="./index.html" style="display: inline-flex; min-height: 36px; align-items: center; padding: 0 12px; border-radius: 8px; border: 1px solid rgba(24, 63, 53, 0.3); background: #fffef7; color: var(--green); text-decoration: none; font-weight: 800;">
-            返回上次入口
-          </a>
+    <main class="lock-panel" aria-labelledby="lock-title">
+      <div class="brand" aria-hidden="true">
+        <span class="brand-mark">Z</span>
+        <span>ZHIYU</span>
+      </div>
+      <h1 id="lock-title">输入访问密钥</h1>
+      <p>内容已加密。请输入密钥后在本机解码打开。</p>
+      <form data-lock-form>
+        <div class="field">
+          <label for="access-password">访问密钥</label>
+          <input id="access-password" type="password" autocomplete="current-password" inputmode="text" data-lock-password autofocus />
         </div>
-
-        <div>
-          <h2 style="margin: 0 0 10px; color: var(--green); font-size: 18px;">常用入口</h2>
-          <ul id="offline-shortcuts" style="padding-left: 18px; line-height: 1.9; color: var(--muted); margin-top: 0;"></ul>
-        </div>
-
-        <p style="margin-top: 18px;">
-          <a href="./index.html" style="color: var(--green); font-weight: 800; text-decoration: none;">返回首页</a>
-        </p>
-      </section>
+        <label class="remember">
+          <input type="checkbox" data-lock-remember checked />
+          <span>在这台设备记住 30 天</span>
+        </label>
+        <button type="submit" data-lock-submit>打开 ZHIYU</button>
+        <p class="message" data-lock-message role="status" aria-live="polite"></p>
+      </form>
+      <p class="note">如果是共用设备，用完后可在网址后加 <strong>?logout=1</strong> 清除已记住的密钥。</p>
     </main>
-    <script>
-      (function () {
-        const LAST_ROUTE_KEY = "zy.lastRoute.v1";
-        const QUICK_USAGE_KEY = "zy.quickShortcutsUsage.v1";
-        const ALLOW_HASH_TARGETS = new Set(["top", "resources", "tools", "faq", "roadmap", "safety"]);
-        const INDEX_URL = new URL("./index.html", window.location.href);
-
-        const routeContainer = document.querySelector("#offline-last-route");
-        const routeLink = document.querySelector("#offline-last-route-link");
-        const shortcuts = document.querySelector("#offline-shortcuts");
-
-        if (!shortcuts || !routeContainer || !routeLink) return;
-
-        function toIndexHashUrl(hashText) {
-          const indexUrl = new URL(INDEX_URL.href);
-          indexUrl.hash = hashText || "#top";
-          return indexUrl.href;
-        }
-
-        function isOnsiteHashRoute(hashText) {
-          return (
-            typeof hashText === "string" &&
-            hashText.startsWith("#") &&
-            /#(top|resources|tools|faq|roadmap|safety)(\?|$)/.test(hashText)
-          );
-        }
-
-        function createSafeLink(hashText, text) {
-          const li = document.createElement("li");
-          const link = document.createElement("a");
-          link.href = toIndexHashUrl(hashText);
-          link.textContent = text || "返回首页";
-          link.style.color = "var(--green)";
-          link.style.fontWeight = "800";
-          link.style.textDecoration = "none";
-          li.appendChild(link);
-          return li;
-        }
-
-        function buildRouteHash(raw) {
-          if (!raw || typeof raw !== "object") return "#top";
-          const target = typeof raw.target === "string" && raw.target ? raw.target.replace(/^#/, "") : "top";
-          if (!ALLOW_HASH_TARGETS.has(target)) return "#top";
-
-          const query = [];
-          if (raw.params && typeof raw.params === "object") {
-            Object.entries(raw.params).forEach(([key, value]) => {
-              if (typeof value === "string" && value.trim()) {
-                query.push(`${encodeURIComponent(key)}=${encodeURIComponent(value)}`);
-              }
-            });
-          }
-          return `#${target}${query.length > 0 ? `?${query.join("&")}` : ""}`;
-        }
-
-        function safeHashFromStoredLink(rawLink) {
-          if (typeof rawLink !== "string") return "#top";
-          const trimmed = rawLink.trim();
-          if (!trimmed) return "#top";
-
-          if (trimmed.startsWith("#")) {
-            return isOnsiteHashRoute(trimmed) ? trimmed : "#top";
-          }
-
-          try {
-            const parsed = new URL(trimmed, window.location.href);
-            if (parsed.origin !== INDEX_URL.origin) return "#top";
-            if (parsed.pathname.endsWith("/website/index.html") || parsed.pathname.endsWith("/index.html")) {
-              return parsed.hash && isOnsiteHashRoute(parsed.hash) ? parsed.hash : "#top";
-            }
-          } catch (error) {
-            return "#top";
-          }
-          return "#top";
-        }
-
-        try {
-          const rawRoute = JSON.parse(window.localStorage.getItem(LAST_ROUTE_KEY) || "null");
-          if (rawRoute && typeof rawRoute === "object") {
-            const hash = buildRouteHash(rawRoute);
-            routeContainer.style.display = "block";
-            routeLink.href = toIndexHashUrl(hash);
-          }
-        } catch (error) {
-          // Ignore malformed local storage.
-        }
-
-        let usage = {};
-        try {
-          const raw = window.localStorage.getItem(QUICK_USAGE_KEY);
-          usage = raw ? JSON.parse(raw) : {};
-        } catch (error) {
-          usage = {};
-        }
-
-        const items = Object.values(usage || {})
-          .filter((item) => item && typeof item.componentName === "string")
-          .map((item) => ({
-            name: item.componentName,
-            href:
-              item.componentRoute && typeof item.componentRoute === "string"
-                ? item.componentRoute
-                : item.componentHref || "#top",
-            score: Number(item.count || 0),
-            at: Number(item.lastUsedAt || 0)
-          }))
-          .sort((a, b) => {
-            if (a.score !== b.score) return b.score - a.score;
-            if (a.at !== b.at) return b.at - a.at;
-            return 0;
-          })
-          .slice(0, 2);
-
-        if (items.length === 0) {
-          shortcuts.appendChild(createSafeLink("#top", "暂无常用入口，返回首页重新选择"));
-      shortcuts.appendChild(createSafeLink("#resources?filter=prompt&focus=prompt", "打开提示词卡片"));
-          return;
-        }
-
-        items.forEach((item) => {
-          shortcuts.appendChild(createSafeLink(safeHashFromStoredLink(item.href), item.name));
-        });
-      })();
-    </script>
+    <script type="application/json" id="zhiyu-encrypted-payload">{"version":"2026-05-31-v2","salt":"E6FUblFycideRg4CbPQb4g==","iterations":250000,"iv":"3+s8pxBNlascuHuu","ciphertext":"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"}</script>
   </body>
 </html>

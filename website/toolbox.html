@@ -3,34 +3,179 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>ZHIYU Prompt 工具箱</title>
-    <meta http-equiv="refresh" content="0; url=../resource_packs/04_Prompt卡片包/家庭学习Prompt工具箱-v0.2.html?app=1" />
+    <meta name="robots" content="noindex,nofollow" />
+    <title>ZHIYU Prompt 工具箱 | 访问密钥</title>
     <style>
-      html,
-      body {
-        min-height: 100%;
-        margin: 0;
-        background: #fbf7ee;
-        color: #183f35;
-        font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      :root {
+        color-scheme: light;
+        --paper: #fbf7ee;
+        --sheet: #fffdf7;
+        --ink: #20302d;
+        --muted: #68756f;
+        --green: #183f35;
+        --yellow: #f3d275;
+        --line: rgba(32, 48, 45, 0.16);
+        font-family: "Microsoft YaHei", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      }
+
+      * {
+        box-sizing: border-box;
       }
 
       body {
+        min-height: 100vh;
+        margin: 0;
         display: grid;
         place-items: center;
-        padding: 24px;
+        padding: 22px;
+        color: var(--ink);
+        background:
+          linear-gradient(rgba(24, 63, 53, 0.045) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(24, 63, 53, 0.045) 1px, transparent 1px),
+          radial-gradient(circle at 20% 18%, rgba(243, 210, 117, 0.22), transparent 26%),
+          var(--paper);
+        background-size: 28px 28px, 28px 28px, auto, auto;
       }
 
-      a {
-        color: inherit;
-        font-weight: 800;
+      .lock-panel {
+        width: min(100%, 430px);
+        padding: 24px;
+        border: 1px solid var(--line);
+        border-radius: 14px;
+        background: rgba(255, 253, 247, 0.96);
+        box-shadow: 0 22px 64px rgba(24, 63, 53, 0.14);
+      }
+
+      .brand {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 18px;
+        color: var(--green);
+        font-weight: 1000;
+      }
+
+      .brand-mark {
+        display: inline-grid;
+        place-items: center;
+        width: 46px;
+        height: 46px;
+        border: 3px solid var(--green);
+        border-radius: 12px;
+        background: var(--yellow);
+      }
+
+      h1 {
+        margin: 0 0 10px;
+        color: var(--green);
+        font-size: 28px;
+        line-height: 1.18;
+        letter-spacing: 0;
+      }
+
+      p {
+        margin: 0 0 18px;
+        color: var(--muted);
+        line-height: 1.7;
+      }
+
+      label {
+        color: var(--green);
+        font-weight: 900;
+      }
+
+      .field {
+        display: grid;
+        gap: 8px;
+        margin-bottom: 12px;
+      }
+
+      input[type="password"] {
+        width: 100%;
+        min-height: 50px;
+        padding: 10px 12px;
+        border: 1px solid rgba(24, 63, 53, 0.24);
+        border-radius: 8px;
+        background: var(--sheet);
+        color: var(--ink);
+        font: inherit;
+      }
+
+      .remember {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        margin: 12px 0 16px;
+        line-height: 1.5;
+      }
+
+      .remember input {
+        width: 18px;
+        height: 18px;
+        accent-color: var(--green);
+      }
+
+      button {
+        width: 100%;
+        min-height: 50px;
+        border: 0;
+        border-radius: 8px;
+        background: var(--green);
+        color: #fff;
+        font: inherit;
+        font-weight: 1000;
+        cursor: pointer;
+      }
+
+      button:disabled {
+        opacity: 0.64;
+        cursor: progress;
+      }
+
+      .message {
+        min-height: 24px;
+        margin-top: 12px;
+        color: #68756f;
+        font-weight: 900;
+      }
+
+      .message[data-tone="error"] {
+        color: #b65b49;
+      }
+
+      .note {
+        margin-top: 12px;
+        padding-top: 12px;
+        border-top: 1px dashed rgba(24, 63, 53, 0.22);
+        color: var(--muted);
+        font-size: 13px;
+        line-height: 1.7;
       }
     </style>
-    <script>
-      window.location.replace("../resource_packs/04_Prompt卡片包/家庭学习Prompt工具箱-v0.2.html?app=1");
-    </script>
+    <script src="./encrypted-page.js" defer></script>
   </head>
   <body>
-    <p>正在打开 Prompt 工具箱。若没有自动跳转，<a href="../resource_packs/04_Prompt卡片包/家庭学习Prompt工具箱-v0.2.html?app=1">点这里打开</a>。</p>
+    <main class="lock-panel" aria-labelledby="lock-title">
+      <div class="brand" aria-hidden="true">
+        <span class="brand-mark">Z</span>
+        <span>ZHIYU</span>
+      </div>
+      <h1 id="lock-title">输入访问密钥</h1>
+      <p>内容已加密。请输入密钥后在本机解码打开。</p>
+      <form data-lock-form>
+        <div class="field">
+          <label for="access-password">访问密钥</label>
+          <input id="access-password" type="password" autocomplete="current-password" inputmode="text" data-lock-password autofocus />
+        </div>
+        <label class="remember">
+          <input type="checkbox" data-lock-remember checked />
+          <span>在这台设备记住 30 天</span>
+        </label>
+        <button type="submit" data-lock-submit>打开 ZHIYU</button>
+        <p class="message" data-lock-message role="status" aria-live="polite"></p>
+      </form>
+      <p class="note">如果是共用设备，用完后可在网址后加 <strong>?logout=1</strong> 清除已记住的密钥。</p>
+    </main>
+    <script type="application/json" id="zhiyu-encrypted-payload">{"version":"2026-05-31-v2","salt":"E6FUblFycideRg4CbPQb4g==","iterations":250000,"iv":"rgGGZlIBm73684JS","ciphertext":"Is81yt3XKmcfZbeEky3zcVJULixVx4bJB5MrJmMmuScr7mKzsHZ9nVEKyWEmi3YU6MKhCZX4+M7c8P33fJjQGNZWG5NaQZDkC/GiPMLQF98fo7HXfWWBYK+IQNY1KkVNwMMNt+vFObvosdQZSg+m/xaX1UI9En3IBUBTzteisS2i315Dp5wITGvPgoTR45GkzXi71UgwkPo98oTz4dHrWfgUbrDS+kcrqddC8CUG2cIZj9/zMH6B9RebTYrCKjNIoRmZfRfSgS3G15Wuv4uOhL8gsYtL2B8lLTtQ0ilJYxq7OzunFqeeuhb8XWA9MhdnO9hw2rpVWdaqxN1QD0fMIIvNVDsjxEwH3wMlCUPwA/SImUscY4FQkfkU4epnAVqiWUYzOuqS3pmKqA0MHDQBE3+ym1xVFr4fgOWJrBBWn+4hxaQpugzC2KafPabM5dGjZNmzt51ha0Q/LDJZmJBsh+Fk8Ad47kwoH1tuV+jwH74mNIKTXoi0Qf3euox48e3QDpG+lCXcibijQMpPd6/1RhGi4SMWffoCwkizpkuo5WS1CYnDfQGrHsR7zQVhey/yUqPBvBrIf2HIp0e5TdBuFjetNBl3l9muklBwP0hebonvEe8XV79IwnNCuYesIL/ekayE0EtBGEs0hXwpKndSNWGKd+gAMcD+VBlpxmMGzwIXy4ah0l6xlaqd1pOwtKBMbydlbiA7dmIXZ2iKbtP79UQSXy1+FQ46t3n9ZlX67HBPUFjx6y/AkgSd3MDb/UuWPTBozyndx+wLBM17N+jb/A5/0G8LT6J2r5TUZiZyrpRgy8pIYpE6SV/6KJL9SMSxT9bwJ1F/LvgRdxFxEvo2NO9OpOMoAyVseHokilDx3EhdYtnyHzPbi7sN1vJgP9/EZlD3i9EfVkwrlJZRucGD630n873NW1hEmGV3YRyZoEzjVvpnHaQQdMjVraIMl31RFw96FcjOEtUAt2MfVu7aF1F10qESajInD84MUAv8pW11VZ7fIejxAgzkHqRkX0v0F3iWZS2IIjBIUj/OVuqf0f7AuLSrG74tUzWYOUqBjuYU6wLaSh28Ds2q05YQOolBSBw2Y+AahOwse6RaxWRvU+aNrsrUb6XkhQ/TpFr/q77ZdukFjFhefZHTvAK0KUFuEyIPpq9da9+boZuapWiCw/VP0Jp6L/kfS3p1F27CczsPoA++RMjSDhTTzH9GsHCpIlhuz2caSZ1oC30x+9cwlnseXuXNjAt9WUPPmvL55YF/gp+Y6J3Wjp/kvXXMut5oHlG1hN8n8Ed4fap4myLqfMqGwk2C2bYLdhNj1wzu1nai69dbCNnR8p45kNfNyVvxC14VqKp7ZYZ4xuf+9scRqg4ZKrJuoYpIJjeXh4X6Ig7bzRETxzsZyIw2J0hiOlRvicHeSjkOoeDmyRu3PxqYWBke1v8jh97OC5KMbuDwUKDv6LwnuiPDSnjEdfd1gdBsRb7588x/Mh0="}</script>
   </body>
 </html>

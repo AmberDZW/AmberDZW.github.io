@@ -1,4 +1,4 @@
-const CACHE_NAME = "ai-home-learning-pwa-root-v23";
+const CACHE_NAME = "ai-home-learning-pwa-root-v24";
 
 const ROOT = new URL("./", self.location);
 const toPath = (path) => new URL(path, ROOT).pathname;
@@ -14,6 +14,7 @@ const PRECACHE_URLS = [
   toPath("website/toolbox.html"),
   toPath("website/styles.css"),
   toPath("website/script.js"),
+  toPath("website/encrypted-page.js"),
   toPath("website/site.webmanifest"),
   toPath("website/offline.html"),
   toPath("website/icons/icon-72x72.svg"),
