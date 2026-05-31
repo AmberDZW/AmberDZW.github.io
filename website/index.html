@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>ZHIYU | 让AI在家</title>
+    <meta name="description" content="面向家庭的 AI 提示词工具箱，包含可直接复制的学习 Prompt、安全边界、AI 工具池和学习资料库。" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="theme-color" content="#183f35" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta name="apple-mobile-web-app-title" content="ZHIYU" />
+    <link rel="manifest" href="./site.webmanifest" />
+    <link rel="apple-touch-icon" href="./icons/apple-touch-icon-180x180.png" />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">跳到主要内容</a>
+
+    <header class="site-header" data-header>
+      <div class="header-inner">
+        <a class="brand" href="#top" aria-label="回到首页">
+          <span class="brand-mark" aria-hidden="true">Z</span>
+          <span>ZHIYU · 让AI在家</span>
+        </a>
+        <button class="nav-toggle" type="button" aria-label="打开导航" aria-expanded="false" data-nav-toggle><span></span><span></span><span></span></button>
+        <nav class="site-nav" aria-label="主要导航" data-site-nav>
+          <a href="#roadmap">怎么开始</a>
+          <a href="#resources">学习资料</a>
+          <a href="#tools">工具池</a>
+          <a href="./install.html">安装</a>
+          <a href="#faq">常见问题</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main">
+      <section class="hero" id="top" aria-labelledby="hero-title">
+        <div class="hero-pattern" aria-hidden="true"></div>
+        <div class="hero-inner">
+          <div class="hero-copy">
+            <p class="eyebrow">AI 助学 Prompt 卡片库</p>
+            <h1 id="hero-title"><span>ZHIYU，</span><span>让AI在家</span></h1>
+            <p class="hero-subtitle">把常用学习场景做成可复制的 Prompt 卡片，家长打开就能用。</p>
+            <p class="hero-lede">这里不是让 AI 替孩子写作业，而是把“不会”拆成可提问、可核验、可继续练的小步骤。复制卡片后，把单题图片、一小段材料或孩子自己的过程发给 AI，让 AI 一轮一轮引导。</p>
+            <div class="hero-actions" aria-label="页面快捷入口">
+              <a class="action-link primary" href="../resource_packs/04_Prompt卡片包/家庭学习Prompt工具箱-v0.2.html?content=1#P01">打开 P01 安全提问</a>
+              <a class="action-link secondary" href="./app.html">进入 APP 版</a>
+              <a class="action-link secondary" href="./install.html">安装到手机</a>
+              <a class="action-link secondary" href="#resources">查看资料库</a>
+              <button class="action-link secondary" type="button" data-pwa-install hidden>安装到手机</button>
+              <button class="action-link secondary" type="button" data-pwa-update hidden>更新版本</button>
+              <span class="hero-status" data-network-state aria-live="polite">在线可用</span>
+            </div>
+          </div>
+          <figure class="phone-visual" aria-label="常用组件入口示意">
+            <div class="phone-shell"><div class="phone-speaker"></div><div class="phone-screen">
+              <div class="quick-card"><small>常用入口</small><strong>常用哪个，自动排前面</strong></div>
+              <div class="quick-shortcuts" data-quick-shortcuts>
+                <a class="quick-tile" href="../resource_packs/04_Prompt卡片包/家庭学习Prompt工具箱-v0.2.html?app=1" data-quick-link data-component-id="prompt" data-component-name="Prompt 卡片" data-component-hint="复制后发单题" data-route="#resources?filter=prompt&focus=prompt"><span>Prompt 卡片</span><b>复制即用</b></a>
+                <a class="quick-tile" href="../resource_packs/03_国内AI工具池包/国内AI工具池-组件版-v0.1.html" data-quick-link data-component-id="tool" data-component-name="工具池" data-component-hint="选合适 AI" data-route="#tools?tab=toolset"><span>工具池</span><b>场景选择</b></a>
+                <a class="quick-tile" href="../resource_packs/01_新手7天包/新手7天行动卡-组件版-v0.1.html" data-quick-link data-component-id="starter" data-component-name="新手 7 天" data-component-hint="先跑一遍" data-route="#resources?filter=starter&focus=starter"><span>新手 7 天</span><b>建立节奏</b></a>
+                <a class="quick-tile" href="../resource_packs/02_AI安全使用包/AI安全使用包-组件版-v0.1.html" data-quick-link data-component-id="safety" data-component-name="安全边界" data-component-hint="不代写" data-route="#resources?filter=safety&focus=safety"><span>安全使用</span><b>隐私与边界</b></a>
+              </div>
+              <div class="quick-result"><strong>使用习惯</strong><p>你常点哪个入口，它会自动排到前面。</p></div>
+            </div></div>
+            <figcaption>AI 做助手，不替孩子写作业。</figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <section class="section" id="roadmap">
+        <div class="section-inner"><div class="section-heading"><p class="eyebrow">第一次来</p><h2>先跑通 P01，再按场景找卡。</h2><p>第一次只做一件事：复制 P01，发给 AI，再补一张单题或一个小卡点。后面根据孩子卡住的位置选择分类。</p></div></div>
+      </section>
+
+      <section class="section" id="resources">
+        <div class="section-inner">
+          <div class="section-heading"><p class="eyebrow">资料库</p><h2>内容入口</h2><p>这里放的是已经排版好的组件页，不把文字版直接扔给用户。</p></div>
+          <div class="filter-tabs" role="tablist" aria-label="资料分类">
+            <button class="is-active" type="button" data-filter="all" aria-selected="true">全部</button>
+            <button type="button" data-filter="prompt" aria-selected="false">Prompt 工具箱</button>
+            <button type="button" data-filter="starter" aria-selected="false">新手资料</button>
+            <button type="button" data-filter="safety" aria-selected="false">安全边界</button>
+            <button type="button" data-filter="tool" aria-selected="false">工具池</button>
+          </div>
+          <div class="series-grid">
+            <article class="series-card" data-kind="prompt" data-component-id="prompt" id="resource-component-prompt"><span class="series-index">01</span><h3>家庭学习 Prompt 工具箱</h3><p>92 张卡片，核心功能：按场景快速复制各类受约束的 Prompt。</p><a href="../resource_packs/04_Prompt卡片包/家庭学习Prompt工具箱-v0.2.html?app=1">查看组件</a></article>
+            <article class="series-card" data-kind="prompt"><span class="series-index">02</span><h3>AI 口语练习小专题</h3><p>把口语练习也放进 Prompt 工具箱逻辑，按跟读、问答、复述、反馈使用。</p><a href="../resource_packs/05_AI口语练习专题/AI口语练习小专题-v0.1.html">查看组件</a></article>
+            <article class="series-card" data-kind="starter" data-component-id="starter" id="resource-component-starter"><span class="series-index">03</span><h3>新手 7 天行动卡</h3><p>第一次用 AI 助学时，先建立低风险习惯和家庭节奏。</p><a href="../resource_packs/01_新手7天包/新手7天行动卡-组件版-v0.1.html">查看组件</a></article>
+            <article class="series-card" data-kind="safety" data-component-id="safety" id="resource-component-safety"><span class="series-index">04</span><h3>AI 安全使用包</h3><p>不代写、不泄露隐私、不盲信答案，适合家长先看。</p><a href="../resource_packs/02_AI安全使用包/AI安全使用包-组件版-v0.1.html">查看组件</a></article>
+            <article class="series-card" data-kind="tool" data-component-id="tool" id="resource-component-tool"><span class="series-index">05</span><h3>国内 AI 工具池</h3><p>讲清各类 AI 的特点、使用场景、风险和替换规则。</p><a href="../resource_packs/03_国内AI工具池包/国内AI工具池-组件版-v0.1.html">查看组件</a></article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="tools">
+        <div class="section-inner"><div class="section-heading"><p class="eyebrow">工具池</p><h2>工具会变，选择方法留下来。</h2><p>按“题目讲解、资料整理、英语口语、图片识别、家长排查”来选，不追单一工具。</p></div><div class="tab-list" role="tablist"><button class="is-active" type="button" data-tab="toolset" aria-selected="true">工具特点</button><button type="button" data-tab="scenes" aria-selected="false">使用场景</button><button type="button" data-tab="review" aria-selected="false">月度复核</button></div><div class="tab-panel is-active" data-panel="toolset"><p>先看是否支持中文、图片、长文本、语音和免费额度，再决定用哪个。</p></div><div class="tab-panel" data-panel="scenes" hidden><p>拍题讲解选能看图的助手；口语练习选能语音或可接收语音转文字的助手；资料整理选长文本更稳的助手。</p></div><div class="tab-panel" data-panel="review" hidden><p>每月检查入口、免费额度、登录限制、隐私要求和回答质量。</p></div></div>
+      </section>
+
+      <section class="section" id="faq"><div class="section-inner"><div class="section-heading"><p class="eyebrow">常见问题</p><h2>这不是代写工具。</h2><p>所有 Prompt 都强调：不直接给最终答案，不输出可提交文本，每轮只做一个动作，等孩子回复后再继续。</p></div></div></section>
+    </main>
+
+    <button class="to-top" type="button" data-to-top aria-label="回到顶部">↑</button>
+    <div class="quick-toast" data-quick-toast hidden></div>
+    <script src="./script.js"></script>
+  </body>
+</html>

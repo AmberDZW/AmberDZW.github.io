@@ -1,0 +1,358 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>安装 ZHIYU 到手机</title>
+    <meta name="description" content="把 ZHIYU Prompt 工具箱添加到 iPhone 或安卓手机主屏幕。" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="theme-color" content="#183f35" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta name="apple-mobile-web-app-title" content="ZHIYU" />
+    <link rel="manifest" href="./site.webmanifest" />
+    <link rel="apple-touch-icon" href="./icons/apple-touch-icon-180x180.png" />
+    <style>
+      :root {
+        color-scheme: light;
+        --paper: #fbf7ee;
+        --sheet: #fffdf7;
+        --ink: #20302d;
+        --muted: #68756f;
+        --green: #183f35;
+        --yellow: #f3d275;
+        --line: rgba(32, 48, 45, 0.16);
+        --soft: #e8efe8;
+        font-family: "Microsoft YaHei", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        color: var(--ink);
+        background:
+          linear-gradient(rgba(24, 63, 53, 0.035) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(24, 63, 53, 0.035) 1px, transparent 1px),
+          var(--paper);
+        background-size: 28px 28px;
+        overflow-x: hidden;
+      }
+
+      a {
+        color: inherit;
+      }
+
+      .topbar {
+        position: sticky;
+        top: 0;
+        z-index: 10;
+        border-bottom: 1px solid var(--line);
+        background: rgba(251, 247, 238, 0.96);
+        backdrop-filter: blur(14px);
+      }
+
+      .topbar-inner,
+      main {
+        width: min(880px, calc(100% - 32px));
+        margin: 0 auto;
+      }
+
+      .topbar-inner {
+        min-height: 64px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+      }
+
+      .brand {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        color: var(--green);
+        text-decoration: none;
+        font-weight: 1000;
+      }
+
+      .brand-mark {
+        display: inline-grid;
+        place-items: center;
+        width: 44px;
+        height: 44px;
+        border: 3px solid var(--green);
+        border-radius: 12px;
+        background: var(--yellow);
+      }
+
+      .top-actions {
+        display: flex;
+        gap: 8px;
+        flex-wrap: wrap;
+        justify-content: flex-end;
+      }
+
+      .top-actions a,
+      .button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 42px;
+        padding: 10px 14px;
+        border: 1px solid rgba(24, 63, 53, 0.22);
+        border-radius: 8px;
+        background: var(--sheet);
+        color: var(--green);
+        font-weight: 900;
+        text-decoration: none;
+      }
+
+      .button.primary {
+        border-color: var(--green);
+        background: var(--green);
+        color: white;
+      }
+
+      main {
+        padding: 26px 0 72px;
+      }
+
+      .hero,
+      .panel {
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: rgba(255, 253, 247, 0.92);
+        box-shadow: 0 18px 46px rgba(24, 63, 53, 0.08);
+      }
+
+      .hero {
+        padding: clamp(24px, 6vw, 56px);
+      }
+
+      .eyebrow {
+        margin: 0 0 12px;
+        color: #b65b49;
+        font-size: 14px;
+        font-weight: 1000;
+      }
+
+      h1,
+      h2,
+      p {
+        margin-top: 0;
+      }
+
+      h1 {
+        width: 100%;
+        max-width: 680px;
+        margin-bottom: 16px;
+        color: var(--green);
+        font-size: clamp(36px, 8vw, 72px);
+        line-height: 0.98;
+        letter-spacing: 0;
+        overflow-wrap: anywhere;
+      }
+
+      .lede {
+        max-width: 720px;
+        color: var(--muted);
+        font-size: clamp(18px, 3vw, 24px);
+        line-height: 1.75;
+        overflow-wrap: break-word;
+      }
+
+      h1 span {
+        display: block;
+      }
+
+      .hero-actions {
+        display: flex;
+        gap: 12px;
+        flex-wrap: wrap;
+        margin-top: 24px;
+      }
+
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 16px;
+        margin-top: 20px;
+      }
+
+      .panel {
+        padding: 22px;
+        max-width: 100%;
+        overflow: hidden;
+      }
+
+      .panel h2 {
+        margin-bottom: 12px;
+        color: var(--green);
+        font-size: 24px;
+      }
+
+      .steps {
+        display: grid;
+        gap: 10px;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+
+      .steps li {
+        padding: 12px;
+        border: 1px solid rgba(24, 63, 53, 0.12);
+        border-radius: 8px;
+        background: rgba(232, 239, 232, 0.62);
+        line-height: 1.7;
+      }
+
+      .note {
+        margin-top: 18px;
+        padding: 14px;
+        border: 1px dashed rgba(24, 63, 53, 0.28);
+        border-radius: 8px;
+        color: var(--muted);
+        line-height: 1.7;
+      }
+
+      .status {
+        min-height: 24px;
+        margin-top: 12px;
+        color: var(--muted);
+        font-weight: 800;
+      }
+
+      @media (max-width: 720px) {
+        .topbar-inner,
+        main {
+          width: min(100% - 24px, 520px);
+        }
+
+        .topbar-inner {
+          align-items: flex-start;
+          flex-direction: column;
+          padding: 10px 0;
+        }
+
+        .top-actions {
+          width: 100%;
+        }
+
+        .top-actions a {
+          flex: 1;
+        }
+
+        .grid {
+          grid-template-columns: 1fr;
+        }
+
+        .hero-actions .button {
+          flex: 1 1 100%;
+        }
+
+        h1 {
+          font-size: 34px;
+          line-height: 1.08;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="topbar-inner">
+        <a class="brand" href="./toolbox.html">
+          <span class="brand-mark">Z</span>
+          <span>ZHIYU</span>
+        </a>
+        <nav class="top-actions" aria-label="页面入口">
+          <a href="./toolbox.html">打开工具箱</a>
+          <a href="./index.html">网站首页</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero">
+        <p class="eyebrow">安装到手机</p>
+        <h1><span>一个网址，</span><span>苹果安卓都能用。</span></h1>
+        <p class="lede">ZHIYU 是手机优先的网页 App。iPhone 不需要 APK，安卓也不一定要装包：打开网址后添加到主屏幕，就会像一个轻量 App 一样使用。</p>
+        <div class="hero-actions">
+          <a class="button primary" href="./toolbox.html">先打开工具箱</a>
+          <button class="button" type="button" data-install-button hidden>一键安装</button>
+          <a class="button" href="../downloads/zhiyu-android.apk" download>安卓 APK 备用包</a>
+        </div>
+        <p class="status" data-install-status>如果浏览器支持一键安装，这里会出现安装按钮。</p>
+      </section>
+
+      <div class="grid">
+        <section class="panel">
+          <h2>iPhone</h2>
+          <ol class="steps">
+            <li>用 Safari 打开 ZHIYU 网站，不要用微信内置浏览器。</li>
+            <li>点底部分享按钮。</li>
+            <li>选择“添加到主屏幕”。</li>
+            <li>桌面出现 ZHIYU 图标后，以后直接点图标进入。</li>
+          </ol>
+        </section>
+
+        <section class="panel">
+          <h2>安卓</h2>
+          <ol class="steps">
+            <li>用 Chrome、Edge 或系统浏览器打开 ZHIYU 网站。</li>
+            <li>如果页面出现“一键安装”，直接点击。</li>
+            <li>如果没有按钮，点浏览器菜单，选择“添加到主屏幕”或“安装应用”。</li>
+            <li>需要离线包时，再使用安卓 APK 备用包。</li>
+          </ol>
+        </section>
+      </div>
+
+      <p class="note">日常推荐使用网页 App：它跨平台、更新快、不会让用户反复下载安装。APK 只作为安卓备用方案；iPhone 用户走 Safari 添加主屏幕。</p>
+    </main>
+
+    <script>
+      const installButton = document.querySelector("[data-install-button]");
+      const installStatus = document.querySelector("[data-install-status]");
+      let deferredInstallPrompt = null;
+
+      if ("serviceWorker" in navigator) {
+        window.addEventListener("load", () => {
+          navigator.serviceWorker.register("../sw.js", { scope: "../" }).catch(() => {
+            if (installStatus) installStatus.textContent = "离线缓存暂时不可用，但网页仍可正常打开。";
+          });
+        });
+      }
+
+      window.addEventListener("beforeinstallprompt", (event) => {
+        event.preventDefault();
+        deferredInstallPrompt = event;
+        if (installButton) installButton.hidden = false;
+        if (installStatus) installStatus.textContent = "当前浏览器支持一键安装。";
+      });
+
+      if (installButton) {
+        installButton.addEventListener("click", async () => {
+          if (!deferredInstallPrompt) {
+            if (installStatus) installStatus.textContent = "当前浏览器没有弹出安装提示，请按下面步骤手动添加到主屏幕。";
+            return;
+          }
+
+          deferredInstallPrompt.prompt();
+          const result = await deferredInstallPrompt.userChoice;
+          deferredInstallPrompt = null;
+          installButton.hidden = true;
+          if (installStatus) {
+            installStatus.textContent = result.outcome === "accepted" ? "安装完成，可以从手机桌面打开。" : "已取消安装，稍后仍可手动添加到主屏幕。";
+          }
+        });
+      }
+
+      window.addEventListener("appinstalled", () => {
+        if (installButton) installButton.hidden = true;
+        if (installStatus) installStatus.textContent = "安装完成，可以从手机桌面打开。";
+      });
+    </script>
+  </body>
+</html>

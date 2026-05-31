@@ -1,0 +1,74 @@
+﻿<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>工具替换说明 | ZHIYU</title>
+    <style>
+      :root { color-scheme: light; --paper:#fbf7ee; --sheet:#fffdf7; --ink:#20302d; --muted:#65736f; --green:#183f35; --soft:#e5eee4; --yellow:#f3d275; --brick:#b65b49; --line:rgba(32,48,45,.16); --radius:8px; font-family:"LXGW WenKai","Noto Sans CJK SC","Microsoft YaHei",sans-serif; }
+      * { box-sizing: border-box; }
+      body { margin:0; color:var(--ink); background:var(--paper); letter-spacing:0; }
+      body::before { content:""; position:fixed; inset:0; z-index:-1; pointer-events:none; background-image:linear-gradient(rgba(24,63,53,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(24,63,53,.035) 1px,transparent 1px); background-size:28px 28px; }
+      a { color:var(--green); font-weight:900; }
+      .bar { position:sticky; top:0; z-index:10; border-bottom:1px solid var(--line); background:rgba(251,247,238,.96); backdrop-filter:blur(14px); }
+      .bar-inner, main, .footer { width:min(960px, calc(100% - 32px)); margin:0 auto; }
+      .bar-inner { min-height:64px; display:flex; align-items:center; justify-content:space-between; gap:12px; }
+      .brand, .back { display:inline-flex; align-items:center; min-height:38px; color:var(--green); text-decoration:none; font-weight:1000; }
+      .brand { gap:10px; }
+      .brand-mark { display:inline-grid; place-items:center; width:38px; height:38px; border:2px solid var(--green); border-radius:var(--radius); background:var(--yellow); font-size:13px; }
+      .back { padding:0 12px; border:1px solid rgba(24,63,53,.24); border-radius:var(--radius); background:var(--sheet); }
+      .hero { padding:42px 0 18px; }
+      .eyebrow { margin:0 0 10px; color:var(--brick); font-size:14px; font-weight:1000; }
+      h1,h2,h3,h4,h5 { color:var(--green); letter-spacing:0; line-height:1.2; }
+      h1 { margin:0; font-size:clamp(32px, 8vw, 56px); font-family:"Noto Serif SC","Source Han Serif SC",serif; }
+      .meta { display:flex; flex-wrap:wrap; gap:8px; margin-top:14px; color:var(--muted); font-weight:800; }
+      .content { display:grid; gap:16px; padding:16px 0 54px; }
+      .content > h2 { margin:24px 0 0; padding-top:18px; border-top:1px solid var(--line); font-size:26px; }
+      .content > h3 { margin:16px 0 0; font-size:21px; }
+      p, li, td, th, blockquote { line-height:1.75; }
+      p { margin:0; color:var(--muted); font-size:16px; font-weight:700; }
+      ul,ol { margin:0; padding:18px 22px; border:1px solid var(--line); border-radius:var(--radius); background:var(--sheet); color:var(--muted); font-weight:700; }
+      li + li { margin-top:8px; }
+      blockquote { margin:0; padding:16px 18px; border-left:5px solid var(--brick); border-radius:var(--radius); background:#fff5df; color:var(--ink); font-weight:900; }
+      .table-wrap { overflow-x:auto; border:1px solid var(--line); border-radius:var(--radius); background:var(--sheet); }
+      table { width:100%; border-collapse:collapse; min-width:640px; }
+      th,td { padding:12px; border-bottom:1px solid var(--line); text-align:left; vertical-align:top; }
+      th { color:var(--green); background:var(--soft); font-weight:1000; }
+      td { color:var(--muted); font-weight:700; }
+      code { padding:2px 5px; border-radius:5px; background:var(--soft); color:var(--green); }
+      .footer { padding:22px 0 36px; border-top:1px solid var(--line); color:var(--muted); font-weight:700; }
+      @media (max-width:620px){ .bar-inner{align-items:flex-start; flex-direction:column; padding:10px 0;} table{min-width:560px;} }
+    </style>
+  </head>
+  <body>
+    <header class="bar"><div class="bar-inner"><a class="brand" href="../../website/app.html"><span class="brand-mark">Z</span><span>ZHIYU · 让AI在家</span></a><a class="back" href="../../website/app.html#library">返回资料库</a></div></header>
+    <main>
+      <section class="hero"><p class="eyebrow">排版资料页</p><h1>工具替换说明</h1><div class="meta"><span>更新：2026-05-11</span><span>国内AI工具池包</span></div></section>
+      <article class="content"><h2>工具替换说明</h2>
+<h3>页面版入口</h3>
+<p>也可以打开页面版：</p>
+<p><a href="./国内AI工具池-组件版-v0.1.html">打开国内 AI 工具池</a></p>
+<h3>适合谁</h3>
+<p>适合遇到 AI 工具打不开、要求登录、出现付费提示或免费额度变化的家庭。</p>
+<h3>先看安全边界</h3>
+<ul><li>工具可以换，方法要留在家里。</li><li>只使用官方入口，不使用镜像站、破解入口或不明小程序。</li><li>每个家庭只需要 1 个当月可用工具和 1 个备用入口，不需要一次注册多个。</li><li>遇到会员、额度、自动续费或支付绑定提示，先停下并请家长判断。</li><li>不上传隐私，不上传作业原图。</li></ul>
+<h3>先说结论</h3>
+<p>本项目不把任何 AI 工具写成必选。 工具会变化，家庭要学会的是同一套安全提问流程。</p>
+<h3>什么时候需要换工具</h3>
+<div class="table-wrap"><table><thead><tr><th>情况</th><th>怎么办</th></tr></thead><tbody><tr><td>工具打不开</td><td>换另一个当月可用的官方入口</td></tr><tr><td>要求孩子单独注册</td><td>先停下，由家长判断是否适合</td></tr><tr><td>出现会员或付费提示</td><td>不急着购买，先看基础问答是否还能免费完成</td></tr><tr><td>要求绑定支付方式</td><td>先退出，不作为家庭学习默认入口</td></tr><tr><td>回答明显不可靠</td><td>换工具前，先用课本、老师或可信资料核验</td></tr><tr><td>要求上传图片或文件</td><td>不上传含隐私资料，优先用文字匿名描述</td></tr></tbody></table></div>
+<h3>3 步判断流程</h3>
+<ol><li>先看是否官方入口：应用商店看开发者，官网看主体，小程序看认证主体。判断不清就退出。</li><li>再看是否要求孩子注册、实名、人脸、学校账号、手机号或支付绑定。出现这些就由家长判断，孩子不自己填。</li><li>最后看基础文字问答是否还能免费完成。不能完成就换备用入口；没有备用入口就暂不用 AI。</li></ol>
+<h3>直接不用的红灯</h3>
+<ul><li>绑定支付、自动续费、会员弹窗绕不过去。</li><li>不明小程序、镜像站、破解入口、无限额度、免登录入口。</li><li>要求身份证、学生证、人脸、学校账号或学籍信息。</li><li>要求上传整页作业、整张试卷、作文全文或孩子照片。</li><li>诱导购买课程、硬件或所谓学习神器。</li></ul>
+<h3>替换时保留什么</h3>
+<p>工具换了，下面这 5 件事不变：</p>
+<ol><li>先自己想。</li><li>只问一个卡点。</li><li>要求 AI 讲思路，不要完整答案。</li><li>不上传隐私和作业原图。</li><li>回答后要核验。</li></ol>
+<h3>一个通用问法</h3>
+<p>无论换成哪个工具，都可以先用这句话：</p>
+<blockquote>请不要直接给答案。  <br>我会用文字描述一小段匿名题干。  <br>请先讲这道题在考什么，再提示第一步怎么想。  <br>如果你不确定，请提醒我查课本或问老师。</blockquote>
+<h3>工具替换记录表</h3>
+<div class="table-wrap"><table><thead><tr><th>日期</th><th>原工具遇到的问题</th><th>换到哪个入口</th><th>是否免费完成基础文字问答</th><th>是否有付费提示</th><th>备注</th></tr></thead><tbody><tr><td></td><td>打不开 / 登录困难 / 付费提示 / 回答不稳</td><td></td><td>是 / 否 / 限额度</td><td>无 / 轻微 / 明显</td><td></td></tr></tbody></table></div></article>
+    </main>
+    <footer class="footer">提示：不要把孩子姓名、学校、照片、成绩单、账号或整页作业发给 AI。重要内容请用课本、老师讲解或可信资料核验。</footer>
+  </body>
+</html>

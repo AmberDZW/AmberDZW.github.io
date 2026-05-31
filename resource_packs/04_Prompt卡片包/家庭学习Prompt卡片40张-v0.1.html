@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>家庭学习 Prompt 核心卡与扩展卡 | ZHIYU</title>
+    <style>
+      :root { color-scheme: light; --paper:#fbf7ee; --sheet:#fffdf7; --ink:#20302d; --muted:#65736f; --green:#183f35; --soft:#e5eee4; --yellow:#f3d275; --brick:#b65b49; --line:rgba(32,48,45,.16); --radius:8px; font-family:"LXGW WenKai","Noto Sans CJK SC","Microsoft YaHei",sans-serif; }
+      * { box-sizing: border-box; }
+      body { margin:0; color:var(--ink); background:var(--paper); letter-spacing:0; }
+      body::before { content:""; position:fixed; inset:0; z-index:-1; pointer-events:none; background-image:linear-gradient(rgba(24,63,53,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(24,63,53,.035) 1px,transparent 1px); background-size:28px 28px; }
+      a { color:var(--green); font-weight:900; }
+      .bar { position:sticky; top:0; z-index:10; border-bottom:1px solid var(--line); background:rgba(251,247,238,.96); backdrop-filter:blur(14px); }
+      .bar-inner, main, .footer { width:min(960px, calc(100% - 32px)); margin:0 auto; }
+      .bar-inner { min-height:64px; display:flex; align-items:center; justify-content:space-between; gap:12px; }
+      .brand, .back { display:inline-flex; align-items:center; min-height:38px; color:var(--green); text-decoration:none; font-weight:1000; }
+      .brand { gap:10px; }
+      .brand-mark { display:inline-grid; place-items:center; width:38px; height:38px; border:2px solid var(--green); border-radius:var(--radius); background:var(--yellow); font-size:13px; }
+      .back { padding:0 12px; border:1px solid rgba(24,63,53,.24); border-radius:var(--radius); background:var(--sheet); }
+      .hero { padding:42px 0 18px; }
+      .eyebrow { margin:0 0 10px; color:var(--brick); font-size:14px; font-weight:1000; }
+      h1,h2,h3,h4,h5 { color:var(--green); letter-spacing:0; line-height:1.2; }
+      h1 { margin:0; font-size:clamp(32px, 8vw, 56px); font-family:"Noto Serif SC","Source Han Serif SC",serif; }
+      .meta { display:flex; flex-wrap:wrap; gap:8px; margin-top:14px; color:var(--muted); font-weight:800; }
+      .content { display:grid; gap:16px; padding:16px 0 54px; }
+      .content > h2 { margin:24px 0 0; padding-top:18px; border-top:1px solid var(--line); font-size:26px; }
+      .content > h3 { margin:16px 0 0; font-size:21px; }
+      p, li, td, th, blockquote { line-height:1.75; }
+      p { margin:0; color:var(--muted); font-size:16px; font-weight:700; }
+      ul,ol { margin:0; padding:18px 22px; border:1px solid var(--line); border-radius:var(--radius); background:var(--sheet); color:var(--muted); font-weight:700; }
+      li + li { margin-top:8px; }
+      blockquote { margin:0; padding:16px 18px; border-left:5px solid var(--brick); border-radius:var(--radius); background:#fff5df; color:var(--ink); font-weight:900; }
+      .table-wrap { overflow-x:auto; border:1px solid var(--line); border-radius:var(--radius); background:var(--sheet); }
+      table { width:100%; border-collapse:collapse; min-width:640px; }
+      th,td { padding:12px; border-bottom:1px solid var(--line); text-align:left; vertical-align:top; }
+      th { color:var(--green); background:var(--soft); font-weight:1000; }
+      td { color:var(--muted); font-weight:700; }
+      code { padding:2px 5px; border-radius:5px; background:var(--soft); color:var(--green); }
+      .footer { padding:22px 0 36px; border-top:1px solid var(--line); color:var(--muted); font-weight:700; }
+      @media (max-width:620px){ .bar-inner{align-items:flex-start; flex-direction:column; padding:10px 0;} table{min-width:560px;} }
+    </style>
+  </head>
+  <body>
+    <header class="bar"><div class="bar-inner"><a class="brand" href="../../website/app.html"><span class="brand-mark">Z</span><span>ZHIYU · 让AI在家</span></a><a class="back" href="../../website/app.html#library">返回资料库</a></div></header>
+    <main>
+      <section class="hero"><p class="eyebrow">排版资料页</p><h1>家庭学习 Prompt 核心卡与扩展卡</h1><div class="meta"><span>更新：2026-05-11</span><span>Prompt卡片包</span></div></section>
+      <article class="content"><h2>家庭学习 Prompt 核心卡与扩展卡</h2>
+<h3>卡片版入口</h3>
+<p>面向用户发布时，优先使用独立卡片版：</p>
+<p><a href="./家庭学习Prompt工具箱-v0.2.html?app=1">打开家庭学习 Prompt 工具箱</a></p>
+<h3>这版改了什么</h3>
+<p>上一版的问题是：卡片数量偏少、分类不够清楚、部分问法还像普通提示词。 这版不再让家长一打开就面对 80 张卡，而是分成三层：</p>
+<ul><li>今晚急救：默认展示 6 张最常见的作业现场卡。</li><li>核心卡：急救卡不够用时再打开，处理更多常见作业卡住场景。</li><li>扩展卡：熟悉以后再搜索使用。</li><li>我的常用卡：家长可以把自己常用问法保存在本机浏览器里，下次只改括号内容。</li></ul>
+<p>卡片页现在按一个完整作业辅导闭环来用：</p>
+<ol><li>选状态：先点 5 秒选卡，不从 80 张里慢慢找。</li><li>复制卡：只复制 1 张 Prompt，先粘到 AI 输入框或备忘录里。</li><li>填括号：把每个括号替换完再发送；只写一个学习卡点，不贴隐私、整页题或照片。</li><li>贴给 AI：让 AI 只点拨，不要最终答案或可提交文本。</li><li>孩子完成：孩子自己写第一步、答案、句子或依据。</li><li>核验保存：用课本、原文、例题或老师讲解核验；好用再存成常用卡。</li></ol>
+<p>每张卡片里也会显示“孩子先做 / AI 只给 / 最后核验 / 孩子留下”的收尾提示，避免家长停在复制按钮。</p>
+<p>页面顶部会统一显示一次“填写前”提醒，不再在每张卡里重复。P02 和 P80 属于本地操作卡，不会出现复制按钮：P02 只做隐私自查，P80 只引导家长在本页保存自己的常用卡。其他可复制卡只复制给 AI 的指令：开头是一段写给 AI 的辅导边界，中间会带入本张卡的场景、任务和具体问法，后面按分类追加输出格式要求，比如“题目看不懂”卡强调考点线索和第一小步，“作文 / 阅读”卡强调依据、追问和自填框架，“英语”卡强调问题位置和自改方向。页面里的“填写前”“安全填写例子”“用完做”“这张卡的闭环”等给家长看的说明不会塞进 Prompt。</p>
+<p>家长可以按自己家的情况编辑卡片：内置卡点“编辑副本”会带到底部表单，改完保存成“我的常用卡”；已经保存的常用卡点“编辑这张”可以直接修改。本机编辑仍会经过危险问法拦截，避免保存“直接给答案、代写、整篇作文”等问法。</p>
+<p>本页参考了开源提示词管理、离线资料管理和卡片学习工具的做法：常用卡支持本机导出/导入；复制记录只保存在本机，用来提示最近使用过的卡，不上传、不同步。</p>
+<p>最新一轮重点收紧了高风险卡：</p>
+<ul><li>阅读卡不直接给中心句、关键词结论或最终概括，只教孩子回原文找依据和自己填空。</li><li>作文卡不输出可照抄提纲、成句改写或读后感段落，只给追问、检查点和空框架。</li><li>英语写作、改句、翻译卡不提供完整替代句或完整译文，只指出问题位置和自改方向。</li><li>科学实验变量卡不直接填自变量、因变量和控制变量，只用问题引导孩子自己判断。</li></ul>
+<p>卡片仍按家里真实会遇到的任务找，不按工具名找：</p>
+<div class="table-wrap"><table><thead><tr><th>分类</th><th>数量</th><th>解决什么问题</th></tr></thead><tbody><tr><td>先安全起步</td><td>8</td><td>第一次用、隐私检查、AI 给答案后的纠偏</td></tr><tr><td>孩子说不会</td><td>8</td><td>把“不会”拆成孩子能选的小卡点</td></tr><tr><td>题目看不懂</td><td>10</td><td>只问考点、第一步、思路检查，不要完整答案</td></tr><tr><td>做错了</td><td>10</td><td>找具体错因、写下次提醒、决定是否问老师</td></tr><tr><td>作文 / 阅读</td><td>10</td><td>拆段落、找依据、审题和修改方向</td></tr><tr><td>已经写了一点</td><td>8</td><td>检查提纲、句子、表达和逻辑，不代写成稿</td></tr><tr><td>英语</td><td>8</td><td>句子结构、语法、单词、写作框架、翻译核验</td></tr><tr><td>基础学习</td><td>8</td><td>数学科学、识字背诵、口算听写、预习复习</td></tr><tr><td>家长不会题</td><td>6</td><td>家长不懂也能陪孩子整理问题和节奏</td></tr><tr><td>工具/付费/隐私</td><td>4</td><td>工具打不开、付费提示、回答不稳和资料整理</td></tr></tbody></table></div>
+<h3>使用前先看 4 句话</h3>
+<ul><li>每次只复制 1 张卡，不要一次塞很多要求。</li><li>把方括号里的内容换成自己的文字，只写一个学习卡点；题干不超过 120 字，孩子过程不超过 3 句话。</li><li>不上传姓名、学校、班级、电话、住址、账号、照片、成绩单、聊天截图、整页作业或试卷。</li><li>AI 如果开始给完整答案，要立刻改成一个追问或第一步提示。最后答案由孩子自己写，重要内容要核验。</li><li>自建“我的常用卡”只保存在本机浏览器里；如果问法像是在要答案或代写，页面会拦截并提醒改成问思路、追问或检查点。</li></ul>
+<h3>第一次只保存这 8 张</h3>
+<p>如果家长第一次打开，不需要一次看完 80 张。第一次先用 P01 跑通安全提问；已经知道边界后，再按孩子状态选卡。建议先从这些卡里用：</p>
+<ul><li>P01｜第一次安全提问</li><li>P02｜隐私本地自查卡</li><li>P03｜只处理一个卡点</li><li>P04｜拒绝完整答案模式</li><li>P09｜把“不会”变成问题</li><li>P17｜先讲考点</li><li>P27｜错因四分类</li><li>P71｜家长不会题时</li></ul>
+<p>如果作业时间快到了，把 P76｜作业时间快到了 也放进常用卡。内置卡建议“用过有效再存”，不要没试过就全部收藏。</p>
+<h3>当前内容源说明</h3>
+<p>完整卡片目前写在卡片版 HTML 的 <code>cards</code> 数据里，页面会按真实数据自动统计核心卡、扩展卡、我的常用卡数量和分类。 如果用户打不开 HTML，这个 Markdown 先作为入口和使用说明；下一版建议把卡片源拆成 Markdown/YAML/CSV，再由页面渲染，避免内容只锁在页面脚本里。</p></article>
+    </main>
+    <footer class="footer">提示：不要把孩子姓名、学校、照片、成绩单、账号或整页作业发给 AI。重要内容请用课本、老师讲解或可信资料核验。</footer>
+  </body>
+</html>

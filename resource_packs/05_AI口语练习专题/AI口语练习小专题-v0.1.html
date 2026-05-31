@@ -1,0 +1,609 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AI 口语练习小专题 | ZHIYU</title>
+    <style>
+      :root {
+        color-scheme: light;
+        --paper: #fbf7ee;
+        --sheet: #fffdf7;
+        --ink: #21302d;
+        --muted: #66726d;
+        --green: #183f35;
+        --green-soft: #e2ece0;
+        --blue: #d8ebf0;
+        --yellow: #f3d275;
+        --brick: #b65b49;
+        --line: rgba(32, 48, 45, 0.16);
+        --shadow: 0 18px 42px rgba(24, 63, 53, 0.12);
+        --radius: 8px;
+        font-family: "LXGW WenKai", "Noto Sans CJK SC", "Microsoft YaHei", sans-serif;
+      }
+      * { box-sizing: border-box; }
+      html { scroll-behavior: smooth; }
+      body {
+        margin: 0;
+        color: var(--ink);
+        background:
+          linear-gradient(rgba(24, 63, 53, 0.035) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(24, 63, 53, 0.035) 1px, transparent 1px),
+          var(--paper);
+        background-size: 28px 28px;
+        letter-spacing: 0;
+      }
+      a { color: inherit; }
+      .bar {
+        position: sticky;
+        top: 0;
+        z-index: 20;
+        border-bottom: 1px solid var(--line);
+        background: rgba(251, 247, 238, 0.94);
+        backdrop-filter: blur(14px);
+      }
+      .bar-inner,
+      .hero,
+      .section,
+      .footer {
+        width: min(1120px, calc(100% - 32px));
+        margin: 0 auto;
+      }
+      .bar-inner {
+        min-height: 68px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 14px;
+      }
+      .brand,
+      .bar-link,
+      .copy {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 40px;
+        border-radius: var(--radius);
+        color: var(--green);
+        font-weight: 900;
+        text-decoration: none;
+      }
+      .brand { gap: 10px; }
+      .brand-mark {
+        display: inline-grid;
+        place-items: center;
+        width: 40px;
+        height: 40px;
+        border: 2px solid var(--green);
+        border-radius: var(--radius);
+        background: var(--yellow);
+        font-size: 13px;
+      }
+      .bar-actions { display: flex; flex-wrap: wrap; gap: 8px; justify-content: flex-end; }
+      .bar-link,
+      .copy {
+        border: 1px solid rgba(24, 63, 53, 0.24);
+        background: var(--sheet);
+        padding: 0 12px;
+      }
+      .hero {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(280px, 0.42fr);
+        gap: 28px;
+        align-items: end;
+        padding: 54px 0 26px;
+      }
+      .eyebrow {
+        margin: 0 0 12px;
+        color: var(--brick);
+        font-size: 14px;
+        font-weight: 900;
+      }
+      h1, h2, h3 {
+        margin: 0;
+        color: var(--green);
+        font-family: "Noto Serif SC", "Source Han Serif SC", "Songti SC", Georgia, serif;
+        line-height: 1.18;
+        letter-spacing: 0;
+      }
+      h1 { max-width: 820px; font-size: 52px; }
+      .hero p:not(.eyebrow),
+      .routine-card p,
+      .prompt-card p,
+      .guard-card p,
+      .tool-note p,
+      .record-card p {
+        color: var(--muted);
+        line-height: 1.72;
+      }
+      .hero p:not(.eyebrow) { max-width: 760px; font-size: 18px; }
+      .starter-panel {
+        padding: 22px;
+        border: 2px solid var(--green);
+        border-radius: var(--radius);
+        background: var(--sheet);
+        box-shadow: var(--shadow);
+      }
+      .starter-panel strong {
+        display: block;
+        color: var(--green);
+        font-size: 24px;
+        margin-bottom: 12px;
+      }
+      .starter-panel ul { margin: 0; padding: 0; list-style: none; }
+      .starter-panel li {
+        padding: 9px 0;
+        border-top: 1px dashed var(--line);
+        color: var(--muted);
+        line-height: 1.6;
+      }
+      .section { padding: 30px 0; }
+      .section-head {
+        display: flex;
+        align-items: end;
+        justify-content: space-between;
+        gap: 18px;
+        margin-bottom: 16px;
+      }
+      .section-head h2 { font-size: 34px; }
+      .section-head p { max-width: 620px; margin: 0; color: var(--muted); line-height: 1.7; }
+      .routine-grid,
+      .guard-grid,
+      .record-grid {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 12px;
+      }
+      .routine-card,
+      .guard-card,
+      .tool-note,
+      .record-card,
+      .prompt-card {
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+        background: var(--sheet);
+        box-shadow: 0 12px 26px rgba(24, 63, 53, 0.08);
+      }
+      .routine-card { min-height: 210px; padding: 18px; }
+      .step-num {
+        display: inline-grid;
+        place-items: center;
+        min-width: 36px;
+        height: 32px;
+        border: 2px solid var(--green);
+        border-radius: var(--radius);
+        background: var(--yellow);
+        color: var(--green);
+        font-weight: 1000;
+      }
+      .routine-card h3,
+      .guard-card h3,
+      .record-card h3 {
+        margin-top: 14px;
+        font-size: 22px;
+      }
+      .routine-card p,
+      .guard-card p,
+      .tool-note p,
+      .record-card p,
+      .prompt-card p { margin: 10px 0 0; }
+      .tool-note {
+        display: grid;
+        grid-template-columns: minmax(0, 0.75fr) minmax(260px, 0.25fr);
+        gap: 20px;
+        padding: 22px;
+        background: linear-gradient(120deg, var(--sheet), rgba(216, 235, 240, 0.74));
+      }
+      .tool-note ul { margin: 12px 0 0; padding: 0; list-style: none; }
+      .tool-note li {
+        padding: 8px 0;
+        border-top: 1px dashed var(--line);
+        color: #304640;
+        line-height: 1.62;
+      }
+      .mode-list {
+        display: grid;
+        gap: 8px;
+      }
+      .mode-list span {
+        display: inline-flex;
+        align-items: center;
+        min-height: 34px;
+        padding: 0 10px;
+        border-radius: var(--radius);
+        background: var(--green-soft);
+        color: var(--green);
+        font-weight: 900;
+      }
+      .prompt-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 12px;
+      }
+      .prompt-card {
+        min-height: 300px;
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+      }
+      .prompt-head {
+        padding: 16px;
+        border-bottom: 1px solid var(--line);
+        background: linear-gradient(120deg, var(--green-soft), rgba(216, 235, 240, 0.7));
+      }
+      .prompt-id {
+        display: inline-flex;
+        align-items: center;
+        min-height: 30px;
+        padding: 0 10px;
+        border: 2px solid var(--green);
+        border-radius: var(--radius);
+        background: var(--yellow);
+        color: var(--green);
+        font-weight: 1000;
+      }
+      .prompt-head h3 { margin-top: 12px; font-size: 23px; }
+      .tag-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-top: 10px;
+      }
+      .tag-row span {
+        display: inline-flex;
+        align-items: center;
+        min-height: 26px;
+        padding: 0 8px;
+        border-radius: var(--radius);
+        background: #fffaf0;
+        color: var(--brick);
+        font-size: 13px;
+        font-weight: 900;
+      }
+      .prompt-body {
+        display: flex;
+        flex: 1;
+        flex-direction: column;
+        gap: 13px;
+        padding: 16px;
+      }
+      .label {
+        display: block;
+        margin-bottom: 5px;
+        color: var(--brick);
+        font-size: 13px;
+        font-weight: 900;
+      }
+      .prompt-preview {
+        max-height: 118px;
+        overflow: auto;
+        padding: 10px;
+        border: 1px dashed var(--line);
+        border-radius: var(--radius);
+        background: #f8f0df;
+        color: #31433e;
+        line-height: 1.62;
+      }
+      .copy {
+        width: fit-content;
+        margin-top: auto;
+        cursor: pointer;
+        font: inherit;
+      }
+      .copy:hover,
+      .copy:focus-visible,
+      .copy.is-copied {
+        background: var(--green);
+        color: #fff;
+        outline: none;
+      }
+      .guard-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+      .guard-card { min-height: 210px; padding: 20px; }
+      .guard-card strong {
+        display: inline-flex;
+        align-items: center;
+        min-height: 28px;
+        padding: 0 10px;
+        border-radius: var(--radius);
+        background: var(--yellow);
+        color: var(--green);
+      }
+      .record-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+      .record-card { min-height: 190px; padding: 20px; }
+      .footer {
+        padding: 30px 0 42px;
+        border-top: 1px solid var(--line);
+        color: var(--muted);
+        line-height: 1.7;
+      }
+      @media (max-width: 1040px) {
+        .hero,
+        .tool-note { grid-template-columns: 1fr; }
+        .routine-grid,
+        .prompt-grid,
+        .guard-grid,
+        .record-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      }
+      @media (max-width: 620px) {
+        .bar-inner { align-items: flex-start; flex-direction: column; padding: 12px 0; }
+        .bar-actions { justify-content: flex-start; }
+        h1 { font-size: 38px; }
+        .hero p:not(.eyebrow) { font-size: 16px; }
+        .section-head { align-items: flex-start; flex-direction: column; }
+        .routine-grid,
+        .prompt-grid,
+        .guard-grid,
+        .record-grid { grid-template-columns: 1fr; }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="bar">
+      <div class="bar-inner">
+        <a class="brand" href="../../website/app.html#library"><span class="brand-mark">Z</span><span>ZHIYU · 让AI在家</span></a>
+        <nav class="bar-actions" aria-label="页面入口">
+          <a class="bar-link" href="../../website/app.html#library">返回资料库</a>
+          <a class="bar-link" href="../04_Prompt卡片包/家庭学习Prompt工具箱-v0.2.html?app=1&category=speaking">口语卡片</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div>
+          <p class="eyebrow">AI 口语练习小专题</p>
+          <h1>让孩子开口练，不是让 AI 陪聊一晚上。</h1>
+          <p>口语练习最怕两个极端：一上来就自由聊天，孩子听不懂；或者只让 AI 改错，孩子越说越紧张。这个专题只做一件事：把每天 8 分钟拆成跟读、回答、复述和轻反馈。</p>
+        </div>
+        <aside class="starter-panel">
+          <strong>先守住 4 条边界</strong>
+          <ul>
+            <li>不上传孩子照片、人脸、学校、班级或真实姓名。</li>
+            <li>每次只录 1-3 句，别把整段隐私对话发给 AI。</li>
+            <li>AI 每轮只改 1 个最影响理解的问题。</li>
+            <li>目标是敢说和说清楚，不追求“像母语者”。</li>
+          </ul>
+        </aside>
+      </section>
+
+      <section class="section" aria-labelledby="routine-title">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">每天 8 分钟</p>
+            <h2 id="routine-title">一轮口语练习这样走</h2>
+          </div>
+          <p>家长不会英语也能主持：只负责开计时、按按钮、提醒孩子复述；评价交给“少量、具体、可重复”的 AI 指令。</p>
+        </div>
+        <div class="routine-grid">
+          <article class="routine-card"><span class="step-num">1</span><h3>跟读 2 分钟</h3><p>AI 读一句，孩子跟一句。句子短一点，主题贴近孩子当天生活或课本句型。</p></article>
+          <article class="routine-card"><span class="step-num">2</span><h3>问答 2 分钟</h3><p>AI 只问 3 个小问题，每个问题不超过 10 个词。孩子可以先用词组回答。</p></article>
+          <article class="routine-card"><span class="step-num">3</span><h3>复述 2 分钟</h3><p>孩子把刚才 3 个回答连成 3 句话。说不出来时，AI 给句子骨架，不给完整成品。</p></article>
+          <article class="routine-card"><span class="step-num">4</span><h3>轻改 2 分钟</h3><p>AI 只挑一个最该改的问题：发音、词序、动词形式或表达不完整。孩子再说一遍。</p></article>
+        </div>
+      </section>
+
+      <section class="section" aria-labelledby="tool-title">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">工具怎么选</p>
+            <h2 id="tool-title">能语音，就语音；不能语音，就用输入法转文字。</h2>
+          </div>
+        </div>
+        <div class="tool-note">
+          <div>
+            <p>不用先纠结哪个 AI 最强。先找一个家长手机上能稳定打开、能听/能说/能语音输入的入口。语音对话不可用时，让孩子对着手机输入法说，转成文字后再发给 AI 做表达检查。</p>
+            <ul>
+              <li><strong>低门槛：</strong>用手机语音输入，把孩子说的话转成文字，AI 检查表达是否清楚。</li>
+              <li><strong>更像练口语：</strong>使用支持语音对话的 AI，让它按“一句一句来”的规则陪练。</li>
+              <li><strong>需要核验：</strong>AI 的发音和改错不一定准确，课本音频、老师要求和考试评分标准优先。</li>
+            </ul>
+          </div>
+          <div class="mode-list" aria-label="三种练习模式">
+            <span>跟读：像读课文</span>
+            <span>问答：像上课提问</span>
+            <span>复述：像讲给家长听</span>
+            <span>轻改：一次只改一点</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" aria-labelledby="prompt-title">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">可复制 Prompt</p>
+            <h2 id="prompt-title">12 张口语练习卡</h2>
+          </div>
+          <p>按钮复制的是“给 AI 的指令”，不包含给家长看的说明。复制后把括号内容替换成孩子当天主题即可。</p>
+        </div>
+        <div class="prompt-grid" aria-label="口语 Prompt 卡片">
+          <article class="prompt-card" id="S01">
+            <header class="prompt-head"><span class="prompt-id">S01</span><h3>8 分钟陪练主持人</h3><div class="tag-row"><span>先跑通</span><span>家长不会英语</span></div></header>
+            <div class="prompt-body">
+              <section><span class="label">适合</span><p>第一次用 AI 做口语练习。</p></section>
+              <section><span class="label">复制内容预览</span><p class="prompt-preview">请做孩子的英语口语练习主持人...</p></section>
+              <button class="copy" type="button" data-copy-prompt="S01" data-prompt="请做孩子的英语口语练习主持人。请按 8 分钟一轮来带练：1. 跟读 2 分钟；2. 简短问答 2 分钟；3. 复述 2 分钟；4. 轻反馈 2 分钟。主题是：【填写今天主题】。规则：每次只给一句英文；问题不超过 10 个英文词；不要直接给完整成品；孩子回答后只指出 1 个最影响理解的问题；最后让孩子再说一遍。">复制</button>
+            </div>
+          </article>
+
+          <article class="prompt-card" id="S02">
+            <header class="prompt-head"><span class="prompt-id">S02</span><h3>一句一句跟读</h3><div class="tag-row"><span>发音</span><span>课文句型</span></div></header>
+            <div class="prompt-body">
+              <section><span class="label">适合</span><p>孩子怕开口，先从短句开始。</p></section>
+              <section><span class="label">复制内容预览</span><p class="prompt-preview">请带孩子做一句一句跟读...</p></section>
+              <button class="copy" type="button" data-copy-prompt="S02" data-prompt="请带孩子做一句一句跟读。请围绕【填写课文句型或主题】给 6 个短句。每次只给 1 句英文，后面附中文意思。孩子跟读后，请只反馈 1 个点：重音、连读、容易读错的音，三选一。不要一次列很多问题。每 2 句后让孩子复读前面的句子。">复制</button>
+            </div>
+          </article>
+
+          <article class="prompt-card" id="S03">
+            <header class="prompt-head"><span class="prompt-id">S03</span><h3>三问三答</h3><div class="tag-row"><span>日常话题</span><span>敢说</span></div></header>
+            <div class="prompt-body">
+              <section><span class="label">适合</span><p>围绕一个生活话题练开口。</p></section>
+              <section><span class="label">复制内容预览</span><p class="prompt-preview">请围绕一个孩子熟悉的话题...</p></section>
+              <button class="copy" type="button" data-copy-prompt="S03" data-prompt="请围绕【填写生活话题，例如早餐、周末、宠物、运动】和孩子做三问三答。规则：每次只问 1 个问题；问题不超过 10 个英文词；孩子可以先用词组回答；如果孩子卡住，请给 2 个可选词，不要替孩子说完整句。三问结束后，请把孩子说过的词组整理成 3 个简单句，让孩子自己再读。">复制</button>
+            </div>
+          </article>
+
+          <article class="prompt-card" id="S04">
+            <header class="prompt-head"><span class="prompt-id">S04</span><h3>课文句型替换</h3><div class="tag-row"><span>同步课本</span><span>迁移表达</span></div></header>
+            <div class="prompt-body">
+              <section><span class="label">适合</span><p>学完一个句型，不知道怎么举一反三。</p></section>
+              <section><span class="label">复制内容预览</span><p class="prompt-preview">请用这个句型带孩子口头替换...</p></section>
+              <button class="copy" type="button" data-copy-prompt="S04" data-prompt="请用这个句型带孩子口头替换练习：【填写课本句型】。请先用中文解释这个句型什么时候用，再给 5 个替换空。每个替换空只改 1 个地方。孩子说完后，请判断是否表达完整；如果不完整，只提示缺了哪个部分，不要直接给最终句子。">复制</button>
+            </div>
+          </article>
+
+          <article class="prompt-card" id="S05">
+            <header class="prompt-head"><span class="prompt-id">S05</span><h3>看物品说 3 句</h3><div class="tag-row"><span>不上传照片</span><span>描述</span></div></header>
+            <div class="prompt-body">
+              <section><span class="label">适合</span><p>不上传照片，只描述桌上一件东西。</p></section>
+              <section><span class="label">复制内容预览</span><p class="prompt-preview">孩子会看着身边一个物品说英语...</p></section>
+              <button class="copy" type="button" data-copy-prompt="S05" data-prompt="孩子会看着身边一个物品说英语，但不上传照片。物品是：【填写物品】。请引导孩子说 3 句话：1. 它是什么；2. 它是什么颜色/大小；3. 我怎么使用它。请先给句子骨架，不给完整答案。孩子说完后，只改 1 个最明显的问题，并让孩子重说。">复制</button>
+            </div>
+          </article>
+
+          <article class="prompt-card" id="S06">
+            <header class="prompt-head"><span class="prompt-id">S06</span><h3>一分钟复述</h3><div class="tag-row"><span>阅读后</span><span>表达完整</span></div></header>
+            <div class="prompt-body">
+              <section><span class="label">适合</span><p>读完短文或听完故事后练复述。</p></section>
+              <section><span class="label">复制内容预览</span><p class="prompt-preview">请帮孩子把内容复述拆成三格...</p></section>
+              <button class="copy" type="button" data-copy-prompt="S06" data-prompt="请帮孩子把【填写短文/故事主题】复述拆成三格：who/what/why 或 first/then/finally。请先用中文问 3 个小问题，让孩子用英文词组回答。然后请孩子把三个词组连成 3 句英文。不要直接写完整复述稿；只给连接词和句子骨架。">复制</button>
+            </div>
+          </article>
+
+          <article class="prompt-card" id="S07">
+            <header class="prompt-head"><span class="prompt-id">S07</span><h3>只改一个错误</h3><div class="tag-row"><span>保护信心</span><span>轻反馈</span></div></header>
+            <div class="prompt-body">
+              <section><span class="label">适合</span><p>孩子一被纠错就不想说。</p></section>
+              <section><span class="label">复制内容预览</span><p class="prompt-preview">孩子刚说了一段英文...</p></section>
+              <button class="copy" type="button" data-copy-prompt="S07" data-prompt="孩子刚说了一段英文：【粘贴孩子转写后的英文，不放隐私】。请不要打分，不要列很多错误。只选 1 个最影响别人听懂的问题来改，说明为什么，再给孩子一个可重复的短句练习。最后请用一句鼓励话结束，但不要夸大。">复制</button>
+            </div>
+          </article>
+
+          <article class="prompt-card" id="S08">
+            <header class="prompt-head"><span class="prompt-id">S08</span><h3>发音最小对比</h3><div class="tag-row"><span>易混音</span><span>听辨</span></div></header>
+            <div class="prompt-body">
+              <section><span class="label">适合</span><p>单词读音容易混，但不知道怎么练。</p></section>
+              <section><span class="label">复制内容预览</span><p class="prompt-preview">请做一个最小对比发音练习...</p></section>
+              <button class="copy" type="button" data-copy-prompt="S08" data-prompt="请做一个最小对比发音练习。孩子容易混的音或词是：【填写，例如 ship/sheep，can/can't，th/s】。请给 5 组短词或短句，每组只练一个区别。先提醒口型或舌位，再让孩子跟读。每次反馈只说一个可执行动作，例如“嘴角拉开一点”或“舌尖轻碰上牙”。">复制</button>
+            </div>
+          </article>
+
+          <article class="prompt-card" id="S09">
+            <header class="prompt-head"><span class="prompt-id">S09</span><h3>害羞孩子先说词组</h3><div class="tag-row"><span>低压力</span><span>补全句子</span></div></header>
+            <div class="prompt-body">
+              <section><span class="label">适合</span><p>孩子不敢整句说，只愿意蹦词。</p></section>
+              <section><span class="label">复制内容预览</span><p class="prompt-preview">请把口语练习降到词组级...</p></section>
+              <button class="copy" type="button" data-copy-prompt="S09" data-prompt="请把口语练习降到词组级。主题是：【填写主题】。请先问孩子 3 个非常简单的问题，允许孩子只回答 1-3 个英文词。收到词组后，请给一个句子开头，让孩子把词组放进去。不要要求完整长句，不要打断孩子。目标是让孩子连续说 5 次。">复制</button>
+            </div>
+          </article>
+
+          <article class="prompt-card" id="S10">
+            <header class="prompt-head"><span class="prompt-id">S10</span><h3>考试口语模拟</h3><div class="tag-row"><span>考前</span><span>评分维度</span></div></header>
+            <div class="prompt-body">
+              <section><span class="label">适合</span><p>有校内口语展示或考试。</p></section>
+              <section><span class="label">复制内容预览</span><p class="prompt-preview">请按校内口语展示来模拟...</p></section>
+              <button class="copy" type="button" data-copy-prompt="S10" data-prompt="请按校内口语展示来模拟练习。年级/难度是：【填写年级或教材级别】；主题是：【填写主题】。请用 3 个维度给反馈：是否听得懂、句子是否完整、是否能继续说。不要给最终稿。每轮只问 1 个问题，孩子回答后先指出一个优点，再指出一个下一轮要改的点。">复制</button>
+            </div>
+          </article>
+
+          <article class="prompt-card" id="S11">
+            <header class="prompt-head"><span class="prompt-id">S11</span><h3>AI 太难时降级</h3><div class="tag-row"><span>恢复卡</span><span>听不懂</span></div></header>
+            <div class="prompt-body">
+              <section><span class="label">适合</span><p>AI 问题太长、语速太快、孩子沉默。</p></section>
+              <section><span class="label">复制内容预览</span><p class="prompt-preview">刚才的问题太难了...</p></section>
+              <button class="copy" type="button" data-copy-prompt="S11" data-prompt="刚才的问题太难了。请把口语练习降到更简单：每次只说 1 个短句或问 1 个 yes/no 问题；问题不超过 7 个英文词；先给中文意思；允许孩子用 1 个词回答。等孩子连续答对 3 次后，再慢慢变成长一点的句子。">复制</button>
+            </div>
+          </article>
+
+          <article class="prompt-card" id="S12">
+            <header class="prompt-head"><span class="prompt-id">S12</span><h3>结束复盘</h3><div class="tag-row"><span>留下结果</span><span>下次继续</span></div></header>
+            <div class="prompt-body">
+              <section><span class="label">适合</span><p>练完后不知道记录什么。</p></section>
+              <section><span class="label">复制内容预览</span><p class="prompt-preview">请把这次口语练习整理成复盘...</p></section>
+              <button class="copy" type="button" data-copy-prompt="S12" data-prompt="请把这次口语练习整理成一个很短的复盘。请输出 4 行：1. 今天主题；2. 孩子已经能说的一句话；3. 下次只改的一个点；4. 下次继续用的一个小问题。不要评价孩子聪明不聪明，不要给焦虑建议，只留下可继续练的动作。">复制</button>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="section" aria-labelledby="guard-title">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">安全边界</p>
+            <h2 id="guard-title">口语练习也要防跑偏</h2>
+          </div>
+        </div>
+        <div class="guard-grid">
+          <article class="guard-card"><strong>不公开</strong><h3>别把孩子音频发到公开平台</h3><p>练习音频只在家庭设备里使用，不为“打卡”逼孩子公开露脸、露声、露学校。</p></article>
+          <article class="guard-card"><strong>不代做</strong><h3>AI 不写演讲稿成品</h3><p>AI 可以给句型骨架、提问和轻反馈，最后上台或录音的表达必须由孩子自己说。</p></article>
+          <article class="guard-card"><strong>不焦虑</strong><h3>先流畅，再准确</h3><p>一次纠正太多，孩子会停止开口。先保住愿意说，再慢慢修发音和语法。</p></article>
+        </div>
+      </section>
+
+      <section class="section" aria-labelledby="record-title">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">练完留下什么</p>
+            <h2 id="record-title">只记 3 个小结果</h2>
+          </div>
+        </div>
+        <div class="record-grid">
+          <article class="record-card"><h3>今天会说一句</h3><p>例如：I played football after school. 只保留孩子能自己复述的一句。</p></article>
+          <article class="record-card"><h3>下次只改一点</h3><p>例如：第三人称单数、th 音、句尾要说完整。不要列错题清单。</p></article>
+          <article class="record-card"><h3>一个继续问题</h3><p>例如：What did you do after school? 下次从同一个问题继续练。</p></article>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p>ZHIYU · AI 口语练习小专题</p>
+      <p>AI 做陪练和反馈，不替孩子完成表达；不上传隐私，不追求一次变标准口音。</p>
+    </footer>
+
+    <script>
+      (function () {
+        const buttons = Array.from(document.querySelectorAll("[data-copy-prompt]"));
+
+        async function copyText(text) {
+          if (navigator.clipboard && window.isSecureContext) {
+            await navigator.clipboard.writeText(text);
+            return true;
+          }
+
+          const textarea = document.createElement("textarea");
+          textarea.value = text;
+          textarea.setAttribute("readonly", "");
+          textarea.style.position = "fixed";
+          textarea.style.top = "-1000px";
+          document.body.appendChild(textarea);
+          textarea.select();
+          const ok = document.execCommand("copy");
+          textarea.remove();
+          return ok;
+        }
+
+        buttons.forEach((button) => {
+          button.addEventListener("click", async () => {
+            const prompt = button.dataset.prompt || "";
+            if (!prompt) return;
+
+            try {
+              await copyText(prompt);
+              button.textContent = "已复制";
+              button.classList.add("is-copied");
+              setTimeout(() => {
+                button.textContent = "复制";
+                button.classList.remove("is-copied");
+              }, 1400);
+            } catch (error) {
+              button.textContent = "请手动复制";
+              setTimeout(() => {
+                button.textContent = "复制";
+              }, 1600);
+            }
+          });
+        });
+      })();
+    </script>
+  </body>
+</html>

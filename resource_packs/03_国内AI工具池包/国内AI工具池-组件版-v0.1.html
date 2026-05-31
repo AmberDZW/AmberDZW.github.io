@@ -1,0 +1,446 @@
+﻿<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>国内 AI 工具池 | ZHIYU</title>
+    <style>
+      :root {
+        color-scheme: light;
+        --paper: #fbf7ee;
+        --sheet: #fffdf7;
+        --ink: #21302d;
+        --muted: #66726d;
+        --green: #183f35;
+        --green-soft: #e2ece0;
+        --blue: #d8ebf0;
+        --yellow: #f3d275;
+        --brick: #b65b49;
+        --line: rgba(32, 48, 45, 0.16);
+        --radius: 8px;
+        font-family: "LXGW WenKai", "Noto Sans CJK SC", "Microsoft YaHei", sans-serif;
+      }
+      * { box-sizing: border-box; }
+      html { scroll-behavior: smooth; }
+      body { margin: 0; color: var(--ink); background: var(--paper); letter-spacing: 0; }
+      body::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        pointer-events: none;
+        background-image: linear-gradient(rgba(24, 63, 53, 0.035) 1px, transparent 1px), linear-gradient(90deg, rgba(24, 63, 53, 0.035) 1px, transparent 1px);
+        background-size: 28px 28px;
+        z-index: -1;
+      }
+      a { color: inherit; }
+      .bar { position: sticky; top: 0; z-index: 10; border-bottom: 1px solid var(--line); background: rgba(251, 247, 238, 0.94); backdrop-filter: blur(14px); }
+      .bar-inner, .hero, .section, .footer { width: min(1120px, calc(100% - 32px)); margin: 0 auto; }
+      .bar-inner { min-height: 68px; display: flex; align-items: center; justify-content: space-between; gap: 14px; }
+      .brand, .bar-link { display: inline-flex; align-items: center; min-height: 40px; color: var(--green); font-weight: 900; text-decoration: none; }
+      .brand { gap: 10px; }
+      .brand-mark {
+        display: inline-grid;
+        place-items: center;
+        width: 40px;
+        height: 40px;
+        border: 2px solid var(--green);
+        border-radius: var(--radius);
+        background: var(--yellow);
+        font-size: 13px;
+      }
+      .bar-actions { display: flex; flex-wrap: wrap; gap: 8px; justify-content: flex-end; }
+      .bar-link {
+        justify-content: center;
+        padding: 0 12px;
+        border: 1px solid rgba(24, 63, 53, 0.24);
+        border-radius: var(--radius);
+        background: var(--sheet);
+      }
+      .hero {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(280px, 0.5fr);
+        gap: 26px;
+        align-items: start;
+        padding: 54px 0 34px;
+      }
+      .eyebrow { margin: 0 0 12px; color: var(--brick); font-size: 14px; font-weight: 900; }
+      h1, h2, h3 { margin: 0; color: var(--green); font-family: "Noto Serif SC", "Source Han Serif SC", "Songti SC", Georgia, serif; line-height: 1.2; letter-spacing: 0; }
+      h1 { max-width: 780px; font-size: 52px; }
+      .hero p:not(.eyebrow), .tool-card p, .rule-card p, .table-card p { color: var(--muted); line-height: 1.74; }
+      .hero p:not(.eyebrow) { max-width: 760px; font-size: 18px; }
+      .principle {
+        padding: 22px;
+        border: 2px solid var(--green);
+        border-radius: var(--radius);
+        background: var(--sheet);
+      }
+      .principle strong { display: block; color: var(--green); font-size: 24px; margin-bottom: 12px; }
+      .principle ul { margin: 0; padding: 0; list-style: none; }
+      .principle li { padding: 9px 0; border-top: 1px dashed var(--line); color: var(--muted); line-height: 1.6; }
+      .section { padding: 34px 0; }
+      .section-head { margin-bottom: 18px; }
+      .section-head h2 { font-size: 34px; }
+      .tool-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 14px;
+      }
+      .scene-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 14px;
+      }
+      .tool-card, .rule-card, .pool-card, .table-card {
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+        background: var(--sheet);
+      }
+      .tool-card {
+        min-height: 280px;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+      }
+      .tool-head {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        gap: 10px;
+      }
+      .tool-id {
+        display: inline-grid;
+        align-items: center;
+        width: 34px;
+        height: 28px;
+        border-radius: var(--radius);
+        background: var(--yellow);
+        color: var(--green);
+        font-weight: 900;
+      }
+      .official-link {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 30px;
+        padding: 0 10px;
+        border: 1px solid rgba(24, 63, 53, 0.25);
+        border-radius: var(--radius);
+        background: #fff;
+        text-decoration: none;
+        color: var(--green);
+        font-weight: 800;
+      }
+      .tool-card h3 { margin-top: 14px; font-size: 24px; }
+      .tool-meta {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-top: 12px;
+      }
+      .tool-meta span {
+        display: inline-flex;
+        align-items: center;
+        min-height: 26px;
+        padding: 0 8px;
+        border-radius: var(--radius);
+        background: var(--blue);
+        color: #1f4350;
+        font-size: 13px;
+        font-weight: 900;
+      }
+      .tool-card p { margin-top: 12px; }
+      .tool-list {
+        margin: 12px 0 0;
+        padding: 0;
+        list-style: none;
+      }
+      .tool-list li {
+        margin-top: 10px;
+        color: #304640;
+        line-height: 1.72;
+        display: flex;
+        gap: 8px;
+      }
+      .tool-list li::before {
+        content: "";
+        display: inline-block;
+        width: 0.4rem;
+        height: 0.4rem;
+        border-radius: 99px;
+        margin-top: 10px;
+        background: var(--brick);
+        flex: 0 0 auto;
+      }
+      .tool-list li strong { color: var(--green); }
+      .pool-card, .rule-card { min-height: 200px; padding: 20px; }
+      .pool-card strong { display: block; color: var(--green); font-size: 22px; line-height: 1.25; }
+      .pool-card span {
+        display: inline-flex;
+        align-items: center;
+        min-height: 28px;
+        margin-top: 12px;
+        padding: 0 9px;
+        border-radius: var(--radius);
+        background: var(--green-soft);
+        color: var(--green);
+        font-size: 13px;
+        font-weight: 900;
+      }
+      .pool-card p { margin: 12px 0 0; }
+      .rule-card h3 { margin-top: 14px; font-size: 22px; }
+      .rule-card strong {
+        display: inline-flex;
+        align-items: center;
+        min-height: 28px;
+        padding: 0 10px;
+        border-radius: var(--radius);
+        background: var(--yellow);
+        color: var(--green);
+      }
+      .table-card { overflow-x: auto; }
+      table {
+        width: 100%;
+        min-width: 900px;
+        border-collapse: collapse;
+        background: var(--sheet);
+      }
+      caption { padding: 16px 18px; text-align: left; color: var(--green); font-weight: 900; }
+      th, td { padding: 14px 15px; border-top: 1px solid var(--line); text-align: left; vertical-align: top; line-height: 1.62; }
+      th { background: rgba(216, 235, 240, 0.65); color: var(--green); }
+      .footer { padding: 30px 0 42px; border-top: 1px solid var(--line); color: var(--muted); line-height: 1.7; }
+      .mini-note {
+        margin-top: 6px;
+        color: var(--muted);
+      }
+      .state-note { margin: 12px 0 0; font-weight: 900; color: var(--green); }
+      @media (max-width: 1040px) {
+        .bar-inner { padding: 14px 0; }
+        .hero, .tool-grid, .scene-grid { grid-template-columns: 1fr; }
+      }
+      @media (max-width: 620px) {
+        h1 { font-size: 38px; }
+        .bar-inner, .hero, .section, .footer { width: min(100% - 24px, 1120px); }
+        .tool-grid, .scene-grid { grid-template-columns: 1fr; }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="bar">
+      <div class="bar-inner">
+        <a class="brand" href="../../website/index.html#tools"><span class="brand-mark">Z</span><span>ZHIYU · 让AI在家</span></a>
+        <nav class="bar-actions" aria-label="页面入口">
+          <a class="bar-link" href="../../website/app.html#library">返回资料库</a>
+          <a class="bar-link" href="./工具池月度复核表-v0.1.html">复核表文字版</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div>
+          <p class="eyebrow">国内 AI 工具池</p>
+          <h1>先选任务，再换入口，再核验。</h1>
+          <p>工具池不是“一个答案仓库”，是一个家庭可以快速切换的安全入口集合。每个家庭都可以保留一个常用入口和一个备用入口。</p>
+        </div>
+        <aside class="principle">
+          <strong>2026-05-12 本月状态</strong>
+          <ul>
+            <li>已纳入 8 个常见 AI 助教入口，按场景匹配，不做排行榜。</li>
+            <li>仅保留“可进入入口与常见场景”，不承诺长期免费和无门槛。</li>
+            <li>每次使用都先通过“核验规则”，再进入“家庭学习问法”流程。</li>
+            <li>遇到付费提示先停：先换入口，再做题内核验。</li>
+          </ul>
+          <p class="state-note mini-note">说明：官方入口与可用状态会变，请以当月复核日期为准。</p>
+        </aside>
+      </section>
+
+      <section class="section">
+        <div class="section-head">
+          <p class="eyebrow">官方入口（家庭优先）</p>
+          <h2>家庭可对比的 AI 工具卡（不按价格竞品排位）</h2>
+        </div>
+        <div class="tool-grid" aria-label="工具卡片">
+          <article class="tool-card">
+            <div class="tool-head">
+              <span class="tool-id">1</span>
+              <a class="official-link" href="https://www.deepseek.com/" target="_blank" rel="noopener">官方入口</a>
+            </div>
+            <h3>DeepSeek</h3>
+            <div class="tool-meta"><span>中文思路拆解</span><span>长流程追问</span><span>偏理科/逻辑</span></div>
+            <p>适合把一个“卡点”拆成可执行步骤。用于第一步提示、错因归因、过程检核比对。</p>
+            <ul class="tool-list">
+              <li><strong>适用场景：</strong>数学/物理/化学/理科题，先讲考点再走思路。</li>
+              <li><strong>不建议：</strong>直接替孩子写答案或大段抄袭式表达。</li>
+              <li><strong>替代规则：</strong>出现不可控提示先切换其他工具，不硬拼。</li>
+            </ul>
+          </article>
+
+          <article class="tool-card">
+            <div class="tool-head">
+              <span class="tool-id">2</span>
+              <a class="official-link" href="https://www.ai-doubao.com.cn/" target="_blank" rel="noopener">官方入口</a>
+            </div>
+            <h3>豆包</h3>
+            <div class="tool-meta"><span>中文语义</span><span>多模态</span><span>文档拆解</span></div>
+            <p>适合语文学科内短段落理解、作文表达方向提示、资料归类与复述练习。</p>
+            <ul class="tool-list">
+              <li><strong>适用场景：</strong>语文、英语句读、阅读任务。</li>
+              <li><strong>不建议：</strong>一次贴整页作业、答案全文或隐私图片。</li>
+              <li><strong>替代规则：</strong>若卡点不清先改成“孩子一句话提问”。</li>
+            </ul>
+          </article>
+
+          <article class="tool-card">
+            <div class="tool-head">
+              <span class="tool-id">3</span>
+              <a class="official-link" href="https://www.kimi.com/" target="_blank" rel="noopener">官方入口</a>
+            </div>
+            <h3>Kimi</h3>
+            <div class="tool-meta"><span>长文理解</span><span>任务分解</span><span>文档处理</span></div>
+            <p>适合长题干和多信息素材先做结构化理解，让孩子知道从哪里开始。</p>
+            <ul class="tool-list">
+              <li><strong>适用场景：</strong>题干过长、材料题、综合题。</li>
+              <li><strong>不建议：</strong>把“AI回答=最终结论”当标准。</li>
+              <li><strong>替代规则：</strong>核验失败时换同类入口继续，保留过程痕迹。</li>
+            </ul>
+          </article>
+
+          <article class="tool-card">
+            <div class="tool-head">
+              <span class="tool-id">4</span>
+              <a class="official-link" href="https://www.qianwen.com/" target="_blank" rel="noopener">官方入口</a>
+            </div>
+            <h3>通义千问</h3>
+            <div class="tool-meta"><span>多模态理解</span><span>视觉问答</span><span>步骤复盘</span></div>
+            <p>适合图文结合任务，把“不会处”转成可以复述的步骤条目。</p>
+            <ul class="tool-list">
+              <li><strong>适用场景：</strong>错题复盘、图文信息提取、过程核验。</li>
+              <li><strong>不建议：</strong>上传含敏感账号/学校隐私的信息。</li>
+              <li><strong>替代规则：</strong>界面入口受限时优先改用下一入口。</li>
+            </ul>
+          </article>
+
+          <article class="tool-card">
+            <div class="tool-head">
+              <span class="tool-id">5</span>
+              <a class="official-link" href="https://yuanbao.tencent.com/" target="_blank" rel="noopener">官方入口</a>
+            </div>
+            <h3>腾讯元宝</h3>
+            <div class="tool-meta"><span>答疑汇总</span><span>学习问答</span><span>场景弹性</span></div>
+            <p>适合作为“通用入口”，适合日常提问时先发“一个卡点”，再要求第一步提示。</p>
+            <ul class="tool-list">
+              <li><strong>适用场景：</strong>家长陪伴、短时提问、学习反馈归档。</li>
+              <li><strong>不建议：</strong>出现支付绑定后继续强行使用。</li>
+              <li><strong>替代规则：</strong>可作为备选入口，不当作唯一核心入口。</li>
+            </ul>
+          </article>
+
+          <article class="tool-card">
+            <div class="tool-head">
+              <span class="tool-id">6</span>
+              <a class="official-link" href="https://yiyan.baidu.com/" target="_blank" rel="noopener">官方入口</a>
+            </div>
+            <h3>文心一言</h3>
+            <div class="tool-meta"><span>中文理解</span><span>语法解释</span><span>表达修正</span></div>
+            <p>适合语言学科里的“问题定位”，让孩子先复述原句再改写表达。</p>
+            <ul class="tool-list">
+              <li><strong>适用场景：</strong>英语句型改错、语文解释。</li>
+              <li><strong>不建议：</strong>直接拿它的版本替代孩子表达。</li>
+              <li><strong>替代规则：</strong>孩子理解有困难时再切换其他工具。</li>
+            </ul>
+          </article>
+
+          <article class="tool-card">
+            <div class="tool-head">
+              <span class="tool-id">7</span>
+              <a class="official-link" href="https://xinghuo.xfyun.cn/" target="_blank" rel="noopener">官方入口</a>
+            </div>
+            <h3>讯飞星火</h3>
+            <div class="tool-meta"><span>语音支持</span><span>语法核对</span><span>学习场景</span></div>
+            <p>适合口头复述场景，先让孩子说一遍卡点，再让 AI 只给核验方向。</p>
+            <ul class="tool-list">
+              <li><strong>适用场景：</strong>听读、口语表述和句子结构核对。</li>
+              <li><strong>不建议：</strong>上传整张作业图当作默认输入。</li>
+              <li><strong>替代规则：</strong>卡点清晰后可转为文字输入。</li>
+            </ul>
+          </article>
+
+          <article class="tool-card">
+            <div class="tool-head">
+              <span class="tool-id">8</span>
+              <a class="official-link" href="https://metaso.cn/" target="_blank" rel="noopener">官方入口</a>
+            </div>
+            <h3>秘塔 AI 搜索</h3>
+            <div class="tool-meta"><span>检索核验</span><span>事实核对</span><span>资料定位</span></div>
+            <p>偏向检索和事实核验，适合“资料先看、再核对、再判断”三步。</p>
+            <ul class="tool-list">
+              <li><strong>适用场景：</strong>知识点查找、材料对照、概念核验。</li>
+              <li><strong>不建议：</strong>把检索结果当作答案直接提交。</li>
+              <li><strong>替代规则：</strong>保留原始来源并回到课本核验。</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-head">
+          <p class="eyebrow">按任务选工具</p>
+          <h2>常见学习任务，先选工具再选问题</h2>
+        </div>
+        <div class="scene-grid">
+          <article class="pool-card"><strong>孩子不会</strong><span>先解释考点，再出第一步</span><p>推荐 DeepSeek / Kimi / 通义千问。先让孩子说一个卡点，不上传姓名、学校、隐私。</p></article>
+          <article class="pool-card"><strong>题干太长</strong><span>先做结构化复述</span><p>推荐 Kimi / 通义千问 / 秘塔。先整理“已知条件-要找的点-困在哪一步”。</p></article>
+          <article class="pool-card"><strong>阅读/写作</strong><span>先拆句再改写</span><p>推荐 豆包 / 文心一言 / 讯飞星火。先理解再表达，最后留在孩子自己文本。</p></article>
+          <article class="pool-card"><strong>英语学习</strong><span>先抓语法再改表达</span><p>推荐 文心一言 / 讯飞星火 / 豆包。重点在“错误位置+修正路径”。</p></article>
+          <article class="pool-card"><strong>家长陪伴</strong><span>先问孩子再问工具</span><p>推荐 DeepSeek / 元宝。家长先定义“今天目标”，再触发问题提示。</p></article>
+          <article class="pool-card"><strong>资料核验</strong><span>先查来源再定结论</span><p>推荐 秘塔 AI 搜索 + 课堂资料 + 家长复核。任何关键点都要二次确认。</p></article>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-head">
+          <p class="eyebrow">当页决策规则</p>
+          <h2>3 步判断：先核验入口，再核验回答</h2>
+        </div>
+        <div class="scene-grid">
+          <article class="rule-card"><strong>1</strong><h3>看官方入口</h3><p>优先官方链接，确认是否来自官方渠道，避免镜像与破解站。</p></article>
+          <article class="rule-card"><strong>2</strong><h3>查门槛</h3><p>出现强制注册、身份绑定、支付提示时先停。先确认基础任务是否可独立完成。</p></article>
+          <article class="rule-card"><strong>3</strong><h3>判断价值</h3><p>只有回答“可核验、可复述、可继续提问”的场景才保留本月入口。</p></article>
+          <article class="rule-card"><strong>红灯</strong><h3>暂停使用</h3><p>要求上传整页作业、学校内部文档、身份证/孩子人脸、强绑定支付。</p></article>
+          <article class="rule-card"><strong>红灯</strong><h3>暂停使用</h3><p>把隐私参数和孩子身份信息放到同一条链接中，先退出并改用本机笔记。</p></article>
+          <article class="rule-card"><strong>红灯</strong><h3>暂停使用</h3><p>出现“直接给完整答案”时，改成“先讲思路”模板重提。</p></article>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-head">
+          <p class="eyebrow">月度复核表</p>
+          <h2>当月状态是“不断替换”的，不是永远不变的</h2>
+        </div>
+        <div class="table-card">
+          <table>
+            <caption>2026-05 国内 AI 工具池复核表（待补充字段请保持本月更新）</caption>
+            <thead>
+              <tr><th>工具名称</th><th>官方入口</th><th>登录与支付风险</th><th>基础文字任务</th><th>建议家庭定位</th><th>本月结论</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>DeepSeek</td><td><a href="https://www.deepseek.com/" target="_blank" rel="noopener">deepseek.com</a></td><td>待观察</td><td>可用（待复核）</td><td>数学/逻辑题拆解</td><td>可选</td></tr>
+              <tr><td>豆包</td><td><a href="https://www.ai-doubao.com.cn/" target="_blank" rel="noopener">ai-doubao.com.cn</a></td><td>待观察</td><td>可用（待复核）</td><td>语文、阅读、写作提示</td><td>可选</td></tr>
+              <tr><td>Kimi</td><td><a href="https://www.kimi.com/" target="_blank" rel="noopener">kimi.com</a></td><td>待观察</td><td>可用（待复核）</td><td>长题干拆解</td><td>可选</td></tr>
+              <tr><td>通义千问</td><td><a href="https://www.qianwen.com/" target="_blank" rel="noopener">qianwen.com</a></td><td>待观察</td><td>可用（待复核）</td><td>错因复盘、图文问答</td><td>可选</td></tr>
+              <tr><td>腾讯元宝</td><td><a href="https://yuanbao.tencent.com/" target="_blank" rel="noopener">yuanbao.tencent.com</a></td><td>待观察</td><td>可用（待复核）</td><td>通用陪伴问答</td><td>可选</td></tr>
+              <tr><td>文心一言</td><td><a href="https://yiyan.baidu.com/" target="_blank" rel="noopener">yiyan.baidu.com</a></td><td>待观察</td><td>可用（待复核）</td><td>中文语义、表达优化</td><td>可选</td></tr>
+              <tr><td>讯飞星火</td><td><a href="https://xinghuo.xfyun.cn/" target="_blank" rel="noopener">xinghuo.xfyun.cn</a></td><td>待观察</td><td>可用（待复核）</td><td>语音复述、英语核对</td><td>可选</td></tr>
+              <tr><td>秘塔 AI 搜索</td><td><a href="https://metaso.cn/" target="_blank" rel="noopener">metaso.cn</a></td><td>待观察</td><td>可用（待复核）</td><td>资料核验、来源追踪</td><td>可选</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p>ZHIYU · 国内 AI 工具池</p>
+      <p>工具池用于家庭学习节奏，不替代AI能力评测，也不替代作业正确性判断。优先看入口和核验流程。</p>
+    </footer>
+  </body>
+</html>

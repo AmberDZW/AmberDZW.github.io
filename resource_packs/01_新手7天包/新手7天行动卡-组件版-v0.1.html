@@ -1,0 +1,251 @@
+﻿<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>新手 7 天行动卡 | ZHIYU</title>
+    <style>
+      :root {
+        color-scheme: light;
+        --paper: #fbf7ee;
+        --sheet: #fffdf7;
+        --ink: #21302d;
+        --muted: #66726d;
+        --green: #183f35;
+        --green-soft: #e2ece0;
+        --blue: #d8ebf0;
+        --yellow: #f3d275;
+        --brick: #b65b49;
+        --line: rgba(32, 48, 45, 0.16);
+        --shadow: 0 18px 42px rgba(24, 63, 53, 0.12);
+        --radius: 8px;
+        font-family: "LXGW WenKai", "Noto Sans CJK SC", "Microsoft YaHei", sans-serif;
+      }
+      * { box-sizing: border-box; }
+      html { scroll-behavior: smooth; }
+      body {
+        margin: 0;
+        color: var(--ink);
+        background:
+          linear-gradient(rgba(24, 63, 53, 0.035) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(24, 63, 53, 0.035) 1px, transparent 1px),
+          var(--paper);
+        background-size: 28px 28px;
+        letter-spacing: 0;
+      }
+      a { color: inherit; }
+      .bar {
+        position: sticky;
+        top: 0;
+        z-index: 10;
+        border-bottom: 1px solid var(--line);
+        background: rgba(251, 247, 238, 0.94);
+        backdrop-filter: blur(14px);
+      }
+      .bar-inner,
+      .hero,
+      .grid,
+      .support,
+      .footer {
+        width: min(1120px, calc(100% - 32px));
+        margin: 0 auto;
+      }
+      .bar-inner {
+        min-height: 68px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 14px;
+      }
+      .brand,
+      .bar-link,
+      .copy {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 40px;
+        border-radius: var(--radius);
+        color: var(--green);
+        font-weight: 900;
+        text-decoration: none;
+      }
+      .brand { gap: 10px; }
+      .brand-mark {
+        display: inline-grid;
+        place-items: center;
+        width: 40px;
+        height: 40px;
+        border: 2px solid var(--green);
+        border-radius: var(--radius);
+        background: var(--yellow);
+        font-size: 13px;
+      }
+      .bar-actions { display: flex; flex-wrap: wrap; gap: 8px; justify-content: flex-end; }
+      .bar-link,
+      .copy { border: 1px solid rgba(24, 63, 53, 0.24); background: var(--sheet); padding: 0 12px; }
+      .hero {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(260px, 0.45fr);
+        gap: 28px;
+        align-items: end;
+        padding: 54px 0 26px;
+      }
+      .eyebrow { margin: 0 0 12px; color: var(--brick); font-size: 14px; font-weight: 900; }
+      h1, h2, h3 { margin: 0; color: var(--green); font-family: "Noto Serif SC", "Source Han Serif SC", "Songti SC", Georgia, serif; line-height: 1.18; letter-spacing: 0; }
+      h1 { max-width: 780px; font-size: 54px; }
+      .hero p:not(.eyebrow), .intro-panel li, .day-card p, .support-card p { color: var(--muted); line-height: 1.72; }
+      .hero p:not(.eyebrow) { max-width: 760px; font-size: 18px; }
+      .intro-panel {
+        padding: 22px;
+        border: 2px solid var(--green);
+        border-radius: var(--radius);
+        background: var(--sheet);
+        box-shadow: var(--shadow);
+      }
+      .intro-panel strong { display: block; margin-bottom: 12px; color: var(--green); font-size: 24px; }
+      .intro-panel ul { margin: 0; padding: 0; list-style: none; }
+      .intro-panel li { padding: 9px 0; border-top: 1px dashed var(--line); }
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+        padding: 22px 0 28px;
+      }
+      .day-card,
+      .support-card {
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+        background: var(--sheet);
+        box-shadow: 0 12px 26px rgba(24, 63, 53, 0.08);
+      }
+      .day-card { min-height: 320px; display: flex; flex-direction: column; overflow: hidden; }
+      .day-head { padding: 16px; border-bottom: 1px solid var(--line); background: linear-gradient(120deg, var(--green-soft), rgba(216, 235, 240, 0.7)); }
+      .day-num { display: inline-flex; min-height: 30px; align-items: center; padding: 0 10px; border: 2px solid var(--green); border-radius: var(--radius); background: var(--yellow); color: var(--green); font-weight: 1000; }
+      .day-head h2 { margin-top: 12px; font-size: 22px; }
+      .day-body { display: flex; flex: 1; flex-direction: column; gap: 13px; padding: 16px; }
+      .label { display: block; margin-bottom: 6px; color: var(--brick); font-size: 13px; font-weight: 900; }
+      .day-card p, .support-card p { margin: 0; }
+      .note {
+        margin-top: auto;
+        padding: 10px;
+        border-radius: var(--radius);
+        background: #f8f0df;
+        color: #31433e;
+        line-height: 1.62;
+      }
+      .support {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 14px;
+        padding-bottom: 72px;
+      }
+      .support-card { min-height: 220px; padding: 20px; }
+      .support-card h2 { font-size: 24px; }
+      .copy { margin-top: 16px; cursor: pointer; font: inherit; }
+      .copy:hover, .copy:focus-visible, .copy.is-copied { background: var(--green); color: #fff; outline: none; }
+      .footer { padding: 30px 0 42px; border-top: 1px solid var(--line); color: var(--muted); line-height: 1.7; }
+      @media (max-width: 1040px) {
+        .hero { grid-template-columns: 1fr; }
+        .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+        .support { grid-template-columns: 1fr; }
+      }
+      @media (max-width: 620px) {
+        .bar-inner { align-items: flex-start; flex-direction: column; padding: 12px 0; }
+        .bar-actions { justify-content: flex-start; }
+        h1 { font-size: 38px; }
+        .hero p:not(.eyebrow) { font-size: 16px; }
+        .grid { grid-template-columns: 1fr; }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="bar">
+      <div class="bar-inner">
+        <a class="brand" href="../../website/app.html#library"><span class="brand-mark">Z</span><span>ZHIYU · 让AI在家</span></a>
+        <nav class="bar-actions" aria-label="页面入口">
+          <a class="bar-link" href="../../website/app.html#library">返回资料库</a>
+          <a class="bar-link" href="./新手7天行动卡-v0.1.html">文字版</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div>
+          <p class="eyebrow">新手 7 天包</p>
+          <h1>7 天不是天天用 AI，而是学会什么时候不用。</h1>
+          <p>真正打开 AI 只需要 2-3 次。其余时间练边界、记录、核验和复盘。每天都留下一个小结果，7 天后家里手里有一套可复用方法。</p>
+        </div>
+        <aside class="intro-panel">
+          <strong>7 天后留下这些</strong>
+          <ul>
+            <li>1 条家庭 AI 底线。</li>
+            <li>1 句安全问法。</li>
+            <li>1 条可用工具记录。</li>
+            <li>1 个匿名题干示例。</li>
+            <li>1 条核验记录和 1 条错因提醒。</li>
+          </ul>
+        </aside>
+      </section>
+
+      <section class="grid" aria-label="7 天行动卡">
+        <article class="day-card"><header class="day-head"><span class="day-num">第 1 天</span><h2>先做一次安全试问</h2></header><div class="day-body"><section><span class="label">家长做</span><p>打开 P01，不放真实题目，只问：“为什么不能让 AI 直接写作业？”</p></section><section><span class="label">孩子做</span><p>听完后用自己的话说：AI 可以帮什么，不能替我做什么。</p></section><section><span class="label">一起确认</span><p>今天不上传作业、不问答案，只确认规则听懂。</p></section><section><span class="label">留下结果</span><p class="note">我们家的底线：AI 讲思路，作业自己写。</p></section></div></article>
+        <article class="day-card"><header class="day-head"><span class="day-num">第 2 天</span><h2>存一句安全问法</h2></header><div class="day-body"><section><span class="label">家长做</span><p>把模板存到手机备忘录，标题写“只问思路”。</p></section><section><span class="label">孩子做</span><p>把自己的卡点说成一句话，不说“我都不会”。</p></section><section><span class="label">一起确认</span><p>模板里有“不直接给答案、不上传图片、做完要核验”。</p></section><section><span class="label">留下结果</span><p class="note">安全问法 1 句：请只讲考点和第一步。</p></section></div></article>
+        <article class="day-card"><header class="day-head"><span class="day-num">第 3 天</span><h2>只选一个可用入口</h2></header><div class="day-body"><section><span class="label">家长做</span><p>检查：能打开、不要求孩子单独注册、不弹强付费、能输入文字、能复制回答。满足 4 项就先用。</p></section><section><span class="label">孩子做</span><p>不自己填手机号、学校、账号或人脸信息。</p></section><section><span class="label">一起确认</span><p>不研究一堆工具；不满足就换，不在不明入口里试。</p></section><section><span class="label">留下结果</span><p class="note">可用入口记录：名称、是否登录、是否有付费提示。</p></section></div></article>
+        <article class="day-card"><header class="day-head"><span class="day-num">第 4 天</span><h2>只说卡点，不发整题</h2></header><div class="day-body"><section><span class="label">家长做</span><p>确认不输入完整题目、不输入选项、不贴作文题全文、不传作业原图。</p></section><section><span class="label">孩子做</span><p>只说“我不发完整题目，只说我卡在哪里”。</p></section><section><span class="label">一起确认</span><p>AI 只讲考点和第一步；如果给完整答案，马上用 P04 改回学习模式。</p></section><section><span class="label">留下结果</span><p class="note">匿名卡点示例 1 个，不超过 120 字。</p></section></div></article>
+        <article class="day-card"><header class="day-head"><span class="day-num">第 5 天</span><h2>做一次笨办法核验</h2></header><div class="day-body"><section><span class="label">家长做</span><p>让 AI 标出不确定处，再找课本同一小节或例题第一步。</p></section><section><span class="label">孩子做</span><p>指出 AI 哪一句和课本、例题或原文对应。</p></section><section><span class="label">一起确认</span><p>不确定就不采纳，不把 AI 当标准答案。</p></section><section><span class="label">留下结果</span><p class="note">AI 说法 1 句 + 核验来源 + 是否可信。</p></section></div></article>
+        <article class="day-card"><header class="day-head"><span class="day-num">第 6 天</span><h2>记一个具体错因</h2></header><div class="day-body"><section><span class="label">家长做</span><p>不说“你粗心”，只问“这次具体卡在哪一步”。</p></section><section><span class="label">孩子做</span><p>从读题、知识点、步骤、计算、表达里选一个错因。</p></section><section><span class="label">一起确认</span><p>错因要能指导下一次动作，不能只写“不会”“粗心”。</p></section><section><span class="label">留下结果</span><p class="note">下次提醒 1 句：先看条件/先圈关键词/先查单位。</p></section></div></article>
+        <article class="day-card"><header class="day-head"><span class="day-num">第 7 天</span><h2>下周只保留一个动作</h2></header><div class="day-body"><section><span class="label">家长做</span><p>看 6 天记录，不评价孩子，只选一个最容易坚持的动作。</p></section><section><span class="label">孩子做</span><p>从三项里选：每周一次错因整理、每周一次问思路、每周一次核验 AI 回答。</p></section><section><span class="label">一起确认</span><p>下周不增加工具、不买会员、不追求天天用 AI。</p></section><section><span class="label">留下结果</span><p class="note">下周只做：三选一，写进手机备忘录。</p></section></div></article>
+      </section>
+
+      <section class="support" aria-label="新手辅助卡">
+        <article class="support-card">
+          <h2>第一次提问模板</h2>
+          <p id="starter-prompt">请不要直接给答案。我不发完整题目，只说一个卡点；不上传图片、姓名、学校或整页作业。请先告诉我这可能在考什么，再只提示第一步。孩子写完后，请提醒我们用课本、例题或老师讲解核验。</p>
+          <button class="copy" type="button" data-copy-target="starter-prompt">复制模板</button>
+        </article>
+        <article class="support-card">
+          <h2>家长检查</h2>
+          <p>孩子有没有先说卡点？有没有上传隐私或整页作业？AI 有没有直接给答案？孩子有没有自己写？是否留下了一个可复用结果？遇到注册、实名、付费或不明入口，是否已经停止？</p>
+        </article>
+        <article class="support-card">
+          <h2>孩子 10 秒自查</h2>
+          <p>我有没有先想？我是不是在要答案？里面有没有姓名、学校、照片或整页作业？AI 说的我能不能讲给家长或老师听？不能讲清，就不能交。</p>
+        </article>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p>ZHIYU · 新手 7 天行动卡</p>
+      <p>AI 做帮手，不替孩子写作业。资料可以直接查看，不需要先填表。</p>
+    </footer>
+    <script>
+      function selectText(node) {
+        const range = document.createRange();
+        range.selectNodeContents(node);
+        const selection = window.getSelection();
+        selection.removeAllRanges();
+        selection.addRange(range);
+      }
+      document.addEventListener("click", async (event) => {
+        const button = event.target.closest("[data-copy-target]");
+        if (!button) return;
+        const target = document.getElementById(button.dataset.copyTarget);
+        if (!target) return;
+        try {
+          if (navigator.clipboard && window.isSecureContext) await navigator.clipboard.writeText(target.innerText);
+          else throw new Error("local clipboard blocked");
+          button.textContent = "已复制";
+          button.classList.add("is-copied");
+        } catch {
+          selectText(target);
+          button.textContent = "已选中文本，请复制";
+        }
+        window.setTimeout(() => {
+          button.textContent = "复制模板";
+          button.classList.remove("is-copied");
+        }, 1800);
+      });
+    </script>
+  </body>
+</html>

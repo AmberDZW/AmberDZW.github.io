@@ -1,0 +1,175 @@
+﻿<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AI 安全使用包 | ZHIYU</title>
+    <style>
+      :root {
+        color-scheme: light;
+        --paper: #fbf7ee;
+        --sheet: #fffdf7;
+        --ink: #21302d;
+        --muted: #66726d;
+        --green: #183f35;
+        --green-soft: #e2ece0;
+        --blue: #d8ebf0;
+        --yellow: #f3d275;
+        --brick: #b65b49;
+        --line: rgba(32, 48, 45, 0.16);
+        --radius: 8px;
+        font-family: "LXGW WenKai", "Noto Sans CJK SC", "Microsoft YaHei", sans-serif;
+      }
+      * { box-sizing: border-box; }
+      html { scroll-behavior: smooth; }
+      body { margin: 0; color: var(--ink); background: var(--paper); letter-spacing: 0; }
+      body::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        pointer-events: none;
+        background-image: linear-gradient(rgba(24, 63, 53, 0.035) 1px, transparent 1px), linear-gradient(90deg, rgba(24, 63, 53, 0.035) 1px, transparent 1px);
+        background-size: 28px 28px;
+        z-index: -1;
+      }
+      a { color: inherit; }
+      .bar { position: sticky; top: 0; z-index: 10; border-bottom: 1px solid var(--line); background: rgba(251, 247, 238, 0.94); backdrop-filter: blur(14px); }
+      .bar-inner, .hero, .section, .footer { width: min(1120px, calc(100% - 32px)); margin: 0 auto; }
+      .bar-inner { min-height: 68px; display: flex; align-items: center; justify-content: space-between; gap: 14px; }
+      .brand, .bar-link { display: inline-flex; align-items: center; min-height: 40px; color: var(--green); font-weight: 900; text-decoration: none; }
+      .brand { gap: 10px; }
+      .brand-mark { display: inline-grid; place-items: center; width: 40px; height: 40px; border: 2px solid var(--green); border-radius: var(--radius); background: var(--yellow); font-size: 13px; }
+      .bar-actions { display: flex; flex-wrap: wrap; gap: 8px; justify-content: flex-end; }
+      .bar-link { justify-content: center; padding: 0 12px; border: 1px solid rgba(24, 63, 53, 0.24); border-radius: var(--radius); background: var(--sheet); }
+      .hero { display: grid; grid-template-columns: minmax(0, 1fr) minmax(280px, 0.5fr); gap: 28px; align-items: end; padding: 54px 0 34px; }
+      .eyebrow { margin: 0 0 12px; color: var(--brick); font-size: 14px; font-weight: 900; }
+      h1, h2, h3 { margin: 0; color: var(--green); font-family: "Noto Serif SC", "Source Han Serif SC", "Songti SC", Georgia, serif; line-height: 1.18; letter-spacing: 0; }
+      h1 { max-width: 800px; font-size: 54px; }
+      .hero p:not(.eyebrow), .safety-card p, .wide-card p, .step-card p { color: var(--muted); line-height: 1.74; }
+      .hero p:not(.eyebrow) { max-width: 760px; font-size: 18px; }
+      .mini-nav { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; padding: 20px; border: 2px solid var(--green); border-radius: var(--radius); background: var(--sheet); }
+      .mini-nav a { min-height: 42px; display: inline-flex; align-items: center; justify-content: center; border-radius: var(--radius); background: var(--green-soft); color: var(--green); font-weight: 900; text-decoration: none; text-align: center; }
+      .section { padding: 34px 0; }
+      .section-head { margin-bottom: 18px; }
+      .section-head h2 { font-size: 34px; }
+      .cards { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+      .safety-card, .wide-card, .step-card { border: 1px solid var(--line); border-radius: var(--radius); background: var(--sheet); }
+      .safety-card { min-height: 210px; padding: 20px; }
+      .safety-card span { display: inline-grid; place-items: center; min-width: 42px; height: 34px; margin-bottom: 16px; padding: 0 10px; border: 2px solid var(--green); border-radius: var(--radius); background: var(--yellow); color: var(--green); font-weight: 1000; }
+      .safety-card h3 { font-size: 22px; }
+      .safety-card p, .wide-card p, .step-card p { margin: 10px 0 0; }
+      .wide-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; }
+      .wide-card { min-height: 220px; padding: 22px; }
+      .wide-card h3 { font-size: 25px; }
+      .list { margin: 14px 0 0; padding: 0; list-style: none; }
+      .list li { padding: 9px 0; border-top: 1px dashed var(--line); color: var(--muted); line-height: 1.6; }
+      .steps { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; }
+      .step-card { min-height: 190px; padding: 18px; }
+      .step-card strong { color: var(--brick); }
+      .footer { padding: 30px 0 42px; border-top: 1px solid var(--line); color: var(--muted); line-height: 1.7; }
+      @media (max-width: 1040px) { .hero, .wide-grid { grid-template-columns: 1fr; } .cards, .steps { grid-template-columns: repeat(2, 1fr); } }
+      @media (max-width: 620px) { .bar-inner { align-items: flex-start; flex-direction: column; padding: 12px 0; } h1 { font-size: 38px; } .cards, .steps, .mini-nav { grid-template-columns: 1fr; } }
+    </style>
+  </head>
+  <body>
+    <header class="bar">
+      <div class="bar-inner">
+        <a class="brand" href="../../website/app.html#library"><span class="brand-mark">Z</span><span>ZHIYU · 让AI在家</span></a>
+        <nav class="bar-actions" aria-label="页面入口">
+          <a class="bar-link" href="../../website/app.html#library">返回资料库</a>
+          <a class="bar-link" href="./家庭AI使用边界8条-v0.1.html">边界文字版</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div>
+          <p class="eyebrow">AI 安全使用包</p>
+          <h1>安全不是口号，是家里遇到事时照着做。</h1>
+          <p>这页把规则改成家庭场景、家长话术、孩子动作和可复制模板。先用它把底线说清，再去用 Prompt 卡片。</p>
+        </div>
+        <nav class="mini-nav" aria-label="安全组件导航">
+          <a href="#boundaries">8 条边界</a>
+          <a href="#templates">可复制模板</a>
+          <a href="#privacy">隐私输入法</a>
+          <a href="#verify">学科核验</a>
+          <a href="#stop">立刻停用</a>
+          <a href="#covenant">家庭公约</a>
+        </nav>
+      </section>
+
+      <section class="section" id="boundaries">
+        <div class="section-head"><p class="eyebrow">家庭 AI 使用边界</p><h2>8 条规则，每条都配一个家里会发生的场景</h2></div>
+        <div class="cards">
+          <article class="safety-card"><span>01</span><h3>AI 讲思路</h3><p>场景：孩子说“让它直接写吧”。家长说：先别要答案，只问这题考什么和第一步。孩子做：听完后自己写后面的过程。</p></article>
+          <article class="safety-card"><span>02</span><h3>不传隐私</h3><p>场景：孩子想拍整页作业。家长说：先别拍，你说卡在哪一步，我们手打一小段。孩子做：删掉姓名、学校、照片、班级和整页题。</p></article>
+          <article class="safety-card"><span>03</span><h3>只问卡点</h3><p>场景：一整套作业都不会。家长说：今天只挑一个最卡的地方。孩子做：把“我不会”改成“我不懂题目在问什么”。</p></article>
+          <article class="safety-card"><span>04</span><h3>自己先想</h3><p>场景：孩子还没读题就问 AI。家长说：先读一遍，圈一个关键词。孩子做：先说自己已经懂了什么、卡在哪里。</p></article>
+          <article class="safety-card"><span>05</span><h3>回答要核验</h3><p>场景：AI 说得很像真的。家长说：先查课本同一小节或例题第一步。孩子做：指出 AI 哪一句有依据，哪一句不确定。</p></article>
+          <article class="safety-card"><span>06</span><h3>不贴标签</h3><p>场景：AI 开始评价孩子能力。家长说：我们不让 AI 评价人，只看今天这一步。孩子做：把评价改成“我下一步检查什么”。</p></article>
+          <article class="safety-card"><span>07</span><h3>不急付费</h3><p>场景：页面弹会员、额度或支付绑定。家长说：基础学习不为弹窗买单。孩子做：关掉页面，换免费入口或回课本。</p></article>
+          <article class="safety-card"><span>08</span><h3>高风险找人</h3><p>场景：涉及升学、心理、医疗、法律、金融。家长说：这类问题不继续问 AI。孩子做：把问题整理给老师、家长或专业人士确认。</p></article>
+        </div>
+      </section>
+
+      <section class="section" id="templates">
+        <div class="section-head"><p class="eyebrow">可复制模板</p><h2>不要只说“不能”，给家里一套替代问法</h2></div>
+        <div class="wide-grid">
+          <article class="wide-card"><h3>安全提问模板</h3><p>请不要直接给答案。我只描述一个卡点，不上传图片、姓名、学校或整页作业。请先讲这题可能在考什么，再只提示第一步。孩子写完后，请提醒我们核验。</p></article>
+          <article class="wide-card"><h3>隐私改写模板</h3><p>先不要粘贴原文。请提醒我手动删除姓名、学校、班级、电话、地址、账号、照片、人脸、成绩、班群截图和整页作业。删除后，我只发改写版。</p></article>
+          <article class="wide-card"><h3>核验记录模板</h3><p>AI 说法：____。核验来源：课本/例题/原文/老师讲解/词典。结果：可信/不确定/不采用。孩子下一步：____。</p></article>
+          <article class="wide-card"><h3>孩子 10 秒自查</h3><p>我有没有先想？我是不是在要答案？里面有没有姓名学校照片？AI 说的我能不能讲给别人听？不能讲清，就不能交。</p></article>
+        </div>
+      </section>
+
+      <section class="section" id="privacy">
+        <div class="section-head"><p class="eyebrow">手机家庭安全输入法</p><h2>不会手打长题，也不要直接拍整页</h2></div>
+        <div class="wide-grid">
+          <article class="wide-card"><h3>三种安全输入法</h3><ul class="list"><li>手打一小段：只写条件和问题，不超过 120 字。</li><li>只描述卡点：我不懂题目在问什么 / 我第一步不会 / 我不知道用哪个知识点。</li><li>必要时只截单题：先彻底去掉姓名、学校、人脸、成绩、批注、班群信息；不确定是否干净，就不用图。</li></ul></article>
+          <article class="wide-card"><h3>输入前删掉这些</h3><ul class="list"><li>姓名、学校、班级、手机号、地址、学号、准考证号、学籍号。</li><li>人脸、孩子声音、老师姓名、班群截图、成绩单、排名和评语。</li><li>完整作业原图、整张试卷、作文全文、读后感成稿。</li><li>陌生群链接、破解入口、镜像入口要求填写的信息。</li></ul></article>
+        </div>
+      </section>
+
+      <section class="section" id="homework">
+        <div class="section-head"><p class="eyebrow">作业边界</p><h2>作文和阅读要分层，不是一刀切不用 AI</h2></div>
+        <div class="wide-grid">
+          <article class="wide-card"><h3>可以要这些帮助</h3><ul class="list"><li>讲考点、审题方向、第一步提示。</li><li>作文提纲、素材联想、错别字提醒、表达建议。</li><li>阅读题找原文依据、关键词、答题是否偏题。</li><li>错题归因、下次提醒、问老师的一句话。</li></ul></article>
+          <article class="wide-card"><h3>不要这样问</h3><ul class="list"><li>帮我写完整答案、作文、读后感或可直接提交版本。</li><li>把整张试卷或整套作业做完。</li><li>替孩子判断能力、贴标签、预测未来。</li><li>让 AI 代替老师、医生、心理咨询师或升学判断。</li></ul></article>
+        </div>
+      </section>
+
+      <section class="section" id="verify">
+        <div class="section-head"><p class="eyebrow">学科化核验</p><h2>别只写“查课本”，要知道查什么</h2></div>
+        <div class="steps">
+          <article class="step-card"><strong>数学</strong><p>回代条件、单位和第一步；应用题先看有没有漏条件。</p></article>
+          <article class="step-card"><strong>语文</strong><p>阅读题回原文圈依据；作文只看方向、提纲和表达，不收成稿。</p></article>
+          <article class="step-card"><strong>英语</strong><p>查课本例句、词典和语法点；翻译看有没有漏译、误译。</p></article>
+          <article class="step-card"><strong>科学</strong><p>概念回课本定义；实验题看变量、条件和安全提醒。</p></article>
+          <article class="step-card"><strong>计划类</strong><p>看当天时间够不够；不做宏大计划，只留一个小动作。</p></article>
+        </div>
+      </section>
+
+      <section class="section" id="stop">
+        <div class="section-head"><p class="eyebrow">看到这些话立刻停</p><h2>停用脚本要短、硬、能执行</h2></div>
+        <div class="wide-grid">
+          <article class="wide-card"><h3>立刻停的信号</h3><ul class="list"><li>AI 开始评价孩子能力、性格或未来。</li><li>AI 建议医疗、心理、升学、法律或金融决定。</li><li>AI 诱导付费、绑定支付、开自动续费。</li><li>AI 要求更多隐私、账号、学校信息或人脸照片。</li></ul></article>
+          <article class="wide-card"><h3>停用话术</h3><p>这个问题我们不继续问 AI。先删掉隐私和完整答案，把问题整理成一句话，再找家长、老师或专业人士确认。</p></article>
+        </div>
+      </section>
+
+      <section class="section" id="covenant">
+        <div class="section-head"><p class="eyebrow">家庭公约</p><h2>做错了也有处理方式，不靠责备</h2></div>
+        <div class="wide-grid">
+          <article class="wide-card"><h3>家长负责</h3><ul class="list"><li>判断账号、隐私、付费和高风险问题。</li><li>不让 AI 给孩子贴标签，不用 AI 做惩罚依据。</li><li>如果 AI 给了完整答案：不责备孩子，删掉答案，重新问思路。</li></ul></article>
+          <article class="wide-card"><h3>孩子负责</h3><ul class="list"><li>先说自己卡在哪里，再问 AI。</li><li>不上传隐私，不复制最终答案。</li><li>最后答案、作文和表达由自己完成；不确定就标出来问老师。</li></ul></article>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p>ZHIYU · AI 安全使用包</p>
+      <p>讲思路，不代写。不上传隐私。重要答案要核验。</p>
+    </footer>
+  </body>
+</html>

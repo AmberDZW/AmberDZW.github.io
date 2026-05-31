@@ -1,0 +1,5510 @@
+﻿<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>家庭学习提示词卡片库 | ZHIYU</title>
+    <meta
+      name="description"
+      content="可直接复制的家庭学习提示词卡片，按安全起步、提问拆解、讲题、错题、阅读、写作、英语、口语练习、数学科学、家长陪学和工具问题分类。"
+    />
+    <script>
+      const earlyPromptParams = new URLSearchParams(window.location.search);
+      if (earlyPromptParams.get("app") === "1" || earlyPromptParams.get("content") === "1") {
+        document.documentElement.classList.add("app-mode");
+      }
+    </script>
+    <style>
+      :root {
+        color-scheme: light;
+        --paper: #fbf7ee;
+        --sheet: #fffdf7;
+        --ink: #21302d;
+        --muted: #66726d;
+        --green: #183f35;
+        --green-soft: #e2ece0;
+        --blue: #d8ebf0;
+        --yellow: #f3d275;
+        --brick: #b65b49;
+        --line: rgba(32, 48, 45, 0.16);
+        --shadow: 0 20px 48px rgba(24, 63, 53, 0.12);
+        --radius: 8px;
+        font-family: "LXGW WenKai", "Noto Sans CJK SC", "Microsoft YaHei", sans-serif;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        background:
+          linear-gradient(rgba(24, 63, 53, 0.035) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(24, 63, 53, 0.035) 1px, transparent 1px),
+          var(--paper);
+        background-size: 28px 28px;
+        color: var(--ink);
+        letter-spacing: 0;
+      }
+
+      a {
+        color: inherit;
+      }
+
+      .topbar {
+        position: sticky;
+        top: 0;
+        z-index: 20;
+        border-bottom: 1px solid var(--line);
+        background: rgba(251, 247, 238, 0.94);
+        backdrop-filter: blur(14px);
+      }
+
+      .topbar-inner,
+      .hero,
+      .filter-wrap,
+      .cards,
+      .footer {
+        width: min(1180px, calc(100% - 32px));
+        margin: 0 auto;
+      }
+
+      .topbar-inner {
+        min-height: 68px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+      }
+
+      .brand {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        color: var(--green);
+        font-weight: 900;
+        text-decoration: none;
+      }
+
+      .brand-mark {
+        display: inline-grid;
+        place-items: center;
+        width: 40px;
+        height: 40px;
+        border: 2px solid var(--green);
+        border-radius: var(--radius);
+        background: var(--yellow);
+        font-size: 13px;
+      }
+
+      .top-actions {
+        display: flex;
+        gap: 8px;
+        flex-wrap: wrap;
+        justify-content: flex-end;
+      }
+
+      .top-actions a,
+      .filter-button,
+      .copy-button,
+      .to-top {
+        min-height: 40px;
+        border: 1px solid rgba(24, 63, 53, 0.24);
+        border-radius: var(--radius);
+        background: var(--sheet);
+        color: var(--green);
+        cursor: pointer;
+        font: inherit;
+        font-weight: 900;
+        text-decoration: none;
+      }
+
+      .top-actions a {
+        display: inline-flex;
+        align-items: center;
+        padding: 0 12px;
+      }
+
+      .hero {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(280px, 0.55fr);
+        gap: 32px;
+        align-items: end;
+        padding: 54px 0 30px;
+      }
+
+      .eyebrow {
+        margin: 0 0 12px;
+        color: var(--brick);
+        font-size: 14px;
+        font-weight: 900;
+      }
+
+      h1,
+      h2,
+      h3 {
+        margin: 0;
+        color: var(--green);
+        font-family: "Noto Serif SC", "Source Han Serif SC", "Songti SC", Georgia, serif;
+        letter-spacing: 0;
+        line-height: 1.18;
+      }
+
+      h1 {
+        max-width: 820px;
+        font-size: 56px;
+      }
+
+      .hero p:not(.eyebrow) {
+        max-width: 760px;
+        margin: 18px 0 0;
+        color: #31433e;
+        font-size: 18px;
+        line-height: 1.76;
+      }
+
+      .hero-panel {
+        padding: 24px;
+        border: 2px solid var(--green);
+        border-radius: var(--radius);
+        background: var(--sheet);
+        box-shadow: var(--shadow);
+      }
+
+      .hero-panel strong {
+        display: block;
+        margin-bottom: 12px;
+        color: var(--green);
+        font-size: 26px;
+        line-height: 1.22;
+      }
+
+      .hero-panel ul {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+
+      .hero-panel li {
+        padding: 10px 0;
+        border-top: 1px dashed var(--line);
+        color: var(--muted);
+        line-height: 1.55;
+      }
+
+      .filter-wrap {
+        position: sticky;
+        top: 69px;
+        z-index: 15;
+        padding: 14px 0;
+        background: rgba(251, 247, 238, 0.95);
+        backdrop-filter: blur(12px);
+      }
+
+      .category-map {
+        width: min(1180px, calc(100% - 32px));
+        margin: 20px auto 10px;
+      }
+
+      .category-map h2 {
+        margin-bottom: 8px;
+        font-size: 30px;
+      }
+
+      .directory-note {
+        max-width: 760px;
+        margin: 0 0 14px;
+        color: var(--muted);
+        line-height: 1.7;
+      }
+
+      .category-grid {
+        display: grid;
+        grid-template-columns: repeat(5, minmax(0, 1fr));
+        gap: 10px;
+      }
+
+      .category-chip {
+        display: block;
+        width: 100%;
+        min-height: 116px;
+        padding: 14px;
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+        background: rgba(255, 253, 247, 0.86);
+        color: inherit;
+        cursor: pointer;
+        font: inherit;
+        text-align: left;
+        transition: border-color 160ms ease, box-shadow 160ms ease, transform 160ms ease;
+      }
+
+      .category-chip:hover,
+      .category-chip:focus-visible {
+        border-color: rgba(24, 63, 53, 0.45);
+        box-shadow: 0 12px 28px rgba(24, 63, 53, 0.1);
+        outline: none;
+        transform: translateY(-1px);
+      }
+
+      .category-chip strong {
+        display: block;
+        margin-bottom: 8px;
+        color: var(--green);
+        font-size: 15px;
+      }
+
+      .category-chip span {
+        color: var(--brick);
+        font-weight: 900;
+      }
+
+      .category-chip p {
+        margin: 6px 0 0;
+        color: var(--muted);
+        line-height: 1.55;
+        font-size: 13px;
+      }
+
+      .filter-tools {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 10px;
+      }
+
+      .search-input {
+        min-height: 42px;
+        flex: 1 1 240px;
+        min-width: 0;
+        border: 1px solid rgba(24, 63, 53, 0.24);
+        border-radius: var(--radius);
+        background: var(--sheet);
+        color: var(--ink);
+        font: inherit;
+        padding: 0 12px;
+      }
+
+      .count-pill {
+        flex: 0 0 auto;
+        min-height: 42px;
+        display: inline-flex;
+        align-items: center;
+        padding: 0 12px;
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+        background: var(--green-soft);
+        color: var(--green);
+        font-weight: 900;
+      }
+
+      .filters {
+        display: flex;
+        gap: 8px;
+        overflow-x: auto;
+        padding-bottom: 2px;
+      }
+
+      .filter-button {
+        flex: 0 0 auto;
+        padding: 0 13px;
+      }
+
+      .quick-path,
+      .guided-flow,
+      .custom-builder {
+        width: min(1180px, calc(100% - 32px));
+        margin: 0 auto 22px;
+      }
+
+      .quick-path h2,
+      .guided-flow h2,
+      .custom-builder h2 {
+        margin-bottom: 14px;
+        font-size: 30px;
+      }
+
+      .flow-strip {
+        display: grid;
+        grid-template-columns: repeat(6, minmax(0, 1fr));
+        gap: 8px;
+        padding: 14px;
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+        background: rgba(255, 253, 247, 0.9);
+        box-shadow: 0 14px 30px rgba(24, 63, 53, 0.08);
+      }
+
+      .flow-step {
+        min-height: 112px;
+        padding: 12px;
+        border-left: 3px solid var(--yellow);
+        background: rgba(226, 236, 224, 0.34);
+      }
+
+      .flow-step b {
+        display: block;
+        margin-bottom: 6px;
+        color: var(--green);
+        font-size: 14px;
+      }
+
+      .flow-step span {
+        color: var(--muted);
+        font-size: 13px;
+        line-height: 1.55;
+      }
+
+      .flow-note {
+        margin: 10px 0 0;
+        color: var(--muted);
+        line-height: 1.7;
+      }
+
+      .safety-strip {
+        width: min(1180px, calc(100% - 32px));
+        margin: 0 auto 14px;
+        padding: 14px 16px;
+        border: 1px solid rgba(24, 63, 53, 0.2);
+        border-left: 4px solid var(--yellow);
+        border-radius: var(--radius);
+        background: rgba(255, 253, 247, 0.92);
+        color: var(--muted);
+        line-height: 1.68;
+      }
+
+      .safety-strip b {
+        color: var(--green);
+      }
+
+      .workspace-tools {
+        width: min(1180px, calc(100% - 32px));
+        margin: 0 auto 10px;
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) auto;
+        gap: 10px;
+        align-items: center;
+        padding: 12px 14px;
+        border: 1px solid rgba(24, 63, 53, 0.16);
+        border-radius: var(--radius);
+        background: rgba(226, 236, 224, 0.46);
+      }
+
+      .workspace-summary {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        color: var(--muted);
+        font-size: 14px;
+        line-height: 1.5;
+      }
+
+      .workspace-summary strong {
+        color: var(--green);
+      }
+
+      .workspace-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        justify-content: flex-end;
+      }
+
+      .advanced-tools {
+        width: min(1180px, calc(100% - 32px));
+        margin: 0 auto 22px;
+        border: 1px solid rgba(24, 63, 53, 0.16);
+        border-radius: var(--radius);
+        background: rgba(255, 253, 247, 0.72);
+      }
+
+      .advanced-tools summary {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        min-height: 52px;
+        padding: 0 16px;
+        color: var(--green);
+        cursor: pointer;
+        font-weight: 1000;
+        list-style: none;
+      }
+
+      .advanced-tools summary::-webkit-details-marker {
+        display: none;
+      }
+
+      .advanced-tools summary span {
+        color: var(--muted);
+        font-size: 13px;
+        font-weight: 800;
+      }
+
+      .advanced-tools summary::after {
+        content: "+";
+        display: inline-grid;
+        place-items: center;
+        width: 28px;
+        height: 28px;
+        border-radius: 50%;
+        background: var(--green-soft);
+        color: var(--green);
+        font-size: 18px;
+        font-weight: 1000;
+      }
+
+      .advanced-tools[open] summary::after {
+        content: "−";
+      }
+
+      .advanced-body {
+        padding: 0 16px 16px;
+      }
+
+      .advanced-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin: 0 0 14px;
+      }
+
+      .workspace-button {
+        min-height: 36px;
+        padding: 0 12px;
+        border: 1px solid rgba(24, 63, 53, 0.24);
+        border-radius: var(--radius);
+        background: var(--sheet);
+        color: var(--green);
+        cursor: pointer;
+        font: inherit;
+        font-weight: 900;
+      }
+
+      .workspace-button:hover,
+      .workspace-button:focus-visible {
+        background: var(--green);
+        color: #fff;
+        outline: none;
+      }
+
+      .command-shell {
+        position: fixed;
+        inset: 0;
+        z-index: 80;
+        display: grid;
+        place-items: start center;
+        padding: 92px 16px 16px;
+        background: rgba(33, 48, 45, 0.28);
+        backdrop-filter: blur(8px);
+      }
+
+      .command-shell[hidden] {
+        display: none;
+      }
+
+      .command-panel {
+        width: min(680px, 100%);
+        max-height: min(720px, calc(100vh - 120px));
+        display: grid;
+        grid-template-rows: auto auto minmax(0, 1fr);
+        overflow: hidden;
+        border: 1px solid rgba(24, 63, 53, 0.28);
+        border-radius: var(--radius);
+        background: var(--sheet);
+        box-shadow: 0 28px 70px rgba(24, 63, 53, 0.28);
+      }
+
+      .command-head {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
+        padding: 14px 16px;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .command-head h2 {
+        font-size: 24px;
+      }
+
+      .command-close {
+        width: 38px;
+        height: 38px;
+        border: 1px solid rgba(24, 63, 53, 0.24);
+        border-radius: var(--radius);
+        background: var(--sheet);
+        color: var(--green);
+        cursor: pointer;
+        font: inherit;
+        font-weight: 1000;
+      }
+
+      .command-close:hover,
+      .command-close:focus-visible {
+        background: var(--green);
+        color: #fff;
+        outline: none;
+      }
+
+      .command-input {
+        width: calc(100% - 32px);
+        margin: 14px 16px;
+        min-height: 48px;
+        border: 1px solid rgba(24, 63, 53, 0.24);
+        border-radius: var(--radius);
+        background: #fffaf0;
+        color: var(--ink);
+        font: inherit;
+        padding: 0 14px;
+      }
+
+      .command-input:focus {
+        border-color: rgba(24, 63, 53, 0.52);
+        outline: 3px solid rgba(243, 210, 117, 0.38);
+      }
+
+      .command-list {
+        overflow: auto;
+        padding: 0 10px 12px;
+      }
+
+      .command-item {
+        width: 100%;
+        display: grid;
+        grid-template-columns: auto minmax(0, 1fr);
+        gap: 10px;
+        align-items: start;
+        min-height: 70px;
+        margin: 0;
+        padding: 12px;
+        border: 1px solid transparent;
+        border-radius: var(--radius);
+        background: transparent;
+        color: var(--ink);
+        cursor: pointer;
+        font: inherit;
+        text-align: left;
+      }
+
+      .command-item.is-active,
+      .command-item:hover,
+      .command-item:focus-visible {
+        border-color: rgba(24, 63, 53, 0.24);
+        background: rgba(226, 236, 224, 0.58);
+        outline: none;
+      }
+
+      .command-item b {
+        display: inline-grid;
+        place-items: center;
+        min-width: 46px;
+        height: 34px;
+        border: 2px solid var(--green);
+        border-radius: var(--radius);
+        background: var(--yellow);
+        color: var(--green);
+        font-size: 14px;
+      }
+
+      .command-item strong {
+        display: block;
+        color: var(--green);
+        font-size: 16px;
+      }
+
+      .command-item span {
+        display: block;
+        margin-top: 4px;
+        color: var(--muted);
+        font-size: 13px;
+        line-height: 1.45;
+      }
+
+      .command-item small {
+        display: block;
+        margin-top: 4px;
+        color: var(--muted);
+        font-size: 13px;
+        line-height: 1.45;
+      }
+
+      .command-empty {
+        margin: 0;
+        padding: 18px 12px;
+        color: var(--muted);
+      }
+
+      .quick-grid,
+      .recovery-grid {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 10px;
+      }
+
+      .quick-card,
+      .recovery-card {
+        min-height: 128px;
+        padding: 14px;
+        border: 1px solid rgba(24, 63, 53, 0.22);
+        border-radius: var(--radius);
+        background: var(--sheet);
+        color: var(--ink);
+        cursor: pointer;
+        font: inherit;
+        text-align: left;
+      }
+
+      .quick-card.is-primary {
+        grid-column: span 2;
+        background: var(--green);
+        color: #fff;
+      }
+
+      .quick-card strong,
+      .recovery-card strong {
+        display: block;
+        color: var(--green);
+        font-weight: 1000;
+      }
+
+      .quick-card b,
+      .recovery-card b {
+        display: inline-flex;
+        align-items: center;
+        min-height: 26px;
+        margin-top: 10px;
+        padding: 0 8px;
+        border-radius: 6px;
+        background: var(--yellow);
+        color: var(--green);
+        font-size: 12px;
+        font-weight: 1000;
+      }
+
+      .quick-card span,
+      .recovery-card span {
+        display: block;
+        margin-top: 7px;
+        color: var(--muted);
+        font-size: 13px;
+        line-height: 1.45;
+      }
+
+      .quick-card.is-primary strong,
+      .quick-card.is-primary span {
+        color: #fff;
+      }
+
+      .recovery-strip {
+        width: min(1180px, calc(100% - 32px));
+        margin: -6px auto 22px;
+        padding: 16px;
+        border: 1px solid rgba(182, 91, 73, 0.24);
+        border-radius: var(--radius);
+        background: rgba(243, 210, 117, 0.18);
+      }
+
+      .recovery-head {
+        display: flex;
+        align-items: end;
+        justify-content: space-between;
+        gap: 14px;
+        margin-bottom: 12px;
+      }
+
+      .recovery-head h2 {
+        font-size: 26px;
+      }
+
+      .recovery-head p {
+        max-width: 520px;
+        margin: 0;
+        color: var(--muted);
+        line-height: 1.6;
+      }
+
+      .tier-tabs {
+        display: flex;
+        gap: 8px;
+        margin-bottom: 10px;
+        overflow-x: auto;
+        padding-bottom: 2px;
+      }
+
+      .tier-button {
+        flex: 0 0 auto;
+        min-height: 40px;
+        padding: 0 13px;
+        border: 1px solid rgba(24, 63, 53, 0.24);
+        border-radius: var(--radius);
+        background: var(--sheet);
+        color: var(--green);
+        cursor: pointer;
+        font: inherit;
+        font-weight: 900;
+      }
+
+      .tier-button.is-active,
+      .quick-card:hover,
+      .quick-card:focus-visible,
+      .recovery-card:hover,
+      .recovery-card:focus-visible {
+        background: var(--green);
+        color: #fff;
+        outline: none;
+      }
+
+      .tier-button.is-active span,
+      .quick-card:hover span,
+      .quick-card:focus-visible span,
+      .quick-card:hover strong,
+      .quick-card:focus-visible strong,
+      .recovery-card:hover span,
+      .recovery-card:focus-visible span,
+      .recovery-card:hover strong,
+      .recovery-card:focus-visible strong {
+        color: #fff;
+      }
+
+      .filter-button.is-active,
+      .copy-button:hover,
+      .copy-button:focus-visible,
+      .to-top:hover,
+      .to-top:focus-visible {
+        background: var(--green);
+        color: #fff;
+        outline: none;
+      }
+
+      .cards {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 18px;
+        padding: 22px 0 80px;
+      }
+
+      .prompt-card {
+        display: flex;
+        flex-direction: column;
+        min-height: 360px;
+        scroll-margin-top: 280px;
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+        background: var(--sheet);
+        box-shadow: 0 14px 30px rgba(24, 63, 53, 0.08);
+        overflow: hidden;
+      }
+
+      .card-head {
+        display: grid;
+        grid-template-columns: auto minmax(0, 1fr) auto;
+        gap: 14px;
+        align-items: start;
+        padding: 20px 20px 16px;
+        border-bottom: 1px solid var(--line);
+        background: linear-gradient(120deg, rgba(226, 236, 224, 0.88), rgba(216, 235, 240, 0.64));
+      }
+
+      .card-id {
+        display: inline-grid;
+        place-items: center;
+        width: 54px;
+        height: 44px;
+        border: 2px solid var(--green);
+        border-radius: var(--radius);
+        background: var(--yellow);
+        color: var(--green);
+        font-weight: 1000;
+      }
+
+      .card-title h2 {
+        font-size: 24px;
+      }
+
+      .tag-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+        margin-top: 10px;
+      }
+
+      .tag {
+        display: inline-flex;
+        align-items: center;
+        min-height: 26px;
+        padding: 0 8px;
+        border-radius: var(--radius);
+        background: rgba(255, 253, 247, 0.82);
+        color: var(--brick);
+        font-size: 13px;
+        font-weight: 900;
+      }
+
+      .card-body {
+        display: flex;
+        flex: 1;
+        flex-direction: column;
+        gap: 12px;
+        padding: 18px 20px 20px;
+      }
+
+      .card-section {
+        margin: 0;
+      }
+
+      .card-label {
+        display: block;
+        margin-bottom: 7px;
+        color: var(--brick);
+        font-size: 13px;
+        font-weight: 900;
+      }
+
+      .card-section p {
+        margin: 0;
+        color: var(--muted);
+        line-height: 1.7;
+      }
+
+      .workflow-list {
+        display: grid;
+        gap: 5px;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+
+      .workflow-list li {
+        display: grid;
+        grid-template-columns: 64px 1fr;
+        gap: 8px;
+        color: var(--muted);
+        line-height: 1.5;
+      }
+
+      .workflow-list b {
+        color: var(--green);
+      }
+
+      .prompt-box {
+        margin: 0;
+        max-height: 260px;
+        overflow: auto;
+        padding: 12px;
+        border: 1px solid rgba(24, 63, 53, 0.18);
+        border-radius: var(--radius);
+        background: #f8f0df;
+        color: #273935;
+        white-space: pre-wrap;
+        line-height: 1.72;
+        font-size: 15px;
+      }
+
+      .prompt-details {
+        border: 1px solid rgba(24, 63, 53, 0.16);
+        border-radius: var(--radius);
+        background: rgba(226, 236, 224, 0.28);
+      }
+
+      .prompt-details summary {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
+        min-height: 42px;
+        padding: 0 12px;
+        color: var(--green);
+        cursor: pointer;
+        font-weight: 1000;
+        list-style: none;
+      }
+
+      .prompt-details summary::-webkit-details-marker {
+        display: none;
+      }
+
+      .prompt-details summary::after {
+        content: "展开";
+        color: var(--brick);
+        font-size: 12px;
+        font-weight: 900;
+      }
+
+      .prompt-details[open] summary::after {
+        content: "收起";
+      }
+
+      .prompt-details .prompt-box {
+        border-width: 1px 0 0;
+        border-radius: 0 0 var(--radius) var(--radius);
+      }
+
+      .copy-button {
+        align-self: flex-start;
+        padding: 0 14px;
+        white-space: nowrap;
+      }
+
+      .card-top-actions {
+        display: flex;
+        justify-content: flex-end;
+      }
+
+      .card-top-actions .copy-button {
+        min-width: 88px;
+        background: var(--green);
+        color: #fff;
+      }
+
+      .card-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-top: auto;
+      }
+
+      .save-button,
+      .delete-button,
+      .edit-button,
+      .local-button {
+        min-height: 40px;
+        padding: 0 14px;
+        border: 1px solid rgba(24, 63, 53, 0.24);
+        border-radius: var(--radius);
+        background: var(--sheet);
+        color: var(--green);
+        cursor: pointer;
+        font: inherit;
+        font-weight: 900;
+      }
+
+      .save-button:hover,
+      .save-button:focus-visible,
+      .delete-button:hover,
+      .delete-button:focus-visible,
+      .edit-button:hover,
+      .edit-button:focus-visible {
+        background: var(--green-soft);
+        outline: none;
+      }
+
+      .local-button {
+        cursor: default;
+        background: var(--green-soft);
+      }
+
+      .example-box {
+        display: grid;
+        gap: 6px;
+        padding: 12px;
+        border: 1px dashed rgba(24, 63, 53, 0.24);
+        border-radius: var(--radius);
+        background: rgba(226, 236, 224, 0.36);
+        color: var(--muted);
+        line-height: 1.6;
+      }
+
+      .example-box b {
+        color: var(--green);
+      }
+
+      .copy-button.is-copied {
+        background: var(--brick);
+        color: #fff;
+      }
+
+      .prompt-card.is-highlighted {
+        outline: 3px solid var(--yellow);
+        box-shadow: 0 20px 44px rgba(182, 91, 73, 0.16);
+      }
+
+      .builder-panel {
+        display: grid;
+        grid-template-columns: minmax(0, 0.8fr) minmax(0, 1fr);
+        gap: 18px;
+        padding: 20px;
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+        background: rgba(255, 253, 247, 0.9);
+        box-shadow: 0 14px 30px rgba(24, 63, 53, 0.08);
+      }
+
+      .advanced-tools .custom-builder {
+        width: 100%;
+        margin: 0;
+      }
+
+      .builder-note {
+        margin: 0;
+        color: var(--muted);
+        line-height: 1.72;
+      }
+
+      .custom-form {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 10px;
+      }
+
+      .custom-form label {
+        display: grid;
+        gap: 6px;
+        color: var(--green);
+        font-weight: 900;
+      }
+
+      .custom-form label.full {
+        grid-column: 1 / -1;
+      }
+
+      .custom-form input,
+      .custom-form select,
+      .custom-form textarea {
+        width: 100%;
+        border: 1px solid rgba(24, 63, 53, 0.24);
+        border-radius: var(--radius);
+        background: var(--sheet);
+        color: var(--ink);
+        font: inherit;
+        padding: 10px 12px;
+      }
+
+      .custom-form textarea {
+        min-height: 112px;
+        resize: vertical;
+        line-height: 1.65;
+      }
+
+      .custom-form button {
+        justify-self: start;
+        min-height: 42px;
+        padding: 0 16px;
+        border: 1px solid var(--green);
+        border-radius: var(--radius);
+        background: var(--green);
+        color: #fff;
+        cursor: pointer;
+        font: inherit;
+        font-weight: 900;
+      }
+
+      .form-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+
+      .custom-form button.secondary-button {
+        border-color: rgba(24, 63, 53, 0.24);
+        background: var(--sheet);
+        color: var(--green);
+      }
+
+      .custom-status {
+        align-self: center;
+        margin: 0;
+        color: var(--brick);
+        font-weight: 900;
+      }
+
+      .empty-state {
+        display: none;
+        grid-column: 1 / -1;
+        padding: 30px;
+        border: 1px dashed var(--line);
+        border-radius: var(--radius);
+        background: var(--sheet);
+        color: var(--muted);
+      }
+
+      .to-top {
+        position: fixed;
+        right: 20px;
+        bottom: 20px;
+        z-index: 18;
+        width: 46px;
+        height: 46px;
+        opacity: 0;
+        pointer-events: none;
+        transform: translateY(8px);
+        transition: opacity 160ms ease, transform 160ms ease;
+      }
+
+      .to-top.is-visible {
+        opacity: 1;
+        pointer-events: auto;
+        transform: translateY(0);
+      }
+
+      .footer {
+        padding: 34px 0 44px;
+        border-top: 1px solid var(--line);
+        color: var(--muted);
+        line-height: 1.7;
+      }
+
+      [data-app-dashboard],
+      .copy-toast {
+        display: none;
+      }
+
+      @media (max-width: 1060px) {
+        .hero,
+        .cards {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        .category-grid {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        .quick-grid,
+        .recovery-grid {
+          grid-template-columns: repeat(3, minmax(0, 1fr));
+        }
+
+        .flow-strip {
+          grid-template-columns: repeat(3, minmax(0, 1fr));
+        }
+
+        .hero {
+          align-items: start;
+        }
+      }
+
+      @media (max-width: 720px) {
+        .topbar {
+          padding-top: 18px;
+        }
+
+        .topbar-inner {
+          align-items: flex-start;
+          flex-direction: column;
+          padding: 12px 0;
+        }
+
+        .top-actions {
+          width: 100%;
+          justify-content: flex-start;
+        }
+
+        .hero,
+        .cards {
+          grid-template-columns: 1fr;
+        }
+
+        .category-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .quick-grid,
+        .recovery-grid,
+        .flow-strip,
+        .workspace-tools,
+        .builder-panel,
+        .custom-form {
+          grid-template-columns: 1fr;
+        }
+
+        .quick-card.is-primary {
+          grid-column: auto;
+        }
+
+        .recovery-head {
+          align-items: start;
+          flex-direction: column;
+        }
+
+        .workspace-actions {
+          justify-content: flex-start;
+        }
+
+        .advanced-tools summary {
+          align-items: flex-start;
+          flex-direction: column;
+          padding: 12px 14px;
+        }
+
+        .command-shell {
+          padding: 24px 12px;
+          place-items: start center;
+        }
+
+        .command-panel {
+          max-height: calc(100vh - 48px);
+        }
+
+        .custom-form label.full {
+          grid-column: auto;
+        }
+
+        .filter-tools {
+          align-items: stretch;
+          flex-direction: column;
+        }
+
+        .search-input {
+          width: 100%;
+          flex: 0 0 auto;
+        }
+
+        .count-pill {
+          justify-content: center;
+        }
+
+        .hero {
+          padding-top: 38px;
+        }
+
+        h1 {
+          font-size: 38px;
+        }
+
+        .hero p:not(.eyebrow) {
+          font-size: 16px;
+        }
+
+        .filter-wrap {
+          top: 116px;
+        }
+
+        .prompt-card {
+          min-height: auto;
+          scroll-margin-top: 330px;
+        }
+
+        .card-head {
+          grid-template-columns: auto minmax(0, 1fr);
+        }
+
+        .card-top-actions {
+          grid-column: 1 / -1;
+          justify-content: flex-start;
+        }
+      }
+
+      @media (max-width: 420px) {
+        .topbar-inner,
+        .hero,
+        .category-map,
+        .filter-wrap,
+        .cards,
+        .advanced-tools,
+        .footer {
+          width: min(100% - 24px, 1180px);
+        }
+
+        .top-actions a {
+          flex: 1 1 auto;
+          justify-content: center;
+        }
+
+        .quick-card,
+        .recovery-card {
+          min-height: 88px;
+        }
+
+        .card-head {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      html.app-mode body {
+        background: #f7f4ea;
+      }
+
+      html.app-mode main {
+        display: flex;
+        flex-direction: column;
+      }
+
+      html.app-mode .hero,
+      html.app-mode .quick-path,
+      html.app-mode .recovery-strip,
+      html.app-mode .guided-flow,
+      html.app-mode .safety-strip,
+      html.app-mode .workspace-tools,
+      html.app-mode .category-map,
+      html.app-mode .footer {
+        display: none;
+      }
+
+      html.app-mode .topbar {
+        padding-top: 18px;
+      }
+
+      .app-page {
+        display: none;
+      }
+
+      html.app-mode .topbar-inner,
+      html.app-mode [data-app-dashboard],
+      html.app-mode .app-page,
+      html.app-mode .filter-wrap,
+      html.app-mode .cards,
+      html.app-mode .advanced-tools {
+        width: min(720px, calc(100% - 24px));
+      }
+
+      html.app-mode .topbar-inner {
+        min-height: 44px;
+        flex-direction: row;
+        align-items: center;
+        padding: 0;
+      }
+
+      html.app-mode .brand {
+        gap: 8px;
+        font-size: 14px;
+      }
+
+      html.app-mode .brand span:last-child {
+        display: none;
+      }
+
+      html.app-mode .brand-mark {
+        width: 30px;
+        height: 30px;
+        font-size: 12px;
+      }
+
+      html.app-mode .top-actions {
+        display: none;
+      }
+
+      html.app-mode.prompt-content-mode .top-actions {
+        display: flex;
+      }
+
+      html.app-mode.prompt-content-mode .top-actions a {
+        min-height: 34px;
+        padding: 0 10px;
+        font-size: 13px;
+      }
+
+      html.app-mode [data-app-dashboard],
+      html.app-mode .filter-wrap,
+      html.app-mode .cards {
+        display: none;
+      }
+
+      html.app-mode[data-app-page="home"] [data-app-dashboard] {
+        display: block;
+        order: 2;
+        margin: 8px auto 6px;
+      }
+
+      html.app-mode[data-app-page="home"] .filter-wrap,
+      html.app-mode[data-app-page="mine"] .filter-wrap {
+        display: block;
+      }
+
+      html.app-mode[data-app-page="home"] .cards,
+      html.app-mode[data-app-page="mine"] .cards {
+        display: grid;
+      }
+
+      html.app-mode[data-app-page="library"] [data-app-page-section="library"],
+      html.app-mode[data-app-page="tools"] [data-app-page-section="tools"],
+      html.app-mode[data-app-page="safety"] [data-app-page-section="safety"],
+      html.app-mode[data-app-page="starter"] [data-app-page-section="starter"],
+      html.app-mode[data-app-page="mine"] [data-app-page-section="mine"] {
+        display: block;
+      }
+
+      .app-title {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
+        margin-bottom: 6px;
+      }
+
+      html.app-mode .app-title .eyebrow {
+        display: none;
+      }
+
+      .app-title h1 {
+        font-family: inherit;
+        font-size: 16px;
+        line-height: 1.2;
+      }
+
+      .app-title p {
+        margin: 0;
+        color: var(--muted);
+        font-size: 12px;
+        font-weight: 800;
+        line-height: 1.45;
+      }
+
+      .app-quick-panel {
+        display: grid;
+        gap: 8px;
+        padding: 10px 0 0;
+        border: 0;
+        border-top: 1px solid var(--line);
+        border-radius: 0;
+        background: transparent;
+        box-shadow: none;
+      }
+
+      .app-task-row {
+        display: flex;
+        gap: 6px;
+        overflow-x: auto;
+        padding-bottom: 2px;
+      }
+
+      .app-task {
+        flex: 0 0 auto;
+        min-height: 34px;
+        padding: 0 11px;
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+        background: var(--sheet);
+        color: var(--green);
+        cursor: pointer;
+        font: inherit;
+        font-size: 12px;
+        font-weight: 900;
+        line-height: 1.15;
+      }
+
+      .app-task.is-active {
+        border-color: var(--green);
+        background: var(--green);
+        color: #fff;
+      }
+
+      .app-panel-head {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
+      }
+
+      .app-panel-head b {
+        color: var(--green);
+        font-size: 14px;
+      }
+
+      .app-panel-head span {
+        color: var(--muted);
+        font-size: 12px;
+        font-weight: 800;
+      }
+
+      .app-frequent-list {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 6px;
+        padding: 0 0 2px;
+      }
+
+      .app-copy-card,
+      .app-shortcut {
+        border: 1px solid rgba(24, 63, 53, 0.18);
+        border-radius: 12px;
+        background: #fffdf7;
+        color: var(--ink);
+        cursor: pointer;
+        font: inherit;
+        text-align: left;
+      }
+
+      .app-copy-card {
+        display: grid;
+        grid-template-columns: 1fr auto;
+        gap: 4px 7px;
+        align-items: center;
+        min-height: 38px;
+        padding: 6px 8px;
+      }
+
+      .app-copy-card b {
+        color: var(--green);
+        font-size: 14px;
+        line-height: 1.25;
+        white-space: normal;
+      }
+
+      .app-copy-card span {
+        display: none;
+      }
+
+      .app-copy-card small {
+        align-self: center;
+        padding: 5px 7px;
+        border-radius: var(--radius);
+        background: var(--green);
+        color: #fff;
+        font-size: 12px;
+        font-weight: 900;
+      }
+
+      .app-copy-card.is-copied small {
+        background: var(--brick);
+      }
+
+      .app-shortcuts {
+        display: flex;
+        gap: 8px;
+        overflow-x: auto;
+        padding: 2px 0 4px;
+      }
+
+      .app-shortcut {
+        flex: 0 0 auto;
+        min-height: 36px;
+        padding: 0 12px;
+        color: var(--green);
+        font-weight: 900;
+      }
+
+      .app-shortcut.is-strong {
+        background: var(--green);
+        color: #fff;
+      }
+
+      html.app-mode .app-page {
+        order: 2;
+        margin: 8px auto 14px;
+        padding: 0 0 110px;
+      }
+
+      .app-page-head {
+        display: grid;
+        gap: 6px;
+        margin-bottom: 12px;
+      }
+
+      .app-page-head .eyebrow {
+        margin: 0;
+        color: var(--brick);
+        font-size: 12px;
+        font-weight: 900;
+      }
+
+      .app-page-head h1,
+      .app-page-head h2 {
+        margin: 0;
+        color: var(--green);
+        font-family: inherit;
+        font-size: 22px;
+        line-height: 1.2;
+      }
+
+      .app-page-head p {
+        margin: 0;
+        color: var(--muted);
+        font-size: 14px;
+        font-weight: 700;
+        line-height: 1.6;
+      }
+
+      .app-page-grid {
+        display: grid;
+        gap: 10px;
+      }
+
+      .app-resource-card,
+      .app-page-tile {
+        display: grid;
+        gap: 7px;
+        padding: 14px;
+        border: 1px solid rgba(24, 63, 53, 0.18);
+        border-radius: 14px;
+        background: #fffdf7;
+        color: var(--ink);
+        text-decoration: none;
+        box-shadow: 0 10px 24px rgba(24, 63, 53, 0.06);
+      }
+
+      .app-page-tile {
+        cursor: pointer;
+        font: inherit;
+        text-align: left;
+      }
+
+      .app-resource-card small,
+      .app-page-tile small {
+        color: var(--brick);
+        font-size: 12px;
+        font-weight: 900;
+      }
+
+      .app-resource-card b,
+      .app-page-tile b {
+        color: var(--green);
+        font-size: 18px;
+        line-height: 1.25;
+      }
+
+      .app-resource-card span,
+      .app-page-tile span {
+        color: var(--muted);
+        font-size: 13px;
+        font-weight: 700;
+        line-height: 1.55;
+      }
+
+      .app-resource-card em {
+        justify-self: start;
+        padding: 6px 10px;
+        border-radius: 999px;
+        background: var(--green);
+        color: #fff;
+        font-style: normal;
+        font-size: 12px;
+        font-weight: 900;
+      }
+
+      .app-link-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin: 12px 0;
+      }
+
+      .app-link-row a,
+      .app-link-row button {
+        min-height: 36px;
+        padding: 0 12px;
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+        background: #fffdf7;
+        color: var(--green);
+        cursor: pointer;
+        font: inherit;
+        font-size: 13px;
+        font-weight: 900;
+        text-decoration: none;
+      }
+
+      .app-section-label {
+        margin: 18px 0 8px;
+        color: var(--green);
+        font-size: 15px;
+        font-weight: 900;
+      }
+
+      .app-note-card {
+        margin: 12px 0;
+        padding: 12px;
+        border: 1px dashed rgba(196, 82, 62, 0.35);
+        border-radius: 14px;
+        background: #fff5df;
+        color: var(--muted);
+        font-size: 13px;
+        font-weight: 800;
+        line-height: 1.6;
+      }
+
+      html.app-mode .advanced-tools {
+        display: none;
+        order: 3;
+        margin: 8px auto;
+        background: rgba(255, 253, 247, 0.88);
+      }
+
+      html.app-mode .advanced-tools.is-open-in-app {
+        display: block;
+      }
+
+      html.app-mode.prompt-content-mode .app-bottom-nav,
+      html.app-mode.prompt-content-mode [data-app-dashboard],
+      html.app-mode.prompt-content-mode [data-app-page-section] {
+        display: none !important;
+      }
+
+      html.app-mode.prompt-content-mode .filter-wrap {
+        display: block;
+      }
+
+      html.app-mode.prompt-content-mode .cards {
+        display: grid;
+      }
+
+      html.app-mode.prompt-content-mode .category-map {
+        display: block;
+        order: 2;
+        width: min(720px, calc(100% - 24px));
+        margin: 8px auto 4px;
+        padding-bottom: 0;
+      }
+
+      html.app-mode.prompt-content-mode .category-map h2,
+      html.app-mode.prompt-content-mode .directory-note {
+        display: none;
+      }
+
+      html.app-mode.prompt-content-mode .category-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 7px;
+      }
+
+      html.app-mode.prompt-content-mode .category-chip {
+        min-height: 64px;
+        padding: 9px;
+      }
+
+      html.app-mode.prompt-content-mode .category-chip p {
+        display: none;
+      }
+
+      html.app-mode[data-app-page="mine"] .advanced-tools {
+        display: block;
+      }
+
+      html.app-mode .advanced-tools summary {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) auto;
+        min-height: 42px;
+        padding: 0 12px;
+        font-size: 14px;
+      }
+
+      html.app-mode .advanced-tools summary::after {
+        justify-self: end;
+      }
+
+      html.app-mode .advanced-tools summary span {
+        display: none;
+      }
+
+      html.app-mode .advanced-body {
+        padding: 0 12px 12px;
+      }
+
+      html.app-mode .advanced-tools .custom-builder {
+        padding: 0;
+      }
+
+      html.app-mode .advanced-tools .custom-builder h2 {
+        font-family: inherit;
+        font-size: 18px;
+        line-height: 1.25;
+      }
+
+      html.app-mode .advanced-tools .builder-panel {
+        padding: 12px;
+      }
+
+      html.app-mode .advanced-tools .builder-note,
+      html.app-mode .advanced-tools .custom-form label {
+        font-size: 13px;
+      }
+
+      html.app-mode .filter-wrap {
+        position: sticky;
+        top: 44px;
+        order: 1;
+        padding: 7px 0 6px;
+        border-bottom: 1px solid rgba(32, 48, 45, 0.08);
+      }
+
+      html.app-mode[data-app-page="mine"] .filter-wrap {
+        position: static;
+        order: 4;
+        border-bottom: 0;
+      }
+
+      html.app-mode .tier-tabs,
+      html.app-mode .filters {
+        display: none;
+      }
+
+      html.app-mode .tier-button,
+      html.app-mode .filter-button {
+        min-height: 36px;
+        padding: 0 11px;
+        font-size: 14px;
+      }
+
+      html.app-mode .filter-tools {
+        flex-direction: row;
+        align-items: center;
+        gap: 8px;
+        margin-bottom: 0;
+      }
+
+      html.app-mode .search-input {
+        min-height: 38px;
+        font-size: 14px;
+      }
+
+      html.app-mode .count-pill {
+        display: none;
+      }
+
+      html.app-mode .cards {
+        order: 3;
+        grid-template-columns: 1fr;
+        gap: 7px;
+        scroll-margin-top: 110px;
+        padding: 7px 0 150px;
+      }
+
+      html.app-mode[data-app-page="mine"] .cards {
+        order: 5;
+      }
+
+      html.app-mode .prompt-card {
+        min-height: auto;
+        scroll-margin-top: 110px;
+        border-radius: var(--radius);
+        box-shadow: 0 8px 18px rgba(24, 63, 53, 0.06);
+      }
+
+      html.app-mode .card-head {
+        grid-template-columns: minmax(0, 1fr) auto;
+        gap: 8px;
+        align-items: center;
+        padding: 9px 10px 7px;
+        border-bottom: 0;
+        background: transparent;
+      }
+
+      html.app-mode .card-id {
+        display: none;
+      }
+
+      html.app-mode .card-title h2 {
+        font-family: inherit;
+        font-size: 16px;
+      }
+
+      html.app-mode .tag-row {
+        gap: 4px;
+        margin-top: 3px;
+      }
+
+      html.app-mode .tag {
+        min-height: 22px;
+        padding: 0 7px;
+        font-size: 12px;
+      }
+
+      html.app-mode .card-top-actions {
+        grid-column: auto;
+        justify-content: flex-end;
+      }
+
+      html.app-mode .card-top-actions .copy-button {
+        min-width: 74px;
+        min-height: 36px;
+      }
+
+      html.app-mode .card-body {
+        gap: 5px;
+        padding: 0 10px 8px;
+      }
+
+      html.app-mode .card-label {
+        display: none;
+      }
+
+      html.app-mode .card-section p {
+        display: -webkit-box;
+        overflow: hidden;
+        line-height: 1.55;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 1;
+      }
+
+      html.app-mode .prompt-preview-section,
+      html.app-mode .example-section,
+      html.app-mode .after-section,
+      html.app-mode .workflow-section {
+        display: none;
+      }
+
+      html.app-mode .card-actions {
+        margin-top: 1px;
+      }
+
+      html.app-mode .save-button,
+      html.app-mode .delete-button,
+      html.app-mode .edit-button,
+      html.app-mode .local-button {
+        min-height: 34px;
+        padding: 0 11px;
+        font-size: 13px;
+      }
+
+      html.app-mode .copy-toast {
+        position: fixed;
+        right: 12px;
+        top: 62px;
+        bottom: auto;
+        left: 12px;
+        z-index: 50;
+        display: block;
+        max-width: 460px;
+        margin: 0 auto;
+        padding: 10px 12px;
+        border: 1px solid rgba(24, 63, 53, 0.22);
+        border-radius: 14px;
+        background: var(--green);
+        color: #fff;
+        box-shadow: 0 16px 38px rgba(24, 63, 53, 0.22);
+        overflow: hidden;
+        font-size: 15px;
+        font-weight: 900;
+        line-height: 1.35;
+        text-overflow: ellipsis;
+        opacity: 0;
+        pointer-events: none;
+        transform: translateY(12px);
+        transition: opacity 180ms ease, transform 180ms ease;
+      }
+
+      html.app-mode .copy-toast.is-visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .app-bottom-nav {
+        display: none;
+      }
+
+      html.app-mode .app-bottom-nav {
+        position: fixed;
+        right: 10px;
+        bottom: 10px;
+        left: 10px;
+        z-index: 45;
+        display: grid;
+        grid-template-columns: repeat(5, minmax(0, 1fr));
+        gap: 6px;
+        max-width: 700px;
+        margin: 0 auto;
+        padding: 7px;
+        border: 1px solid rgba(24, 63, 53, 0.18);
+        border-radius: 14px;
+        background: rgba(255, 253, 247, 0.96);
+        box-shadow: 0 16px 36px rgba(24, 63, 53, 0.14);
+        backdrop-filter: blur(12px);
+      }
+
+      html.app-mode .app-bottom-nav button {
+        min-height: 38px;
+        border: 0;
+        border-radius: var(--radius);
+        background: transparent;
+        color: var(--green);
+        cursor: pointer;
+        font: inherit;
+        font-size: 13px;
+        font-weight: 900;
+      }
+
+      html.app-mode .app-bottom-nav button.is-active {
+        background: var(--green);
+        color: #fff;
+      }
+
+      /* Visual-only polish for the app/card-pool surface. No prompt text or behavior changes. */
+      html.app-mode body {
+        background:
+          radial-gradient(circle at 16% 8%, rgba(243, 210, 117, 0.26), transparent 25%),
+          radial-gradient(circle at 86% 16%, rgba(216, 235, 240, 0.42), transparent 27%),
+          linear-gradient(rgba(24, 63, 53, 0.032) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(24, 63, 53, 0.032) 1px, transparent 1px),
+          #f7f4ea;
+        background-size: auto, auto, 26px 26px, 26px 26px, auto;
+      }
+
+      html.app-mode body::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        pointer-events: none;
+        opacity: 0.28;
+        background-image:
+          linear-gradient(115deg, transparent 0 17px, rgba(182, 91, 73, 0.08) 17px 18px, transparent 18px 54px),
+          radial-gradient(circle at 30% 20%, rgba(24, 63, 53, 0.09) 0 1px, transparent 1.4px);
+        background-size: 92px 92px, 22px 22px;
+        mix-blend-mode: multiply;
+      }
+
+      html.app-mode .topbar {
+        border-bottom: 0;
+        background:
+          linear-gradient(180deg, rgba(255, 253, 247, 0.98), rgba(251, 247, 238, 0.92));
+        box-shadow: 0 10px 30px rgba(24, 63, 53, 0.08);
+      }
+
+      html.app-mode .brand-mark {
+        border-radius: 10px;
+        box-shadow: 3px 3px 0 rgba(24, 63, 53, 0.13);
+      }
+
+      html.app-mode [data-app-dashboard],
+      html.app-mode .app-page {
+        position: relative;
+        isolation: isolate;
+      }
+
+      html.app-mode [data-app-dashboard]::before,
+      html.app-mode .app-page::before {
+        content: "";
+        position: absolute;
+        inset: -4px -2px auto auto;
+        z-index: -1;
+        width: 132px;
+        height: 104px;
+        border: 1px solid rgba(24, 63, 53, 0.12);
+        border-radius: 16px;
+        background:
+          linear-gradient(90deg, rgba(24, 63, 53, 0.07) 1px, transparent 1px),
+          linear-gradient(rgba(24, 63, 53, 0.07) 1px, transparent 1px),
+          rgba(243, 210, 117, 0.18);
+        background-size: 18px 18px;
+        transform: rotate(5deg);
+        opacity: 0.58;
+      }
+
+      html.app-mode .app-title,
+      html.app-mode .app-page-head {
+        padding: 14px 14px 16px;
+        border: 1px solid rgba(24, 63, 53, 0.13);
+        border-radius: 20px;
+        background:
+          linear-gradient(135deg, rgba(255, 253, 247, 0.96), rgba(232, 240, 229, 0.84));
+        box-shadow: 0 18px 42px rgba(24, 63, 53, 0.09);
+      }
+
+      html.app-mode .app-quick-panel {
+        margin-top: 8px;
+        padding: 10px;
+        border: 1px solid rgba(24, 63, 53, 0.13);
+        border-radius: 20px;
+        background: rgba(255, 253, 247, 0.86);
+        box-shadow: 0 16px 34px rgba(24, 63, 53, 0.08);
+      }
+
+      html.app-mode .app-task,
+      html.app-mode .app-shortcut,
+      html.app-mode .tier-button,
+      html.app-mode .filter-button {
+        border-radius: 999px;
+      }
+
+      html.app-mode .app-task.is-active,
+      html.app-mode .app-shortcut.is-strong {
+        box-shadow: 0 8px 18px rgba(24, 63, 53, 0.15);
+      }
+
+      html.app-mode .app-copy-card,
+      html.app-mode .app-resource-card,
+      html.app-mode .app-page-tile {
+        position: relative;
+        overflow: hidden;
+        border-radius: 16px;
+        background:
+          linear-gradient(180deg, rgba(255, 253, 247, 0.98), rgba(255, 250, 238, 0.92));
+        box-shadow:
+          0 14px 30px rgba(24, 63, 53, 0.08),
+          inset 0 1px 0 rgba(255, 255, 255, 0.88);
+      }
+
+      html.app-mode .app-copy-card::before,
+      html.app-mode .app-resource-card::before,
+      html.app-mode .app-page-tile::before {
+        content: "";
+        position: absolute;
+        inset: 0 auto 0 0;
+        width: 5px;
+        background: linear-gradient(180deg, var(--yellow), var(--brick));
+        opacity: 0.78;
+      }
+
+      html.app-mode .filter-wrap {
+        border-bottom: 0;
+        background:
+          linear-gradient(180deg, rgba(247, 244, 234, 0.98), rgba(247, 244, 234, 0.86));
+        box-shadow: 0 10px 24px rgba(24, 63, 53, 0.06);
+      }
+
+      html.app-mode .search-input {
+        border-radius: 16px;
+        background: rgba(255, 253, 247, 0.94);
+        box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.9);
+      }
+
+      html.app-mode .prompt-card {
+        position: relative;
+        overflow: hidden;
+        border-color: rgba(24, 63, 53, 0.14);
+        border-radius: 18px;
+        background:
+          linear-gradient(180deg, rgba(255, 253, 247, 0.98), rgba(255, 250, 238, 0.93));
+        box-shadow:
+          0 15px 34px rgba(24, 63, 53, 0.08),
+          inset 0 1px 0 rgba(255, 255, 255, 0.88);
+      }
+
+      html.app-mode .prompt-card::before {
+        content: "";
+        position: absolute;
+        inset: 0 auto 0 0;
+        width: 6px;
+        background: linear-gradient(180deg, var(--yellow), var(--brick));
+        opacity: 0.84;
+      }
+
+      html.app-mode .card-head,
+      html.app-mode .card-body {
+        padding-left: 16px;
+      }
+
+      html.app-mode .card-top-actions .copy-button {
+        border: 0;
+        border-radius: 14px;
+        background: linear-gradient(135deg, rgba(24, 63, 53, 0.98), rgba(34, 91, 76, 0.96));
+        color: #fff;
+        box-shadow: 0 10px 18px rgba(24, 63, 53, 0.18), inset 0 -2px 0 rgba(0, 0, 0, 0.14);
+      }
+
+      html.app-mode .copy-button.is-copied,
+      html.app-mode .app-copy-card.is-copied small {
+        background: linear-gradient(135deg, var(--brick), #d07055);
+        color: #fff;
+      }
+
+      html.app-mode .save-button,
+      html.app-mode .delete-button,
+      html.app-mode .edit-button,
+      html.app-mode .local-button {
+        border-radius: 12px;
+        background: rgba(255, 253, 247, 0.92);
+      }
+
+      html.app-mode .app-bottom-nav {
+        right: 14px;
+        bottom: 14px;
+        left: 14px;
+        padding: 8px;
+        border-radius: 22px;
+        background: rgba(255, 253, 247, 0.9);
+        box-shadow:
+          0 18px 44px rgba(24, 63, 53, 0.18),
+          inset 0 1px 0 rgba(255, 255, 255, 0.86);
+      }
+
+      html.app-mode .app-bottom-nav button {
+        min-height: 44px;
+        border-radius: 14px;
+      }
+
+      html.app-mode .app-bottom-nav button.is-active {
+        box-shadow: inset 0 -2px 0 rgba(0, 0, 0, 0.12);
+      }
+
+      @media (max-width: 520px) {
+        html.app-mode .topbar-inner,
+        html.app-mode [data-app-dashboard],
+        html.app-mode .app-page,
+        html.app-mode .filter-wrap,
+        html.app-mode .cards,
+        html.app-mode .advanced-tools {
+          width: min(100% - 20px, 720px);
+        }
+
+        html.app-mode .card-head {
+          grid-template-columns: minmax(0, 1fr) auto;
+        }
+
+        html.app-mode .app-task-row {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="topbar-inner">
+        <a class="brand" href="../../website/app.html#library">
+          <span class="brand-mark">Z</span>
+          <span>ZHIYU · 让AI在家</span>
+        </a>
+        <nav class="top-actions" aria-label="页面入口">
+          <a href="../../website/app.html#library">返回资料库</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section data-app-dashboard aria-label="Prompt 工具箱入口">
+        <div class="app-title">
+          <p class="eyebrow">提示词工具箱</p>
+          <h1>找场景，点复制</h1>
+          <p>粘贴到 AI 后再发题。</p>
+        </div>
+        <div class="app-quick-panel">
+          <div class="app-task-row" aria-label="按任务找 Prompt">
+            <button class="app-task" type="button" data-app-task="all" data-app-tier="all">全部92</button>
+            <button class="app-task is-active" type="button" data-app-task="stuck">作业卡住</button>
+            <button class="app-task" type="button" data-app-task="review">错题复盘</button>
+            <button class="app-task" type="button" data-app-task="writing">作文阅读</button>
+            <button class="app-task" type="button" data-app-task="english">英语口语</button>
+          </div>
+          <div class="app-panel-head">
+            <b>快捷复制</b>
+            <span data-app-count>越常用越靠前</span>
+          </div>
+          <div class="app-frequent-list" data-app-frequent></div>
+        </div>
+      </section>
+
+      <section class="app-page" data-app-page-section="library" aria-labelledby="app-library-title">
+        <div class="app-page-head">
+          <p class="eyebrow">资料库</p>
+          <h1 id="app-library-title">所有资料都在这里</h1>
+          <p>这里不是少了内容，而是把原来的长网页拆成入口。提示词、工具池、安全包、新手包和文字资料都能打开。</p>
+        </div>
+        <div class="app-link-row" aria-label="资料库内页面">
+          <button type="button" data-app-page-target="starter">新手路径</button>
+          <button type="button" data-app-page-target="safety">安全边界</button>
+          <button type="button" data-app-page-target="tools">AI 工具池</button>
+          <a href="../../website/app.html#library">网页版资料库</a>
+        </div>
+        <p class="app-note-card">当前内置 <span data-resource-count>17</span> 个资料文件/组件。打开组件会进入完整页面，返回键可以回到工具箱。</p>
+        <div class="app-page-grid">
+          <a class="app-resource-card" data-resource-link href="./家庭学习Prompt卡片40张-卡片版-v0.1.html?app=1#P01">
+            <small>01 · 核心入口</small>
+            <b>提示词卡池</b>
+            <span>92 张可复制提示词卡，含作业卡住、错题、作文阅读、英语、口语和工具问题。</span>
+            <em>打开卡池</em>
+          </a>
+          <button class="app-page-tile" type="button" data-open-all-prompts>
+            <small>01 · 全部卡片</small>
+            <b>查看全部 92 张提示词</b>
+            <span>从 P01 到 P80，再到 S01-S12 口语卡。适合检查完整卡池有没有缺失。</span>
+          </button>
+          <a class="app-resource-card" data-resource-link href="../02_AI安全使用包/AI安全使用包-组件版-v0.1.html">
+            <small>02 · 组件页</small>
+            <b>AI 安全使用包</b>
+            <span>家庭公约、隐私不要上传、作业边界、核验清单和停用脚本。</span>
+            <em>打开安全包</em>
+          </a>
+          <a class="app-resource-card" data-resource-link href="../01_新手7天包/新手7天行动卡-组件版-v0.1.html">
+            <small>03 · 组件页</small>
+            <b>新手 7 天行动卡</b>
+            <span>第一次使用、复盘、核验和常用卡沉淀，一周内慢慢跑通。</span>
+            <em>打开行动卡</em>
+          </a>
+          <a class="app-resource-card" data-resource-link href="../03_国内AI工具池包/国内AI工具池-组件版-v0.1.html">
+            <small>04 · 组件页</small>
+            <b>国内 AI 工具池</b>
+            <span>按使用场景选 AI 工具，遇到付费、注册、打不开和隐私问题知道怎么退。</span>
+            <em>打开工具池</em>
+          </a>
+          <a class="app-resource-card" data-resource-link href="../05_AI口语练习专题/AI口语练习小专题-v0.1.html">
+            <small>05 · 专题页</small>
+            <b>AI 口语练习小专题</b>
+            <span>8 分钟跟读、问答、复述、轻反馈；主卡池已合并，专题页仍保留。</span>
+            <em>打开专题</em>
+          </a>
+          <a class="app-resource-card" data-resource-link href="../05_AI口语练习专题/AI口语练习小专题-v0.1.html">
+            <small>05 · 文字资料</small>
+            <b>AI 口语练习文字版</b>
+            <span>适合家长先读流程，再回到卡池复制口语提示词。</span>
+            <em>查看文字</em>
+          </a>
+          <a class="app-resource-card" data-resource-link href="../00_使用前先看/资料库首页-v0.1.html">
+            <small>00 · 文字资料</small>
+            <b>资料库首页</b>
+            <span>第一次来先看什么、先打开哪张卡、各资料包怎么使用。</span>
+            <em>查看文字</em>
+          </a>
+          <a class="app-resource-card" data-resource-link href="../00_使用前先看/隐私与反馈说明-v0.1.html">
+            <small>00 · 文字资料</small>
+            <b>隐私与反馈说明</b>
+            <span>反馈自愿、不给孩子贴标签、不上传可识别信息。</span>
+            <em>查看文字</em>
+          </a>
+          <a class="app-resource-card" data-resource-link href="./家庭学习Prompt卡片40张-v0.1.html">
+            <small>04 · 文字资料</small>
+            <b>提示词卡池文字版</b>
+            <span>适合复制、审阅和二次整理的文字版说明。</span>
+            <em>查看文字</em>
+          </a>
+        </div>
+      </section>
+
+      <section class="app-page" data-app-page-section="tools" aria-labelledby="app-tools-title">
+        <div class="app-page-head">
+          <p class="eyebrow">AI 工具池</p>
+          <h1 id="app-tools-title">先按场景选工具</h1>
+          <p>工具会变化，所以这里保留“怎么选、什么时候退、怎么复核”的方法，也保留完整工具池组件入口。</p>
+        </div>
+        <div class="app-page-grid">
+          <a class="app-resource-card" data-resource-link href="../03_国内AI工具池包/国内AI工具池-组件版-v0.1.html">
+            <small>完整组件</small>
+            <b>国内 AI 工具池</b>
+            <span>按拍题讲解、作文阅读、英语口语、资料整理等场景查看工具特点与使用边界。</span>
+            <em>打开</em>
+          </a>
+          <a class="app-resource-card" data-resource-link href="../03_国内AI工具池包/工具替换说明-v0.1.html">
+            <small>方法说明</small>
+            <b>工具替换说明</b>
+            <span>某个 AI 不能用、开始收费或回答不稳时，怎么换一个入口。</span>
+            <em>查看</em>
+          </a>
+          <a class="app-resource-card" data-resource-link href="../03_国内AI工具池包/工具池月度复核表-v0.1.html">
+            <small>复核表</small>
+            <b>工具池月度复核表</b>
+            <span>记录本月可用状态、登录要求、付费提示、隐私风险和适用场景。</span>
+            <em>查看</em>
+          </a>
+        </div>
+      </section>
+
+      <section class="app-page" data-app-page-section="safety" aria-labelledby="app-safety-title">
+        <div class="app-page-head">
+          <p class="eyebrow">安全边界</p>
+          <h1 id="app-safety-title">先守住边界，再用 AI</h1>
+          <p>这些不是主流程按钮，而是家长需要随时能找到的边界资料。提示词内部也会自动约束不代写、不泄露隐私。</p>
+        </div>
+        <div class="app-page-grid">
+          <a class="app-resource-card" data-resource-link href="../02_AI安全使用包/AI安全使用包-组件版-v0.1.html">
+            <small>完整组件</small>
+            <b>AI 安全使用包</b>
+            <span>把家庭场景、家长话术、孩子动作、隐私改写、作业边界、学科核验放在一起。</span>
+            <em>打开</em>
+          </a>
+          <a class="app-resource-card" data-resource-link href="../02_AI安全使用包/家庭AI使用公约-v0.1.html">
+            <small>家庭规则</small>
+            <b>家庭 AI 使用公约</b>
+            <span>家长和孩子一起定规则：AI 只提示，不替孩子完成。</span>
+            <em>查看</em>
+          </a>
+          <a class="app-resource-card" data-resource-link href="../02_AI安全使用包/隐私不要上传清单-v0.1.html">
+            <small>隐私</small>
+            <b>隐私不要上传清单</b>
+            <span>姓名、学校、班级、账号、照片、成绩单、班群截图等都不上传。</span>
+            <em>查看</em>
+          </a>
+          <a class="app-resource-card" data-resource-link href="../02_AI安全使用包/作业边界卡-v0.1.html">
+            <small>作业边界</small>
+            <b>作业边界卡</b>
+            <span>哪些可以问 AI，哪些会变成代写，什么时候停下来问老师。</span>
+            <em>查看</em>
+          </a>
+          <a class="app-resource-card" data-resource-link href="../02_AI安全使用包/核验清单-v0.1.html">
+            <small>核验</small>
+            <b>核验清单</b>
+            <span>AI 回答之后，用课本、原文、单位、条件和老师要求再确认。</span>
+            <em>查看</em>
+          </a>
+          <a class="app-resource-card" data-resource-link href="../02_AI安全使用包/家庭AI使用边界8条-v0.1.html">
+            <small>边界</small>
+            <b>家庭 AI 使用边界 8 条</b>
+            <span>第一次使用前，家里先统一底线。</span>
+            <em>查看</em>
+          </a>
+        </div>
+      </section>
+
+      <section class="app-page" data-app-page-section="starter" aria-labelledby="app-starter-title">
+        <div class="app-page-head">
+          <p class="eyebrow">新手路径</p>
+          <h1 id="app-starter-title">不用一天学完</h1>
+          <p>新手资料保留为独立入口。家长只需要先会复制一张卡，再慢慢补安全、核验和工具替换。</p>
+        </div>
+        <div class="app-page-grid">
+          <a class="app-resource-card" data-resource-link href="../01_新手7天包/新手7天行动卡-组件版-v0.1.html">
+            <small>完整组件</small>
+            <b>新手 7 天行动卡</b>
+            <span>每天一个小动作：安全提问、错题复盘、口语练习、工具替换和常用卡沉淀。</span>
+            <em>打开</em>
+          </a>
+          <a class="app-resource-card" data-resource-link href="../01_新手7天包/新手7天行动卡-v0.1.html">
+            <small>文字资料</small>
+            <b>新手 7 天文字版</b>
+            <span>方便家长按天查看和复制到备忘录。</span>
+            <em>查看</em>
+          </a>
+          <button class="app-page-tile" type="button" data-app-page-target="home">
+            <small>今天先做</small>
+            <b>回到提示词工具箱</b>
+            <span>先复制 P01 跑通一次，再按孩子真实场景继续。</span>
+          </button>
+        </div>
+      </section>
+
+      <section class="app-page" data-app-page-section="mine" aria-labelledby="app-mine-title">
+        <div class="app-page-head">
+          <p class="eyebrow">我的</p>
+          <h1 id="app-mine-title">收藏、微调和导入导出</h1>
+          <p>收藏卡只保存在这台设备。你可以把家里常用问法改成自己的版本，也可以导出备份。</p>
+        </div>
+        <p class="app-note-card" data-app-local-summary>正在读取本机收藏。</p>
+      </section>
+
+      <section class="hero" aria-labelledby="page-title">
+        <div>
+          <p class="eyebrow" data-pool-summary>提示词卡片库</p>
+          <h1 id="page-title">先用急救卡稳住今晚作业，再把常用问法存起来。</h1>
+          <p>
+            默认只展示 6 张今晚急救卡：先解决“不会、看不懂、做错、家长不会、时间快到”这些高频场景。
+            更多场景仍可搜索；家长自己的好用问法可以保存到“我的常用卡”，下次直接复制使用。
+          </p>
+        </div>
+        <aside class="hero-panel" aria-label="使用提醒">
+          <strong>今晚先别逛全部卡片</strong>
+          <ul>
+            <li>先在下面点一个“现在的问题”。</li>
+            <li>页面会自动打开最合适的一张卡。</li>
+            <li>复制后直接发给 AI，再拍/发一道题或一小段材料。</li>
+            <li>AI 回答跑偏时，用恢复卡重新收住。</li>
+          </ul>
+        </aside>
+      </section>
+
+      <section class="quick-path" aria-labelledby="quick-path-title">
+        <h2 id="quick-path-title">我现在遇到的问题</h2>
+        <p class="flow-note">家长不用先懂提示词。先选最像今晚情况的一项，页面会直接跳到推荐卡。</p>
+        <div class="quick-grid" data-quick-path>
+          <button class="quick-card is-primary" type="button" data-card-jump="P01">
+            <strong>第一次带孩子用 AI，不知道怎么开口</strong>
+            <b>推荐 P01</b>
+            <span>先跑通一次安全提问：不代写、不上传隐私、最后要核验。</span>
+          </button>
+          <button class="quick-card" type="button" data-card-jump="P09">
+            <strong>孩子只说“不会”，说不清卡在哪</strong>
+            <b>推荐 P09</b>
+            <span>把“不会”拆成能选择的小卡点，先定位问题。</span>
+          </button>
+          <button class="quick-card" type="button" data-card-jump="P17">
+            <strong>题目看不懂，第一步不知道怎么想</strong>
+            <b>推荐 P17</b>
+            <span>只问考点、第一步和核验方式，不要完整答案。</span>
+          </button>
+          <button class="quick-card" type="button" data-card-jump="P27">
+            <strong>做错了，只会归因成“粗心”</strong>
+            <b>推荐 P27</b>
+            <span>把错因拆成读题、概念、步骤、检查四类。</span>
+          </button>
+          <button class="quick-card" type="button" data-card-jump="P47">
+            <strong>作文或阅读没思路，但不能让 AI 代写</strong>
+            <b>推荐 P47</b>
+            <span>只做审题和方向提醒，孩子自己写内容。</span>
+          </button>
+          <button class="quick-card" type="button" data-card-jump="P60">
+            <strong>英语句子不确定，想检查但不想直接改完</strong>
+            <b>推荐 P60</b>
+            <span>只指出问题位置和自改方向，不给完整替换句。</span>
+          </button>
+          <button class="quick-card" type="button" data-card-jump="S01">
+            <strong>想让孩子练英语口语，但家长不会带</strong>
+            <b>推荐 S01</b>
+            <span>跟读、问答、复述和反馈都拆成短轮次。</span>
+          </button>
+          <button class="quick-card" type="button" data-card-jump="P71">
+            <strong>家长自己也不会题，怕越讲越乱</strong>
+            <b>推荐 P71</b>
+            <span>先整理问题和线索，不让 AI 直接替孩子做。</span>
+          </button>
+        </div>
+      </section>
+
+      <section class="recovery-strip" aria-labelledby="recovery-title">
+        <div class="recovery-head">
+          <h2 id="recovery-title">AI 回答坏了，先用恢复卡</h2>
+          <p>如果 AI 开始直接给答案、说得不稳定，或者你不确定能不能相信，别继续追问，先换下面这几张卡。</p>
+        </div>
+        <div class="recovery-grid">
+          <button class="recovery-card" type="button" data-card-jump="P04">
+            <strong>AI 直接给完整答案了</strong>
+            <b>用 P04 收住</b>
+            <span>要求它改成提示模式，只保留思路和下一步。</span>
+          </button>
+          <button class="recovery-card" type="button" data-card-jump="P06">
+            <strong>回答看起来对，但家长不放心</strong>
+            <b>用 P06 核验</b>
+            <span>拉出课本、原文、例题、条件和单位的核验清单。</span>
+          </button>
+          <button class="recovery-card" type="button" data-card-jump="P79">
+            <strong>AI 一会儿这样说，一会儿那样说</strong>
+            <b>用 P79 稳定</b>
+            <span>让它列不确定点，先别让孩子照着写。</span>
+          </button>
+          <button class="recovery-card" type="button" data-card-jump="P07">
+            <strong>像升学、心理、健康这类高风险问题</strong>
+            <b>用 P07 转向</b>
+            <span>停止让 AI 下判断，转向老师或专业人士。</span>
+          </button>
+        </div>
+      </section>
+
+      <section class="guided-flow" aria-labelledby="flow-title">
+        <h2 id="flow-title">今晚只走 6 步：从卡住到孩子自己完成</h2>
+        <div class="flow-strip" aria-label="作业辅导闭环">
+          <div class="flow-step">
+            <b>1 选状态</b>
+            <span>第一次统一从 P01 开始；跑通过一次后，再按孩子状态选卡。</span>
+          </div>
+          <div class="flow-step">
+            <b>2 复制卡</b>
+            <span>只复制一张提示词，先粘到 AI 输入框或备忘录里。</span>
+          </div>
+          <div class="flow-step">
+            <b>3 发单题</b>
+            <span>不用改提示词；下一条只拍/发一道题，隐私能遮就遮，不影响本次讲题。</span>
+          </div>
+          <div class="flow-step">
+            <b>4 贴给 AI</b>
+            <span>让 AI 只点拨，不要最终答案或可提交文本。</span>
+          </div>
+          <div class="flow-step">
+            <b>5 孩子完成</b>
+            <span>孩子自己写第一步、答案、句子或依据。</span>
+          </div>
+          <div class="flow-step">
+            <b>6 核验保存</b>
+            <span>用课本/原文/例题核验；好用再存常用卡。</span>
+          </div>
+        </div>
+        <p class="flow-note">做到第 5 步就可以停，不追求一次解决所有题。AI 是提示器，不是代写器。</p>
+      </section>
+
+      <section class="safety-strip" aria-label="拍题前统一提醒">
+        <b>拍题前：</b>
+        可以上传一道题或一小段材料；姓名、学校、班级、电话、地址、账号、人脸、成绩和班群信息能遮就遮。若忘了遮，AI 只温馨提醒下次注意，不影响本次讲题。
+      </section>
+
+      <section class="workspace-tools" aria-label="本机卡片工具">
+        <div class="workspace-summary" data-local-summary></div>
+        <div class="workspace-actions">
+          <button class="workspace-button" type="button" data-open-command>快速找卡</button>
+        </div>
+      </section>
+
+      <details class="advanced-tools" data-advanced-tools>
+        <summary>
+          高级设置：编辑、导入、导出收藏卡
+          <span>用熟之后再打开；第一次使用可以先跳过</span>
+        </summary>
+        <div class="advanced-body">
+          <div class="advanced-actions">
+            <button class="workspace-button" type="button" data-export-custom>导出收藏卡</button>
+            <button class="workspace-button" type="button" data-import-custom>导入收藏卡</button>
+            <input type="file" accept="application/json,.json" data-import-file hidden />
+          </div>
+
+          <section class="custom-builder" aria-labelledby="custom-title">
+            <h2 id="custom-title">我的收藏卡：家长自己补一张</h2>
+            <div class="builder-panel">
+              <p class="builder-note">
+                自建卡只保存在这台浏览器里，不上传。适合把家里反复遇到的问题存成固定问法。
+                复制自建卡时，只复制给 AI 的指令；页面上的填写提醒和使用说明不会混进 AI 指令。
+              </p>
+              <form class="custom-form" data-custom-form>
+                <label>
+                  卡片标题
+                  <input type="text" data-custom-title maxlength="18" placeholder="例：分数应用题卡住" required />
+                </label>
+                <label>
+                  任务分类
+                  <select data-custom-category>
+                    <option value="safe">安全/纠偏</option>
+                    <option value="question">孩子说不会</option>
+                    <option value="tutor">题目看不懂</option>
+                    <option value="review">做错了</option>
+                    <option value="reading">作文 / 阅读</option>
+                    <option value="english">英语</option>
+                    <option value="speaking">口语练习</option>
+                    <option value="stem">基础学习</option>
+                    <option value="parent">家长不会题</option>
+                    <option value="tool">工具/付费/隐私</option>
+                  </select>
+                </label>
+                <label class="full">
+                  适合什么情况
+                  <input type="text" data-custom-scene maxlength="60" placeholder="例：孩子每次遇到分数应用题都不知道先看哪个条件。" required />
+                </label>
+                <label class="full">
+                  复制给 AI 的问法
+                  <textarea data-custom-prompt placeholder="请不要直接给答案。用户下一条会上传一道题或一小段材料。请先识别题目，再问孩子已经看懂了哪些条件，最后只提示第一步。" required></textarea>
+                </label>
+                <label class="full">
+                  用完做什么
+                  <input type="text" data-custom-after maxlength="70" placeholder="例：孩子自己写第一步，再用课本例题核验。" required />
+                </label>
+                <div class="form-actions">
+                  <button type="submit" data-custom-submit>保存到我的收藏</button>
+                  <button class="secondary-button" type="button" data-cancel-edit hidden>取消编辑</button>
+                </div>
+                <p class="custom-status" data-custom-status aria-live="polite"></p>
+              </form>
+            </div>
+          </section>
+        </div>
+      </details>
+
+      <section class="category-map" aria-labelledby="category-title">
+        <h2 id="category-title">卡片目录</h2>
+        <p class="directory-note">先按任务找卡，再复制顶部按钮。目录只负责定位场景；真正发给 AI 的内容已经约束好，家长不用再改提示词。</p>
+        <div class="category-grid" data-category-map></div>
+      </section>
+
+      <section class="filter-wrap" aria-label="卡片筛选">
+        <div class="tier-tabs" data-tier-tabs aria-label="卡片层级筛选"></div>
+        <div class="filter-tools">
+          <input class="search-input" type="search" data-search placeholder="搜索：错题、作文、英语、口语、家长、核验..." aria-label="搜索提示词卡片" />
+          <span class="count-pill" data-count>正在统计</span>
+        </div>
+        <div class="filters" data-filters></div>
+      </section>
+
+      <section class="cards" data-cards aria-live="polite">
+        <p class="empty-state" data-empty>这个分类暂时没有卡片。</p>
+      </section>
+
+    </main>
+
+    <div class="command-shell" data-command-shell hidden>
+      <section class="command-panel" role="dialog" aria-modal="true" aria-labelledby="command-title">
+        <header class="command-head">
+          <h2 id="command-title">快速找卡</h2>
+          <button class="command-close" type="button" aria-label="关闭快速找卡" data-close-command>×</button>
+        </header>
+        <input
+          class="command-input"
+          type="search"
+          data-command-input
+          placeholder="输入卡号、状态或学科"
+          role="combobox"
+          aria-expanded="true"
+          aria-autocomplete="list"
+          aria-controls="command-results"
+          autocomplete="off"
+        />
+        <div class="command-list" id="command-results" data-command-results role="listbox"></div>
+      </section>
+    </div>
+
+    <button class="to-top" type="button" aria-label="回到顶部" data-to-top>↑</button>
+    <div class="copy-toast" data-copy-toast role="status" aria-live="polite"></div>
+    <nav class="app-bottom-nav" aria-label="App 底部导航">
+      <button class="is-active" type="button" data-app-page-target="home">首页</button>
+      <button type="button" data-app-page-target="library">资料</button>
+      <button type="button" data-app-page-target="tools">工具</button>
+      <button type="button" data-app-page-target="safety">安全</button>
+      <button type="button" data-app-page-target="mine">我的</button>
+    </nav>
+
+    <footer class="footer">
+      <p>ZHIYU · 家庭学习提示词卡片包</p>
+      <p>资料可以直接查看；反馈完全自愿。不要把孩子的姓名、学校、照片、成绩单、账号或整页作业发给 AI。</p>
+    </footer>
+
+    <script>
+      const categories = [
+        { key: "all", label: "全部", desc: "查看全部卡片" },
+        { key: "safe", label: "安全/纠偏", desc: "第一次用、隐私检查、AI 给答案后的纠偏" },
+        { key: "question", label: "孩子说不会", desc: "把“不会”拆成孩子能选择的小卡点" },
+        { key: "tutor", label: "拍题不会做", desc: "看考点、找第一步、检查思路，不给答案" },
+        { key: "review", label: "错题订正", desc: "找错因、写提醒、复盘后决定下一步" },
+        { key: "reading", label: "作文阅读", desc: "拆段落、找依据、审题和修改方向" },
+        { key: "writing", label: "改已有文字", desc: "检查提纲、句子、表达和逻辑，不代写成稿" },
+        { key: "english", label: "英语题", desc: "句子、语法、单词、写作框架和翻译核验" },
+        { key: "speaking", label: "口语练习", desc: "跟读、问答、复述和轻反馈，家长不会英语也能主持" },
+        { key: "stem", label: "数学科学", desc: "数学科学、识字背诵、口算听写、预习复习" },
+        { key: "parent", label: "家长不会讲", desc: "家长不懂也能陪孩子整理问题和节奏" },
+        { key: "tool", label: "工具出问题", desc: "工具打不开、付费提示、回答不稳和资料整理" }
+      ];
+
+      const cards = [
+        {
+          id: "P01",
+          category: "safe",
+          title: "第一次安全提问",
+          scene: "第一次带孩子用 AI，不想一上来就变成要答案。",
+          prompt: "请先遵守 4 条规则：\\n1. 不直接给最终答案。\\n2. 不替我写作业、作文或读后感。\\n3. 不要求我上传图片、姓名、学校、账号或整页作业。\\n4. 如果你不确定，请提醒我查课本或问老师。\\n\\n我的学习卡点是：[用文字匿名描述一个小问题]\\n\\n请按 3 步回答：\\n- 这可能在考什么；\\n- 我应该先想哪一步；\\n- 我自己完成后要怎么核验。",
+          after: "让孩子先说一遍“这题在考什么”，再继续做。"
+        },
+        {
+          id: "P02",
+          category: "safe",
+          title: "隐私本地自查卡",
+          scene: "准备把题干、作文片段或孩子描述发给 AI 前。",
+          prompt: "这张卡先不要发给 AI。\\n请在手机本地检查 6 件事：\\n1. 有没有姓名、学校、班级、电话、地址或账号；\\n2. 有没有照片、人脸、成绩单或班群截图；\\n3. 有没有整页作业、整篇文章或试卷原图；\\n4. 有没有能认出孩子、老师、同学或家庭的信息；\\n5. 是否只保留本题必要文字；阅读题只保留相关段落；\\n6. 只留下一个学习卡点。\\n\\n如果任何一项拿不准：先不要发给 AI，改问课本、老师或家长。",
+          after: "通过本地检查后，再选 P01、P09 或 P17。"
+        },
+        {
+          id: "P03",
+          category: "safe",
+          title: "只处理一个卡点",
+          scene: "孩子说“我都不会”，问题太大。",
+          prompt: "请把下面这个学习问题拆成最多 3 个小卡点。\\n不要解完整题，也不要写最终答案。\\n请告诉我：哪个卡点最应该先解决，为什么。\\n\\n问题描述：[写孩子卡住的地方]",
+          after: "只选第一个卡点继续问，其他先放下。"
+        },
+        {
+          id: "P04",
+          category: "safe",
+          title: "拒绝完整答案模式",
+          scene: "AI 已经开始直接给答案。",
+          prompt: "请停止给完整答案。\\n请把刚才的回答改成“学习提示版”：\\n1. 只保留考点说明；\\n2. 只提示第一步；\\n3. 给一个核验提醒；\\n4. 不写最终答案、不写完整作文、不替我完成作业。",
+          after: "如果工具继续直接给答案，就换问法或换工具。"
+        },
+        {
+          id: "P05",
+          category: "safe",
+          title: "回答压缩成手机版",
+          scene: "AI 回答很长，孩子看不进去。",
+          prompt: "请把刚才的回答压缩成手机上容易看的版本。\\n只保留 4 行：\\n- 这题在考什么；\\n- 最容易卡在哪里；\\n- 我第一步做什么；\\n- 做完后怎么核验。\\n每行不超过 28 个字。",
+          after: "只读这 4 行，先完成第一步。"
+        },
+        {
+          id: "P06",
+          category: "safe",
+          title: "回答后核验清单",
+          scene: "AI 说完后，不知道能不能信。",
+          prompt: "请不要继续解题。\\n请先从刚才的回答里找 1 个最需要核验的地方，例如漏条件、概念不一致、计算可疑、答案过度确定或没有原文依据。\\n第一轮只给我 1 个核验动作：我现在先查哪里、圈哪里或对照哪一条课本/原文。\\n等我回复后，再继续下一个核验点。\\n不要一次列完整清单，不要继续解题。",
+          after: "至少核验一项，再让孩子使用。"
+        },
+        {
+          id: "P07",
+          category: "safe",
+          title: "高风险问题转向",
+          scene: "问题涉及升学、心理、医疗、法律、金融或重大决定。",
+          prompt: "这个问题可能涉及高风险判断。\\n请不要替我做决定，也不要给确定结论。\\n请帮我区分：哪些信息可以作为普通学习资料参考，哪些必须咨询老师、家长或专业人士。\\n\\n问题：[写问题]",
+          after: "高风险部分不让 AI 下结论。"
+        },
+        {
+          id: "P08",
+          category: "safe",
+          title: "孩子独立使用提醒",
+          scene: "孩子想自己拿手机问 AI。",
+          prompt: "请直接写 5 条给我看的 AI 使用小规则，每条不超过 18 个字。\\n必须包含：不问完整答案、不上传隐私、重要内容要核验、遇到付费/注册先问家长、一次只问一个卡点。\\n如果我已经写了一个想问 AI 的问题，请先引用其中 1 个风险点，再把它改成“不求答案、只问思路”的问法。\\n如果我改完后仍然像在要答案，请给我二选一：A 问第一步怎么想；B 检查我自己写的一句/一步。\\n语气平和，不批评，不制造焦虑。",
+          after: "家长和孩子一起读一遍，再开始用。"
+        },
+        {
+          id: "P09",
+          category: "question",
+          title: "把“不会”变成问题",
+          scene: "孩子只会说“不会”，说不清卡在哪里。",
+          prompt: "请把“我不会”拆成 5 个可能的具体问题。\\n不要解题。\\n请用孩子能选的形式输出，例如：\\nA. 我不懂题目在问什么；\\nB. 我不知道用哪个知识点；\\nC. 我第一步不会；\\nD. 我算到一半卡住；\\nE. 我不知道答案对不对。\\n\\n当前题目或任务：[匿名描述]",
+          after: "让孩子选一个最像自己的卡点。"
+        },
+        {
+          id: "P10",
+          category: "question",
+          title: "题干三列拆解",
+          scene: "题干长，孩子看不出重点。",
+          prompt: "请不要解题。\\n请把题干拆成三列：\\n1. 已知信息；\\n2. 要求我做什么；\\n3. 可能用到的知识点。\\n每列最多 4 条。\\n\\n题干匿名描述：[只写题目中的条件和问题，不写姓名学校，不超过 120 字]",
+          after: "孩子先用三列重新读题。"
+        },
+        {
+          id: "P11",
+          category: "question",
+          title: "定位卡住的位置",
+          scene: "孩子写了一点，但不知道哪里开始错。",
+          prompt: "下面是我的尝试过程。\\n请不要写完整答案。\\n请帮我定位：我是从哪一步开始不确定的？\\n输出格式：\\n- 已经做对的部分；\\n- 开始不确定的地方；\\n- 下一步可以先检查什么。\\n\\n我的过程：[只写孩子自己做过的 1-3 句话，不粘整页作业]",
+          after: "只检查“开始不确定”的那一步。"
+        },
+        {
+          id: "P12",
+          category: "question",
+          title: "把大任务缩小",
+          scene: "任务太大，比如“帮我复习英语”“帮我写作文”。",
+          prompt: "请把这个大任务缩小成 3 个今天能完成的小任务。\\n每个任务必须能在 10 分钟内开始。\\n不要给长计划，不要替我完成作业。\\n\\n大任务：[写任务]",
+          after: "今天只选一个小任务。"
+        },
+        {
+          id: "P13",
+          category: "question",
+          title: "判断问法是否太宽",
+          scene: "不知道自己该怎么问。",
+          prompt: "请检查我的提问是否太宽、太模糊或容易让 AI 直接代写。\\n如果有问题，请帮我改成 2 个更安全、更具体的问法。\\n不要回答原问题。\\n\\n我的提问：[写提问]",
+          after: "复制更小、更安全的问法。"
+        },
+        {
+          id: "P14",
+          category: "question",
+          title: "生成下一轮追问",
+          scene: "AI 解释后，孩子仍有一点不懂。",
+          prompt: "根据刚才的解释，请帮我生成 3 个下一轮追问。\\n追问要从浅到深，且不能要求你直接给最终答案。\\n每个追问都要围绕一个小卡点。\\n\\n我还不懂的是：[写一句话]",
+          after: "选最浅的一问继续。"
+        },
+        {
+          id: "P15",
+          category: "question",
+          title: "孩子原话转清楚问题",
+          scene: "孩子描述很口语，家长想帮他整理。",
+          prompt: "请把我这段口语化的话整理成一个清楚的学习问题。\\n不要评价我，不要解题。\\n第一轮只输出 3 行：\\n1. 你可能想问的是：____；\\n2. 你可以这样问 AI：____；\\n3. 先删掉或不要发的是：____。\\n最后只问我：这句话像不像你的意思？如果不像，请你改一个词。\\n\\n我的原话：[写原话]",
+          after: "让孩子确认整理后的问题是否准确。"
+        },
+        {
+          id: "P16",
+          category: "question",
+          title: "整理成问老师的话",
+          scene: "AI 解释仍不放心，准备问老师。",
+          prompt: "请帮我把这个卡点整理成一句可以问老师的话。\\n不要解题。\\n第一轮先给一句草稿，并留下 2 个可确认的小空：我已经尝试了____；我卡在____。\\n请我先确认或改这两个空，再给最终问老师版本。\\n如果我说不知道自己尝试了什么，请给 2 个可选项：A 看过例题/课本，B 照着做了第一步。\\n不要写姓名、班级、分数或对我的评价。\\n\\n当前情况：[只写学习卡点和已尝试步骤，不超过 120 字]",
+          after: "把这句话带去问老师，先删掉隐私。"
+        },
+        {
+          id: "P17",
+          category: "tutor",
+          title: "先讲考点",
+          scene: "任何学科题目都可先用。",
+          prompt: "请不要直接解题。\\n请按这个格式输出：\\n知识点｜为什么像这个知识点｜第一步只提示｜孩子自己要写的一句话｜核验方式。\\n最后只提示第一步，不给完整过程。\\n\\n题目匿名描述：[只写题目中的条件和问题，不写姓名学校，不超过 120 字]",
+          after: "孩子复述考点，再自己做第一步。"
+        },
+        {
+          id: "P18",
+          category: "tutor",
+          title: "只提示第一步",
+          scene: "孩子知道一点，但下不了笔。",
+          prompt: "请只提示第一步怎么想。\\n不要继续往下算，不要给最终答案。\\n如果第一步有两种可能，请说明哪一种更稳妥。\\n\\n题目匿名描述：[写题干]",
+          after: "先写第一步，再决定是否继续问。"
+        },
+        {
+          id: "P19",
+          category: "tutor",
+          title: "用生活例子解释概念",
+          scene: "概念太抽象。",
+          prompt: "请不要泛泛讲概念。\\n第一轮先从我下一条里的题目、句子或孩子原话中，找出这个概念对应的一个具体词、条件或句子。\\n然后只用一个生活例子解释这一点，再问我能不能用自己的例子说一遍。\\n不要写 4 段讲义，不要直接解题。\\n\\n内容：[写一个概念或一道题里的卡点]",
+          after: "孩子用自己的例子再说一遍。"
+        },
+        {
+          id: "P20",
+          category: "tutor",
+          title: "反问式引导",
+          scene: "不想让 AI 讲太多，希望孩子自己想。",
+          prompt: "请不要直接讲答案。\\n第一轮先引用题干里的 1 个证据，例如数量关系、限制词、总量、关键词或图形信息。\\n然后只问 1 个反问问题，帮助我发现下一步。\\n如果我回答“不知道”，下一轮改成二选一，不要连续追问。\\n不要直接透露答案，不要列 3 个问题。\\n\\n题目匿名描述：[写题干]",
+          after: "孩子回答反问，再继续。"
+        },
+        {
+          id: "P21",
+          category: "tutor",
+          title: "讲完就停",
+          scene: "只想理解一段解释，不想被带完整题。",
+          prompt: "请只解释到我能开始自己做为止。\\n解释完第一步后请停下，并提醒我自己继续。\\n不要写完整解答，不要总结最终答案。\\n\\n卡点：[写卡点]",
+          after: "看到“请你自己继续”就停用 AI。"
+        },
+        {
+          id: "P22",
+          category: "tutor",
+          title: "比较两种思路",
+          scene: "孩子不知道哪种方法更适合。",
+          prompt: "请比较这道题可能用到的 2 种思路。\\n不要计算最终答案。\\n第一轮先引用题目结构里的 1 个证据，例如两个总量、两类对象、限制条件或明显关键词。\\n再用很短标签说明差别，例如：列表法更直观，方程法更快。\\n然后让我先选一种方法，不要同时讲两套步骤。\\n\\n题目匿名描述：[只写题目中的条件和问题，不写姓名学校，不超过 120 字]",
+          after: "孩子选一种方法自己试。"
+        },
+        {
+          id: "P23",
+          category: "tutor",
+          title: "检查第一步",
+          scene: "孩子已经写了第一步，想确认方向。",
+          prompt: "这是我写的第一步。\\n请只判断第一步方向是否合理。\\n如果不合理，请指出问题，不要替我写后面步骤。\\n\\n我的第一步：[写第一步]",
+          after: "只修第一步，不抄后面。"
+        },
+        {
+          id: "P24",
+          category: "tutor",
+          title: "给同类简例",
+          scene: "原题太难，需要先练一个更简单的。",
+          prompt: "请给我一个同类型但更简单的例子。\\n例子必须短，数字或材料更简单。\\n请只演示第一步思路，不要给很多练习。\\n\\n原题考点：[写考点]",
+          after: "做完简例再回到原题。"
+        },
+        {
+          id: "P25",
+          category: "tutor",
+          title: "找漏掉的条件",
+          scene: "孩子答案不对，可能漏看条件。",
+          prompt: "请不要重做整题。\\n请帮我检查题干里有哪些容易漏掉的条件。\\n输出：条件原文、它影响什么、如果漏掉会怎样。\\n\\n题干匿名描述：[写题干]",
+          after: "回到题干圈出条件。"
+        },
+        {
+          id: "P26",
+          category: "tutor",
+          title: "让孩子复述",
+          scene: "AI 讲完了，但不确定孩子真懂了。",
+          prompt: "请根据我下一条发来的刚才解释、题目卡点或我的复述，先提炼 1 个核心点。\\n第一轮只问 1 个复述问题：请我用自己的话说出这个核心点。\\n如果看不到刚才解释或题目卡点，先让我粘贴那段解释或卡点，不要假装已经看过。\\n不要一次设计 3 个问题，不要继续补讲。",
+          after: "孩子能答出 2 个再继续。"
+        },
+        {
+          id: "P27",
+          category: "review",
+          title: "错因四分类",
+          scene: "做错题后，不想只写“粗心”。",
+          prompt: "请根据我的错误过程先做一个初步错因判断。\\n不要给正确答案。\\n第一轮必须引用 1 个具体证据，例如小数点移错、限制词看漏、单位没换、符号抄错。\\n再说它暂时更像哪一类：知识点没懂、审题漏条件、计算/表达执行失误、方法选错。\\n最后只问我：你是从哪一步开始这样错的？\\n不要一次写完整错题复盘。\\n\\n我的错误过程：[写过程]",
+          after: "只记录一个主要错因。"
+        },
+        {
+          id: "P28",
+          category: "review",
+          title: "把“粗心”改具体",
+          scene: "孩子总说自己粗心。",
+          prompt: "请不要用“粗心”概括。\\n先抓我描述里最具体的证据，例如把“至少”看成“正好”、单位看错、条件漏看、符号抄错、顺序弄反。\\n第一轮先把这个证据改成一句具体错因：这次不是粗心，更像是____。\\n然后只问我一个确认问题：请你圈出或说出那个导致出错的词、单位、符号或步骤。\\n等我回答后，再帮我收成一个具体动作提醒。\\n不要给正确答案，不要写完整复盘表。\\n\\n错误描述：[写错误]",
+          after: "把具体动作写进错题本。"
+        },
+        {
+          id: "P29",
+          category: "review",
+          title: "错题复盘四行表",
+          scene: "想快速整理错题。",
+          prompt: "请帮我做错题复盘，但不要一次填完整 4 行表。\\n第一轮只给“我卡在哪里”这一行的候选句，候选句必须包含我原话里的 1 个词或 1 个条件。\\n如果我的描述太少，先问：你从哪一步开始不确定？\\n然后让我改一个词，让它更像我真实的错因。\\n我确认后，再逐轮补：题目类型、主要错因、下次提醒。\\n不要写最终答案，不要重写完整解题过程。\\n\\n内容：[写孩子自己的描述]",
+          after: "保留表格，删掉长篇解释。"
+        },
+        {
+          id: "P30",
+          category: "review",
+          title: "重复错误识别",
+          scene: "同类错反复出现。",
+          prompt: "下面是我最近几次错题的简短记录。\\n请帮我找一个最常见的重复错因。\\n第一轮必须先引用 1-2 条原记录证据，再只归纳 1 个最高频错因，并让我确认：这个错因像不像我最近最常犯的？\\n如果我说不像，请给 3 个候选让我选：A 漏条件，B 公式/概念混，C 计算或抄写错。\\n确认后，第二轮再只给 1 个今天能练的小动作。\\n不要给新题，不要做长计划，不要一次汇总很多类。\\n\\n记录：[写 3-5 条错题记录]",
+          after: "今天只练一个动作。"
+        },
+        {
+          id: "P31",
+          category: "review",
+          title: "从参考答案学思路",
+          scene: "已有老师或课本参考答案，但看不懂。",
+          prompt: "我有一份参考答案。\\n请不要生成新答案，也不要重写完整解法。\\n第一轮只看参考答案第一步：它是在命名未知量、找原文依据、代入条件，还是套用公式。\\n请用一句话说明第一步在做什么，然后只问我：这一步里的关键词、符号或 x 代表题目里的什么？\\n等我回答后，再看下一处转折。\\n\\n参考答案片段：[只粘贴 1 小段不含个人信息的片段，不粘整页]",
+          after: "遮住参考答案，自己复述思路。"
+        },
+        {
+          id: "P32",
+          category: "review",
+          title: "错题对应课本点",
+          scene: "不知道该回去看课本哪一块。",
+          prompt: "请根据这个错因，帮我判断应该回课本复习哪类知识点。\\n第一轮先把错因里的 1 个证据对应到课本关键词，再只给 1 个回看动作：找公式、看例题、圈关键词、看图中量或查定义，四选一即可。\\n如果我说找不到或看不懂，请改让我看课本例题里的三个量：题目给了什么、要求什么、第一步用了什么。\\n如果证据太少，先问我补 1 个错题证据。\\n不要推荐付费资料，不要只让我回去翻目录。\\n\\n错因：[写错因]",
+          after: "先翻课本目录或课堂笔记。"
+        },
+        {
+          id: "P33",
+          category: "review",
+          title: "下次提醒短句",
+          scene: "错题本需要一句能提醒自己的话。",
+          prompt: "请把这个错因改成 1 条短提醒。\\n第一轮先用半句说明关键证据为什么影响题意，再给 1 条短提醒。\\n提醒不超过 16 个字，具体、不批评。\\n给出后，请让我改 1 个词，让它更像我下次能看懂的提醒。\\n不要一次给 3 条版本。\\n\\n错因：[写错因]",
+          after: "选 1 条写在题旁边。"
+        },
+        {
+          id: "P34",
+          category: "review",
+          title: "错题复述检查",
+          scene: "孩子说懂了，但不确定。",
+          prompt: "请根据这个错题复盘，只设计 1 个具体复述检查问题。\\n问题必须指向错题证据，例如：你原来把哪个条件当成了什么？现在要改成什么？\\n如果复盘里没有具体证据，先让我补充 1 个错因证据。\\n不要给答案，不要一次设计 3 个问题。\\n\\n复盘内容：[写复盘]",
+          after: "孩子能回答后再算过。"
+        },
+        {
+          id: "P35",
+          category: "review",
+          title: "听写错字复盘",
+          scene: "听写或默写反复错同类字词。",
+          prompt: "请不要替我抄写整篇。\\n先从我下一条错字词里挑 1 组最明确的错字或错词。\\n第一轮先给一个初步判断，例如更像看错部件、听起来像，还是没懂意思；必须引用那组字词作为证据。\\n然后只让我选一个例词或一句话来验证。\\n等我回答后，再只给一个明天可做的小动作。\\n\\n错字词：[只写 1-8 个错字词，不写姓名班级]",
+          after: "孩子自己重新听写一遍最常错的 3 个。"
+        },
+        {
+          id: "P36",
+          category: "review",
+          title: "一周错因汇总",
+          scene: "周末想看一周主要卡在哪里。",
+          prompt: "下面是一周错题记录。\\n请不要一次汇总 3 类。\\n第一轮只引用 2 条最能代表重复问题的记录，归纳 1 个最高频错因。\\n再让我确认：这个是不是下周最值得先改的点？\\n如果我不认同，请再给 2 个候选错因让我选。\\n确认后，再给 1 个下周小动作。\\n不要做宏大计划，不要排序整周全部问题。\\n\\n记录：[粘贴简短错题记录]",
+          after: "下周只选一个最常见错因处理。"
+        },
+        {
+          id: "P37",
+          category: "reading",
+          title: "阅读先拆层次",
+          scene: "阅读理解读不进去。",
+          prompt: "请不要写阅读题答案，也不要替我概括段意。\\n请只教我怎么给这段文字分层。\\n输出：\\n1. 先找哪些提示词或转折词；\\n2. 可以从哪里试着断开；\\n3. 每层让孩子自己填的空格：这一层主要写了____；\\n4. 最后给一个追问，帮助孩子回原文确认。\\n\\n文本：[只贴阅读短段落，不贴整篇文章或试卷，不超过 200 字]",
+          after: "孩子自己在原文旁写每层意思。"
+        },
+        {
+          id: "P38",
+          category: "reading",
+          title: "找中心句和关键词",
+          scene: "抓不住文章重点。",
+          prompt: "请不要直接告诉我中心句或关键词。\\n第一轮只让我从开头、结尾、反复出现的词里任选一个圈出来；不用判断对不对。\\n等我圈完后，再让我用“这段主要围绕____在写____”试填。\\n最后再回原文检查有没有证据。\\n不要一次输出完整 4 步策略，不替我填空。\\n\\n文本：[只贴短段落，不贴整篇文章或试卷]",
+          after: "孩子自己圈关键词，再写一句试概括。"
+        },
+        {
+          id: "P39",
+          category: "reading",
+          title: "解释难句",
+          scene: "文中一句话看不懂。",
+          prompt: "请帮我看懂这句话。\\n第一轮不要直接解释整句。\\n请先把句子拆成 2 个可选卡点，例如 A 某个比喻/关键词，B 后半句或前后文关系；让我先选一个。\\n如果我说都不懂，直接从 A 的关键词开始，并给 2 个意思选项让我猜。\\n不要改写成可抄答案，不扩写成阅读题答案。\\n\\n句子：[写句子]",
+          after: "回原文找前后两句。"
+        },
+        {
+          id: "P40",
+          category: "reading",
+          title: "人物关系整理",
+          scene: "小说、记叙文人物多。",
+          prompt: "请不要替我答题。\\n请根据这段文字整理人物或事件关系。\\n输出：人物/事件、做了什么、体现了什么变化。\\n\\n文本：[粘贴短段落]",
+          after: "孩子自己根据关系答题。"
+        },
+        {
+          id: "P41",
+          category: "reading",
+          title: "分清事实和观点",
+          scene: "孩子容易把感受当答案。",
+          prompt: "请把这段文字里的内容分成三类：事实、人物感受、作者态度。\\n不要写阅读题答案。\\n每类最多 3 条。\\n\\n文本：[粘贴短段落]",
+          after: "答题时先找对应类别。"
+        },
+        {
+          id: "P42",
+          category: "reading",
+          title: "定位原文依据",
+          scene: "阅读题答案找不到依据。",
+          prompt: "请不要替我作答，也不要写答案模板。\\n第一轮只让我圈题目里的动作词或关键词，例如原因、作用、表现、为什么、说明了什么。\\n等我圈完后，再带我回原文找可能对应的一句依据。\\n如果找不到依据，先停在题目关键词，不要编答案。\\n\\n题目问题：[只写阅读题问题，不贴整篇试卷]",
+          after: "孩子先画出原文依据，再组织答案。"
+        },
+        {
+          id: "P43",
+          category: "reading",
+          title: "理解标题作用",
+          scene: "题目问标题有什么作用。",
+          prompt: "请不要替我写标准答案，也不要套标题作用模板。\\n第一轮只问我：标题里最关键的一个词是什么？\\n等我回答后，再让我回原文找哪一段或哪一句反复照应这个词。\\n最后才判断它更像线索、人物/事物、情感还是主题。\\n\\n标题：[写标题]\\n文章大意：[写一句大意]",
+          after: "孩子选和文章最相关的角度。"
+        },
+        {
+          id: "P44",
+          category: "reading",
+          title: "概括不照搬",
+          scene: "孩子概括时整段照抄。",
+          prompt: "请不要给最终概括句。\\n第一轮只让我从原文里圈 2 个关键词：一个“谁/什么”，一个“做了什么/发生了什么”。\\n如果我圈偏了，请先给两个原文词让我二选一，不要直接替我概括。\\n等我圈完后，第二轮再给半句空框：这段主要写了____。\\n不要第一轮就让我写完整概括句，不要替我填空。\\n\\n文本：[只贴短段落，不贴整篇文章]",
+          after: "孩子自己填空，再回原文删多余细节。"
+        },
+        {
+          id: "P45",
+          category: "reading",
+          title: "检查答案有没有依据",
+          scene: "阅读题写完后想核验。",
+          prompt: "这是我自己写的阅读题答案。\\n请只做依据检查，不要改写成新答案。\\n按 4 项输出：\\n1. 我的答案里哪一句需要原文依据；\\n2. 原文片段里是否能找到对应线索；\\n3. 哪个词可能答偏或说过头；\\n4. 孩子下一步自己改哪一处。\\n不要提供可直接抄写的修改句。\\n\\n原文片段：[只贴相关短段落，不贴整篇试卷]\\n我的答案：[只写自己已经写出的答案]",
+          after: "孩子只改被指出的一处，再重新找依据。"
+        },
+        {
+          id: "P46",
+          category: "reading",
+          title: "题型看法提醒",
+          scene: "不知道阅读题在问什么。",
+          prompt: "请判断这个阅读题更像哪类问题：概括、理解句子、人物形象、标题作用、写法作用、情感态度。\\n不要作答。\\n请告诉我答这类题先找什么。\\n\\n题目：[写阅读题问题]",
+          after: "先找依据，再组织答案。"
+        },
+        {
+          id: "P47",
+          category: "writing",
+          title: "作文审题",
+          scene: "作文题目看不懂，怕写跑题。",
+          prompt: "请不要替我写作文。\\n请帮我审题：\\n1. 题目关键词是什么；\\n2. 不能写偏到哪里；\\n3. 可以写哪 3 类真实材料。\\n\\n作文题目：[写题目]",
+          after: "孩子自己选一个真实材料。"
+        },
+        {
+          id: "P48",
+          category: "writing",
+          title: "选材三选一",
+          scene: "孩子有几个材料，不知道选哪个。",
+          prompt: "请帮我比较 3 个作文材料。\\n不要替我写作文，不要直接替我排名。\\n第一轮先让我用短词列出 3 个材料；如果我已经列出，就只追问其中最模糊的 1 个材料：这件事里最具体的一个画面是什么？\\n等我补完，再按贴题、具体、有变化三个标准做很短比较。\\n\\n材料 1：[写材料]\\n材料 2：[写材料]\\n材料 3：[写材料]",
+          after: "选最具体、最贴题的材料。"
+        },
+        {
+          id: "P49",
+          category: "writing",
+          title: "列提纲不代写",
+          scene: "写作文前需要结构。",
+          prompt: "请不要替我列可直接照写的作文提纲，也不要给开头、结尾或过渡句。\\n第一轮只让我先写两样东西：题目关键词 + 准备写的一件真实事情，各不超过 10 个字。\\n等我写完后，再检查材料是否贴题，并只给短词级的写作顺序和一个追问。\\n不要直接搭三格空提纲，不给完整句子。\\n\\n题目：[写题目]\\n孩子自己的材料：[写真实材料，不编故事]",
+          after: "孩子先回答追问，再自己写成段落。"
+        },
+        {
+          id: "P50",
+          category: "writing",
+          title: "开头只给方向",
+          scene: "开头不会写，但不能让 AI 代写。",
+          prompt: "请不要替我写开头。\\n第一轮只让我选一种开头入口：\\nA 先写地点/画面；\\nB 先写遇到的困难；\\nC 先写前后变化。\\n如果我不知道选哪个，请先引用题目关键词，再给一个建议，例如“坚持”更适合先选 B；但不要写完整句子。\\n等我选完后，再只问我第一句想写的一个词。\\n\\n题目：[写题目]",
+          after: "孩子自己写第一句。"
+        },
+        {
+          id: "P51",
+          category: "writing",
+          title: "检查是否跑题",
+          scene: "作文写完一段，想看是否贴题。",
+          prompt: "这是我自己写的作文片段。\\n请只检查是否贴题，不要改写成新作文。\\n第一轮先引用题目关键词或片段里的 1 个证据，再只让我圈出片段里的中心句。\\n如果片段里看不到题目关键词，请指出“还没看见____”，再让我圈最想保留的一句。\\n等我回复后，再检查具体细节或表达清楚。\\n\\n作文题目：[写题目]\\n片段：[粘贴自己写的片段]",
+          after: "孩子自己修改原文。"
+        },
+        {
+          id: "P52",
+          category: "writing",
+          title: "句子改清楚",
+          scene: "句子绕、重复或表达不清。",
+          prompt: "请不要直接替我改写句子。\\n请只指出这句话的问题类型和修改方向。\\n输出：\\n1. 问题属于：重复、顺序乱、指代不清、词语不准、句子太长；\\n2. 保留哪个核心意思；\\n3. 建议孩子先删哪一处或换哪类词；\\n4. 给一个自改检查问题。\\n不要给完整改写版本。\\n\\n原句：[写孩子自己写的句子]",
+          after: "孩子先自己改一版，再用 P51 检查。"
+        },
+        {
+          id: "P53",
+          category: "writing",
+          title: "补细节，不编故事",
+          scene: "作文太空，但不想让 AI 编。",
+          prompt: "请不要替我编故事。\\n请根据我已有材料，追问 5 个能补细节的问题。\\n问题要围绕真实经历：看见什么、听见什么、当时怎么想、后来有什么变化。\\n\\n材料：[写真实材料]",
+          after: "孩子回答问题，再写进作文。"
+        },
+        {
+          id: "P54",
+          category: "writing",
+          title: "读后感只搭框架",
+          scene: "读后感容易变成 AI 代写。",
+          prompt: "请不要替我写读后感，也不要给可直接照抄的段落。\\n第一轮分两种情况：\\n1. 如果我还没有给情节、句子或观点，只给 3 个低门槛入口让我选一个：A 人物做的一件事，B 书里一句话，C 结局或一个变化。\\n2. 如果我已经写了情节、句子或观点，就不要再让我选 A/B/C，只问：它让你停了一下的原因是什么？一句话就行。\\n等我回答后，再逐轮问：想到自己的哪件事、哪一句原文能作依据、最后想说明什么。\\n每轮只问 1 个问题，不要一次列 5 个问题，不替我回答。\\n\\n书名或文章：[写名称]",
+          after: "孩子逐轮回答一个问题，再自己写读后感。"
+        },
+        {
+          id: "P55",
+          category: "english",
+          title: "英语句子结构",
+          scene: "一句英文看不懂。",
+          prompt: "请帮我分析这个英语句子。\\n不要替我完成整篇作业，不要直接给完整译文。\\n第一轮只让我先圈一个最卡的词或结构；如果我没有圈，请给 2-3 个候选，例如 it / difficult to / alone。\\n等我选完后，再只解释这一处在句子里做什么。\\n\\n句子：[写英文句子]",
+          after: "孩子自己再翻译一遍。"
+        },
+        {
+          id: "P56",
+          category: "english",
+          title: "语法点解释",
+          scene: "不知道为什么错。",
+          prompt: "请只解释这个句子里的一个主要语法点。\\n用简单中文说明，再给一个短例句。\\n不要出很多题，不要替我写整篇作业。\\n\\n句子：[写英文句子]",
+          after: "孩子自己造一个类似句子。"
+        },
+        {
+          id: "P57",
+          category: "english",
+          title: "单词记忆卡",
+          scene: "单词记不住。",
+          prompt: "请不要一次生成完整单词卡。\\n第一轮先只看一个记忆抓手：如果能根据上下文判断，就指出这个单词常表达的功能；如果没有上下文，就给 3 个中文选项让我猜。\\n例如转折词可以问：它更像“因为/虽然/所以”哪一个？\\n等我回答后，再补词性、易混点或一个短例句中的一个。\\n\\n单词或含这个词的短句：[写单词或短句]",
+          after: "孩子口头造一句。"
+        },
+        {
+          id: "P58",
+          category: "english",
+          title: "阅读题定位线索",
+          scene: "英语阅读不会找答案依据。",
+          prompt: "请不要直接给阅读题答案。\\n请告诉我这道题应该回原文找什么线索。\\n输出：题干关键词、同义替换可能、原文定位方法。\\n\\n题目：[只写问题，不贴整张卷子]\\n原文片段：[只贴相关短片段，不超过 160 字]",
+          after: "孩子回原文找依据。"
+        },
+        {
+          id: "P59",
+          category: "english",
+          title: "英语作文框架",
+          scene: "英语作文前准备。",
+          prompt: "请不要替我写英语作文，也不要给完整英文句子或英文段落。\\n第一轮先判断题目更像哪一类：叙事、介绍、观点/理由、看图描述。\\n然后只给对应的中文三格框架，并只让我先填 1 格：\\n- 叙事：时间地点 / 一件事 / 感受；\\n- 介绍：对象 / 2 个特点 / 为什么喜欢或用途；\\n- 观点/理由：我的看法 / 一个理由 / 一个例子；\\n- 看图描述：图中有什么 / 正在做什么 / 我的感受。\\n我回复后，每次只把 1 格收成中文关键词，不给英文句子；只给一个可查课本的语法/词汇方向。\\n不要给英文成句，不要给可直接套写的句型。\\n\\n题目：[写题目]",
+          after: "孩子先用自己的词写英文句子，再用 P60 检查。"
+        },
+        {
+          id: "P60",
+          category: "english",
+          title: "检查英文句子",
+          scene: "孩子自己写完英文句子。",
+          prompt: "这是我自己写的英语句子。\\n请第一轮只指出问题，不要直接给正确句子。\\n按 4 项输出：\\n1. 是否有语法、拼写、时态或词序问题；\\n2. 问题位置在哪里；\\n3. 应该查哪个课本语法点或例句；\\n4. 我自己先改哪一个地方。\\n不要给完整替代句。\\n\\n句子：[写孩子自己写的英文句子]",
+          after: "孩子自己改一版后，再请 AI 只核验。"
+        },
+        {
+          id: "P61",
+          category: "english",
+          title: "朗读前拆音节",
+          scene: "英语朗读卡住。",
+          prompt: "请帮我把英文朗读卡点拆成容易练的一小段。\\n第一轮先让我选最卡的一个词或一个短句；如果我没有选，你只看第一个卡住的词。\\n只给一个重音或停顿提醒，并说明：发音以课本音频或词典音频为准，你这里只帮我拆开练。\\n不要一次拆多个词，不要要求上传个人信息。\\n\\n内容：[写单词或短句]",
+          after: "孩子先慢读，再正常读。"
+        },
+        {
+          id: "P62",
+          category: "english",
+          title: "翻译核对",
+          scene: "孩子翻译完，想检查是否准确。",
+          prompt: "这是我自己翻译的句子。\\n请只做核对，不要给完整新翻译，也不要逐句替换。\\n最多指出 2 个问题位置。\\n输出：\\n1. 哪个英文词/短语可能漏译；\\n2. 哪个中文表达可能误解原意；\\n3. 应该回课本查哪个语法或词义；\\n4. 孩子自己先改哪一处。\\n不要写出完整正确译文。\\n\\n英文：[只写一个句子或短片段]\\n我的翻译：[写孩子自己的翻译]",
+          after: "孩子自己修订一处，再对照课本例句。"
+        },
+        {
+          id: "P63",
+          category: "stem",
+          title: "口算老错定位",
+          scene: "低年级口算、竖式或简单计算反复错。",
+          prompt: "请不要直接给答案。\\n如果我给了算式和错答，第一轮先引用一个最可疑证据，例如个位相加需要进位、符号看反、数字抄错或口诀不熟。\\n证据足够时，不要再让我泛泛分类；只让我检查这一处。\\n证据不足时，再让我在看错数字、进退位、运算符号、口诀不熟、抄写错里选一类。\\n不要算完整题，不要给最终答案。\\n\\n错题记录：[只写 1-5 个算式和孩子算出的结果，不写姓名学校]",
+          after: "孩子先说自己属于哪类错，再重算 3 题。"
+        },
+        {
+          id: "P64",
+          category: "stem",
+          title: "考试后订正顺序",
+          scene: "考后订正很多，不知道先改哪类。",
+          prompt: "请不要评价孩子，也不要做长计划。\\n第一轮请根据错题简记做一个最小订正顺序判断：先选 1 类最该先改的代表类，并给 1 个理由，例如同类最多、马上能改、会影响后面题。\\n不要排序整张卷子，不处理全部错题。\\n选完后，只让我发这 1 类里的 1 道代表错题和原过程。\\n\\n错题简记：[每题只写错因或题型，不写分数、姓名、学校]",
+          after: "先处理“马上能改”的 1-2 题。"
+        },
+        {
+          id: "P65",
+          category: "stem",
+          title: "检查计算过程",
+          scene: "孩子算了，但答案不确定。",
+          prompt: "这是我的计算过程。\\n请只检查步骤，不要重写完整解答，不要报最终答案。\\n第一轮请先扫描过程，只指出第一个需要核验的位置，例如漏条件、公式用错、单位问题、计算错误或结论表达。\\n如果看不出明显问题，再让我指出自己最不确定的一步。\\n\\n过程：[写过程]",
+          after: "只改出错步骤。"
+        },
+        {
+          id: "P66",
+          category: "stem",
+          title: "单位和条件核验",
+          scene: "应用题、科学题容易漏单位。",
+          prompt: "请帮我检查这道题里单位和条件是否用对。\\n不要计算最终答案。\\n第一轮先引用题干中 1 个最容易漏的单位或条件，例如米/千米、分钟/小时、至少/不超过、每个/一共。\\n然后只让我圈这个单位或条件对应的那句话。\\n等我回复后，再判断是否需要换算或是否漏条件。\\n\\n题干匿名描述：[写题干]",
+          after: "先处理单位，再继续做。"
+        },
+        {
+          id: "P67",
+          category: "stem",
+          title: "图表读数",
+          scene: "看不懂表格、统计图或科学图示。",
+          prompt: "我会用文字描述图表，也可能上传图表图片。\\n请帮我判断应该读哪些信息。\\n第一轮分两种：\\n1. 如果我还没说清横轴/纵轴或表格行/列，请只让我先说它们分别代表什么，并停在这里；\\n2. 如果我已经写清楚，请先复述确认，再指定一个具体点让我读数，并停在这个读数任务。\\n不要把两种停止点混在一起；不要第一轮就比较、计算或直接给答案。\\n\\n图表文字描述：[写描述]",
+          after: "孩子回到图表自己读数。"
+        },
+        {
+          id: "P68",
+          category: "reading",
+          title: "生字词不认识",
+          scene: "低年级读课文时被生字词卡住。",
+          prompt: "请不要替我写作业。\\n第一轮先从我给的材料里列出 2-3 个生字词候选，只让我选 1 个最想先弄懂的词。\\n如果我已经选好，就只讲这个词：读音、一个孩子能懂的意思、课文里可能怎么用，再给一个半句造句提示。\\n如果我说不知道选哪个，请你先选最常见或最影响理解的 1 个词。\\n不要一次解释全部词，不要直接替我造完整句。\\n\\n生字词：[只写 3-8 个字词，不贴整篇课文]",
+          after: "孩子自己读一遍，再口头造一句。"
+        },
+        {
+          id: "P69",
+          category: "stem",
+          title: "实验变量整理",
+          scene: "实验题不知道自变量、因变量、控制变量。",
+          prompt: "请不要直接填实验题答案，也不要替孩子写出具体变量名。\\n请用问题引导孩子自己判断变量。\\n输出：\\n1. 让孩子回到哪句话找“被改变的东西”；\\n2. 让孩子回到哪句话找“被观察或测量的结果”；\\n3. 提醒孩子列 2 个“必须保持一样的条件”；\\n4. 如果孩子填错，应该重新看哪一类词。\\n只给定位问题，不给变量名。\\n\\n实验描述：[写不含学校和个人信息的简短描述]",
+          after: "孩子自己填变量名，再写实验结论。"
+        },
+        {
+          id: "P70",
+          category: "stem",
+          title: "结论是否过度",
+          scene: "科学题结论写得太绝对。",
+          prompt: "这是我写的科学或实验结论。\\n第一轮只帮我找一个说得太绝对的词，或一个漏掉的条件。\\n第二轮用填空引导我自己改，例如：把“所有”换成“在本实验中，____”。\\n不要给多个现成替换词，不要替我写完整答案。\\n\\n结论：[写结论]\\n现象：[写现象]",
+          after: "把结论改得有依据。"
+        },
+        {
+          id: "P71",
+          category: "parent",
+          title: "家长不会题时",
+          scene: "家长不懂题，但想帮孩子把问题整理清楚。",
+          prompt: "我是家长，不一定会这道题。\\n请帮我把孩子的问题整理成 3 句话。\\n如果题干或孩子原话里有明显证据，请先引用 1 个证据，例如某个条件、关键词、单位、步骤或孩子原话。\\n然后只给我一句可以先问孩子的话，帮助孩子圈条件、说题目问什么或指出卡住的一步。\\n最后再提示哪些地方需要问老师或查课本。\\n不要直接给答案，不要替我讲完整解法。\\n\\n孩子的描述：[写孩子的话]",
+          after: "家长只问这 3 句话。"
+        },
+        {
+          id: "P72",
+          category: "parent",
+          title: "温和提醒不代写",
+          scene: "孩子想直接让 AI 写答案。",
+          prompt: "请帮我写一句温和提醒话。\\n目的：先把“要答案”改成“问思路”。\\n第一轮只给 1 句，不给 3 个版本；句子里必须带一个小动作，例如先圈题目问什么、先说已知条件、先写自己会的一步。\\n语气平和、具体、不批评、不制造焦虑。",
+          after: "家长选一句照着说。"
+        },
+        {
+          id: "P73",
+          category: "parent",
+          title: "10 分钟陪学流程",
+          scene: "家长时间少，只能陪一小会儿。",
+          prompt: "请帮我做一个 10 分钟陪学开场，不要做完整流程表。\\n目标：只解决一个学习卡点。\\n第一轮只给家长一句能直接说的话，必须包含时间边界和一个小动作，例如：我们只用 10 分钟看一题，你先圈出最卡的一句。\\n孩子回复后，再进入 AI 只讲思路、孩子自己写、最后核验。\\n不要做长期计划。",
+          after: "照流程做一次，不追求多。"
+        },
+        {
+          id: "P74",
+          category: "parent",
+          title: "孩子抵触时",
+          scene: "孩子不想说哪里不会。",
+          prompt: "请只给一句低压开场话，不要给多个版本。\\n目的：让孩子愿意露出一个最小卡点。\\n第一轮只在两个动作里选一个：说一个最小卡点，或圈一句题干。\\n如果孩子说“都不想”“别烦我”“不知道”，下一轮不要继续追问，也不要讲道理；只降到一个不用开口的小动作：用手指点一下最不想看的词、圈一个看得懂的字，或先停 2 分钟。\\n不要问分数，不贴标签，不比较别人。语气要像一起解决问题。",
+          after: "只给一句话，孩子拒绝时降到一个不用开口的小动作。"
+        },
+        {
+          id: "P75",
+          category: "parent",
+          title: "家庭学习小复盘",
+          scene: "一天结束后做 2 分钟复盘。",
+          prompt: "请帮我们做一个很短的学习复盘。\\n第一轮先从今天的材料或家长描述里点名 1 个具体卡点，例如一个词、一步计算、一个符号、一句英文或一处原文。\\n然后只问：这个地方比刚才清楚一点了吗？\\n如果我说没有或不知道，请给 3 个选项让我选：A 一个词，B 一步过程，C 一个还卡的地方。\\n不要一次问完 3 个问题，不做长计划，不评价好坏。",
+          after: "每题只回答一句。"
+        },
+        {
+          id: "P76",
+          category: "parent",
+          title: "作业时间快到了",
+          scene: "时间不够，孩子想直接复制 AI 答案。",
+          prompt: "请帮我做一个 10 分钟收尾方案。\\n目标不是让 AI 写答案，而是让孩子先保留自己能做的部分。\\n第一轮只给家长一句低压收尾话：时间不够也不抄成稿；你先写自己确定的一小步，剩下的标出来明天问老师。\\n孩子回复后，再只处理一个卡点。\\n不要批评，不要催完整页。\\n\\n当前情况：[只写还剩多少时间和卡点，不写姓名学校]",
+          after: "宁可少做，也不复制 AI 成稿。"
+        },
+        {
+          id: "P77",
+          category: "tool",
+          title: "工具打不开时",
+          scene: "AI 工具打不开、登录困难或页面异常。",
+          prompt: "我遇到工具打不开、登录困难或页面异常。\\n请不要让我购买会员、绑定支付、下载不明安装包、点击陌生入口或填写手机号。\\n第一轮只做风险动作：先不要点、不要填、不要付；请我只发页面提示文字或错误提示。\\n收到提示后，再判断能否换官方入口、能否先用已有资料解决、是否需要晚点再试。\\n\\n情况：[写遇到的问题]",
+          after: "先停一下，不急着注册或付费。"
+        },
+        {
+          id: "P78",
+          category: "tool",
+          title: "出现付费提示",
+          scene: "页面出现会员、额度、支付或高级功能提示。",
+          prompt: "页面出现付费、额度或会员提示。\\n请帮我判断这个学习任务是否一定需要付费功能。\\n优先给出免费替代做法：缩小问题、改成文字描述、换官方免费入口、查课本或问老师。\\n\\n任务：[写任务]",
+          after: "基础学习任务先找免费替代。"
+        },
+        {
+          id: "P79",
+          category: "tool",
+          title: "AI 回答不稳定",
+          scene: "同一个问题 AI 回答前后不一致。",
+          prompt: "AI 对同一个问题给了不同回答。\\n请帮我做核验，不要直接选一个当标准答案。\\n输出：两种回答差异、需要查证的关键点、可以用课本/老师/可信资料核对什么。\\n\\n回答 A：[粘贴简短内容]\\n回答 B：[粘贴简短内容]",
+          after: "用可信资料核验关键点。"
+        },
+        {
+          id: "P80",
+          category: "tool",
+          title: "保存自己的常用卡",
+          scene: "想把好用问法存到手机里。",
+          prompt: "这张卡不用发给 AI。\\n请在本页“我的常用卡”里保存 4 件事：\\n1. 卡片标题；\\n2. 适合什么情况；\\n3. 复制给 AI 的问法；\\n4. 用完后孩子要自己完成什么。\\n\\n保存前检查：不要写姓名、学校、账号、链接、付费入口或个人信息；不要把问法写成让 AI 直接给答案。",
+          after: "保存后下次直接复制使用；不好用就删掉重写。"
+        },
+        {
+          id: "S01",
+          category: "speaking",
+          title: "8 分钟口语陪练",
+          scene: "第一次用 AI 带孩子练口语，不想自由聊天跑散。",
+          prompt: "请带孩子做一轮 8 分钟英语口语练习。收到下一条口语主题、课本句型、孩子英文转写或展示要求后，按 4 步进行：\\n1. 跟读 2 分钟；\\n2. 简短问答 2 分钟；\\n3. 复述 2 分钟；\\n4. 轻反馈 2 分钟。\\n每次只给一句英文或一个短问题；问题不超过 10 个英文词；不要写演讲稿成品；每轮只指出 1 个最影响理解的问题。",
+          after: "孩子把最后一句再说一遍。"
+        },
+        {
+          id: "S02",
+          category: "speaking",
+          title: "一句一句跟读",
+          scene: "课本句子会读不顺，家长不会纠音。",
+          prompt: "请做英语跟读主持人。收到下一条英文句子、课本短句或单词组后，只做跟读训练：\\n1. 先把句子拆成 2-4 个容易读的小段；\\n2. 给出慢读版本和自然读版本；\\n3. 标出 1 个重音或停顿提醒；\\n4. 请孩子先跟读小段，再连成整句。\\n不要要求上传孩子声音；不要评价口音好坏；不要扩写成新文章。",
+          after: "孩子慢读一遍，再自然读一遍。"
+        },
+        {
+          id: "S03",
+          category: "speaking",
+          title: "三问三答开口",
+          scene: "孩子不敢开口，需要很短的问答热身。",
+          prompt: "请围绕下一条主题做 3 轮英语口语问答。规则：\\n1. 每次只问一个问题；\\n2. 每个问题不超过 8 个英文词；\\n3. 孩子可以用 3-8 个英文词回答；\\n4. 如果孩子回答太短，只追问一个更容易的问题；\\n5. 最后给一个更自然的表达方向，但不要直接替孩子写完整答案。\\n主题可以来自课本、日常生活或口语考试要求。",
+          after: "孩子选一个回答再说完整一点。"
+        },
+        {
+          id: "S04",
+          category: "speaking",
+          title: "课本句型替换",
+          scene: "老师要求会用某个句型说自己的话。",
+          prompt: "请帮孩子练课本句型替换。收到下一条句型或例句后：\\n1. 先用中文说明这个句型用来表达什么；\\n2. 保留句型骨架，只给 3 个可替换位置；\\n3. 让孩子先用自己的信息口头填空；\\n4. 如果孩子不会，给 2 个很短的词组候选。\\n不要直接写一整段；不要给可背诵成稿；不要引入课本外太难词汇。",
+          after: "孩子用同一句型说出自己的版本。"
+        },
+        {
+          id: "S05",
+          category: "speaking",
+          title: "看物品说三句",
+          scene: "孩子要练日常描述，家里随手找一个东西就能开始。",
+          prompt: "请用下一条物品、图片主题或生活场景，带孩子说 3 句英语。输出：\\n1. 第一句说它是什么；\\n2. 第二句说颜色、大小、位置或用途中的一个；\\n3. 第三句说孩子自己的感受或使用场景。\\n每句都给一个极简结构，但留出孩子自己填的词；如果孩子年龄小，用更简单词。不要写成作文。",
+          after: "孩子指着一个物品说 3 句。"
+        },
+        {
+          id: "S06",
+          category: "speaking",
+          title: "一分钟复述",
+          scene: "读完短文、故事或课文后，想练口头复述。",
+          prompt: "请把下一条短文、故事梗概或课文片段变成 1 分钟英语复述练习。\\n第一轮只给“1 个中文关键词 + 半句英文开头”，例如：动物园 / Tom went...。\\n不要给完整英文句子。\\n然后请我先用自己的英文说第一句。\\n等我说完后，再轻反馈一个点。\\n不要替我写完整复述稿；不要要求背诵标准答案。",
+          after: "孩子看 3 个关键词口头复述。"
+        },
+        {
+          id: "S07",
+          category: "speaking",
+          title: "只改一个口语错误",
+          scene: "孩子说了一句英文，想纠正但不想打击开口。",
+          prompt: "下面会给你孩子说出的英文转写。请只做轻反馈：\\n1. 先复述你听懂的大意；\\n2. 只选一个最影响理解的问题，可能是词序、动词形式、漏词或用词；\\n3. 用中文解释为什么需要改；\\n4. 给一个孩子自己再说一遍的提示。\\n不要把整句话完整改好让孩子照读；不要同时指出很多错。",
+          after: "孩子只按一个点再说一遍。"
+        },
+        {
+          id: "S08",
+          category: "speaking",
+          title: "发音最小对比",
+          scene: "孩子两个音总混，比如 ship/sheep、bed/bad。",
+          prompt: "请带我练一组容易混的英语发音。收到下一条单词或发音问题后，先分两种情况：\\n1. 如果当前工具能语音对话，只听 1 组最小对比词，并只反馈一个音；\\n2. 如果只能文字交流，就只做口型/舌位练习，不判断我读得准不准。\\n第一轮只给 1 组最小对比词和 1 个口型提醒。\\n不要一次给三组，不用复杂音标，不评价口音。",
+          after: "孩子慢读对比词，再读短句。"
+        },
+        {
+          id: "S09",
+          category: "speaking",
+          title: "害羞孩子短词组",
+          scene: "孩子紧张，不愿意完整说句子。",
+          prompt: "请把下一条口语主题降到最低开口难度。输出：\\n1. 先给 6 个可以直接说的英文短词组，每个 1-4 个词；\\n2. 再给 3 个半句框架；\\n3. 最后给 1 个完整句挑战。\\n孩子可以先只说词组，不要求立刻说完整句。语气要鼓励，但不要夸张；不要批评孩子胆小。",
+          after: "孩子先说 3 个短词组。"
+        },
+        {
+          id: "S10",
+          category: "speaking",
+          title: "口语考试模拟",
+          scene: "学校有口语展示或考试，需要练习但不能背 AI 稿。",
+          prompt: "请按下一条口语考试主题做一次模拟。规则：\\n1. 先问 3 个由易到难的问题；\\n2. 每次等待孩子回答，不要一次性给完答案；\\n3. 如果孩子答不出，只给关键词提示；\\n4. 最后从内容完整、表达清楚、语法小错三个角度各给一句反馈。\\n不要写可背诵成稿；不要替孩子组织完整演讲。",
+          after: "孩子保留自己的回答，再练第二遍。"
+        },
+        {
+          id: "S11",
+          category: "speaking",
+          title: "太难时降一级",
+          scene: "AI 问得太难、词太多，孩子跟不上。",
+          prompt: "请把当前英语口语练习降一级。\\n如果我只说“太难/不会”，不要先让我补材料；请立刻给 2 个中文选项或 2 个英文词，让我先选一个。\\n如果你看得到刚才那个难题，只把它改成一个更短的问题。\\n降级时只保留一个练习目标：词汇更常见、问题更短、回答可以只说一个词或一个短词组。\\n不要继续加难，不要给长解释，不要求完整句。",
+          after: "孩子只回答降级后的一个问题。"
+        },
+        {
+          id: "S12",
+          category: "speaking",
+          title: "口语结束复盘",
+          scene: "练完口语后，需要知道下次练什么。",
+          prompt: "请帮我做 2 分钟英语口语复盘。\\n如果你没有看到刚才的英文，第一轮先问：请你发来今天最想保留的一句英文，哪怕不完整也可以。\\n看到英文后，只输出 3 行：\\n1. 今天最清楚的一句；\\n2. 下次只练的一个小目标；\\n3. 请你把最清楚的一句再说一遍。\\n不要假装听过我刚才的内容，不打分，不比较，不列长期计划。",
+          after: "孩子把“最清楚的一句”再说一次。"
+        }
+      ];
+
+      const categoryName = new Map(categories.map((category) => [category.key, category.label]));
+      const coreCardIds = new Set([
+        "P01", "P02", "P03", "P04", "P06", "P09", "P10", "P12", "P17", "P23", "P25", "P27",
+        "P29", "P35", "P37", "P42", "P45", "P47", "P51", "P52", "P55", "P56", "P58", "P60",
+        "P63", "P65", "P66", "P69", "P71", "P73", "P76", "P77", "P78", "P79",
+        "S01", "S02", "S03", "S06", "S07", "S11"
+      ]);
+      const tierLabels = new Map([
+        ["rescue", "今晚急救"],
+        ["core", "常用卡"],
+        ["extension", "更多场景"],
+        ["mine", "我的收藏"],
+        ["all", "全部"]
+      ]);
+      const aiCopyPreamble = "请作为家庭学习辅导助手，并代入“家庭学习互动教练”的角色。用户会先粘贴这条提示词，下一条再上传一张单题图片，或发送一小段题干、材料、孩子过程、孩子原话。\\n你的目标不是替孩子完成作业，而是像耐心老师一样，先守边界，再一轮一轮带孩子想。\\n安全边界：\\n1. 只处理一个学习卡点。若看到姓名、学校、班级、账号、人脸、电话、地址、成绩单或班群截图等隐私，只温和提醒“下次可以先遮挡隐私”，不要复述这些信息，也不要因此中断讲题。若是整页作业、多题或整篇作文，优先根据最明显的一题、一段材料或一个卡点继续；实在无法判断时，再请用户指出一个卡点。\\n2. 不直接给最终答案、完整解题链、完整作文、完整翻译或可直接提交的内容。\\n3. 不做高风险判断，不评价孩子聪明、差、粗心；语气要短、稳、具体。\\n4. 不确定时提醒用户查课本、原文、老师讲解或可信资料。\\n交互硬规则：每轮只做一个动作；本轮结束必须停下，等待孩子或家长回复；没有回复，不继续下一步。";
+      const recoveryCopyPreamble = "请作为家庭学习辅导助手，并代入“学习回答纠偏教练”的角色。现在这张卡用于修正刚才 AI 已经给出的回答、上一轮解释或刚结束的一轮练习。\\n你的目标不是重新完整讲题，而是把上一轮内容收回到可学习、可核验、孩子能继续做的一小步。\\n安全边界：不直接给最终答案、完整解题链、完整作文、完整翻译或可直接提交的内容；若上一轮内容含姓名、学校、班级、账号、人脸、电话、地址、成绩单或班群截图等隐私，只温和提醒下次可先遮挡，不复述隐私，也不要因此中断纠偏；若上一轮内容太长或多题，先抓一个最明显卡点，实在无法判断再请用户指出。\\n交互硬规则：每轮只纠偏一个点、问一个核验问题、给一个小提示或让孩子复述一句；输出后必须停下。";
+      const englishCopyPreamble = "请作为家庭学习辅导助手，并代入“英语学习互动教练”的角色。用户会先粘贴这条提示词，下一条再发送一道英语题、一句英文、一个单词、短文片段或孩子自己写的英文。\\n你的目标不是替孩子写答案或完整翻译，而是帮助孩子定位一个英语卡点，再一轮一轮修改。\\n安全边界：不生成完整译文、完整作文、可直接提交的英文段落或替代答案；若看到孩子照片、人脸、学校、班级或账号等隐私，只温和提醒下次可遮挡，不复述隐私，也不要因此中断英语卡点练习；不确定时提醒查课本例句、词典、音频或老师要求。\\n交互硬规则：每轮只处理一个词、一个短语、一个句型或一个表达点；输出后必须停下，等待孩子回复。";
+      const speakingCopyPreamble = "请作为家庭学习辅导助手，并代入“英语口语互动教练”的角色。用户会先粘贴这条提示词，下一条再发送口语主题、课本句型、短文片段、孩子英文转写或展示要求。\\n你的目标不是写演讲稿，而是让孩子先开口说一小句，再根据孩子的下一条回复轻反馈。\\n安全边界：不生成可背诵成稿、完整演讲、完整作文或可直接提交的英文段落；若看到孩子声音、照片、人脸、学校、班级或账号等隐私，只温和提醒下次可遮挡，不复述隐私，也不要因此中断口语练习；如果当前工具不能语音对话，让家长用手机输入法语音转文字，把孩子说的话发来；不评价口音好坏。\\n交互硬规则：每轮只给一个短句、问一个短问题、只改一个表达点或让孩子再说一遍；输出后必须停下，等待孩子下一句。";
+      const toolCopyPreamble = "请作为“AI 工具安全判断助手”。用户会先粘贴这条提示词，下一条再发送工具页面、错误提示、登录/付费提示文字，或 AI 已给出的回答片段。\\n你的目标不是教孩子解题，而是帮家长判断这个工具或回答能不能安全继续用。\\n安全边界：不推荐买会员，不引导孩子注册、实名、人脸、绑定手机号或支付；若看到姓名、学校、班级、账号、照片、成绩单、整页作业或班群截图，只温馨提醒下次可遮挡，不复述隐私，也不要因此停止判断工具问题；不替孩子完成作业。\\n交互硬规则：每轮只给家长一个下一步操作；输出后必须停下，等待家长补充页面文字或操作结果。";
+      const categoryPromptContracts = {
+        safe: "后续原则：先守住隐私和不代写边界，再把问题缩成一个学习卡点。",
+        question: "后续原则：把“不会”拆成孩子能选择的小卡点，不讲解答案。",
+        tutor: "后续原则：帮助孩子发现考点和第一小步，不讲完整方法。",
+        review: "后续原则：让孩子参与错因复盘，一次只处理一个错因证据。",
+        reading: "后续原则：带孩子回原文找依据，答案必须能指回原文。",
+        writing: "后续原则：让孩子自己补材料、改结构，不给可照抄的句子或段落。",
+        english: "后续原则：定位一个英语卡点，不给完整替代句或完整译文。",
+        speaking: "后续原则：让孩子开口练一小轮，反馈时只改一个点，不写成稿。",
+        stem: "后续原则：让孩子找条件、单位、变量、现象或过程中的一个点，不代算最终答案。",
+        parent: "后续原则：帮家长少讲一点，让孩子多做一步；不评价孩子，不替孩子做。",
+        tool: "后续原则：判断工具页面或 AI 回答能否安全使用，只给家长一个下一步操作。"
+      };
+      const defaultFirstTurnProtocols = {
+        safe: "先看能否围绕一个学习卡点继续。若看到隐私，只温和提醒下次可先遮挡且不要复述隐私；不要因此停止讲题。然后只问孩子一个问题：这次最想弄懂哪一个地方？",
+        question: "给 1-3 个候选卡点让孩子选一个，不能解题。输出后问：你最像哪一个？",
+        tutor: "先给一句可能考点或方向，再给孩子一个微动作，例如圈条件、说要求、写第一步。不要列完整步骤。",
+        review: "只围绕一个错因证据互动。先让孩子在看题、概念、计算、表达中选一类，或确认一个最可疑的错点。",
+        reading: "只让孩子回原文做一个微动作：找一个关键词、中心句、转折词、人物或依据句。不要整理完整答案。",
+        writing: "只问一个能补真实材料或改一处草稿的问题。不要给示范段落、完整句子或可照抄表达。",
+        english: "只定位一个英语卡点：一个词、短语、时态、句型或孩子英文中的一个位置。不要给完整译文或完整替代句。",
+        speaking: "只启动一小轮口语：给一个短句、一个短问题、一个跟读目标或只改一个表达点。不要给演讲稿。",
+        stem: "只让孩子先看一个点：数字、符号、单位、条件、变量、公式、图表或过程中的一处。不要代算。",
+        parent: "只给家长一句可以问孩子的话，帮助孩子自己说出卡点或第一步。",
+        tool: "只判断一个风险点，并给家长一个下一步操作。不要写成孩子答题辅导，不要推荐买会员。"
+      };
+      const cardFirstTurnProtocols = {
+        P01: "若输入安全，先引用题干、原文或孩子原话里的 1 个证据；再按本题生成 3 个低门槛选项，例如 A 圈题目要求，B 圈一个关键条件，C 写一个本题第一步空格。选项必须含题内词或数字，不能只写通用 A/B/C。不要讲解。",
+        P03: "给 1-3 个最小候选卡点；候选必须来自题干或孩子原话。若多个都像，直接说：请你任选最不痛苦的一个先做。不要判断哪个最重要，不要解题。",
+        P04: "如果能看到上一轮完整答案，直接把它改成 4 行学习提示版：考点、第一小步、核验提醒、孩子自己做；如果看不到，只问：请粘贴刚才那段回答。",
+        P05: "先删掉上一轮里的最终答案、完整推导和可照抄内容；只保留 4 行：考点、第一小步、核验提醒、请你自己写。最后问：请你只试着写第一步。",
+        P06: "先指出刚才回答里 1 个最需要核验的地方；再只给 1 个核验动作，例如回题干圈条件、查课本定义、对照原文或检查单位。不要一次列完整清单。",
+        P07: "固定输出：风险类型、我不能替你判断、可以当普通资料看的部分、必须问谁、现在先告诉成年人/老师/专业人士的一句话。",
+        P08: "收到本提示后立即输出 5 条短规则；若用户已写原问题，先引用其中 1 个风险词。最后只加一个动作：请你把要问 AI 的问题改成不求答案、只问思路的问法。若仍像求答案，给二选一：问第一步，或检查我写的一句/一步。",
+        P09: "把“我不会”拆成 3 个以内孩子能选择的具体卡点，输出 A/B/C 后停下；不要解题。",
+        P10: "只示范三列中的 1 列：已知信息、要做什么、可能知识点任选一列；再请你补另一列一句。不要三列全填。",
+        P12: "直接给 3 个 10 分钟内能开始的小任务，让你只选 1 个；选完后只做 1 个例子、1 次尝试、1 次纠错。不要做长期计划。",
+        P13: "固定输出：是否太宽、风险点、安全问法 1、安全问法 2。请你选一个；选完后直接进入第一步辅导，不要只让你再发给 AI。",
+        P14: "只输出 1 个最浅的下一轮追问，必须以问号结尾；如果你回答“不知道”，下一轮只能给一个小提示或二选一，不要继续连问。",
+        P15: "直接对学习者输出 3 行：你可能想问的是、你可以这样问 AI、先删掉或不要发的是。最后只问：这句话像不像你的意思？如果不像，请改 1 个词。不解题。",
+        P16: "先生成一句问老师话草稿，并留下 2 个空让学习者确认：我已经尝试了____；我卡在____。若学习者说不知道尝试了什么，给 A 看过例题/课本，B 照着做了第一步。",
+        P17: "允许先给一句考点判断，再给一个微动作。例如：这题可能考的是……；你先圈出……。不要讲完整步骤。",
+        P18: "如果输入清楚，第一轮只给一个第一步提示；不追问多个方向，不继续往下算。",
+        P19: "先从题目、句子或原话里点出概念对应的 1 个具体词/条件/句子；再用一个生活例子解释；最后问：你能用自己的例子说一遍吗？不要写 4 段讲义。",
+        P20: "先引用题干里的 1 个证据，再只问 1 个反问问题。例如：题里同时有周长和长宽差，你觉得先找和还是差？如果答不知道，下一轮改二选一。",
+        P21: "只讲一句最小解释，再问一个孩子要回应的问题，然后立刻停下；不要继续讲后面。",
+        P22: "先引用题目结构里的 1 个证据，例如两个总量、两类对象或限制条件；再说明两种思路各自看哪一个条件。最后只问：你想先试哪一种？不要同时讲两套步骤。",
+        P23: "先读取孩子已经写出的第一步，只判断方向对不对或哪里需要改一句；不得另起炉灶讲题。",
+        P24: "只给一个更简单的同类型题干，不给解法；问孩子第一步会看什么。",
+        P25: "只指出一个最可能漏看的条件，问孩子：这句话影响哪个量或哪个要求？",
+        P26: "如果看得到刚才解释或题目卡点，先提炼 1 个核心点，再只问 1 个复述问题；如果看不到，先请你粘贴那段解释或卡点。",
+        P27: "先引用错误过程里的 1 个具体证据，并给一个初步错因判断；再问：你是从哪一步开始这样错的？不要只让你泛泛分类。",
+        P28: "先抓住输入里的具体证据，把“粗心”改成一句具体错因；再只问：请你圈出导致出错的那个词、单位、符号或步骤。",
+        P29: "只给错题复盘第一行的候选句：我卡在哪里；候选句必须包含用户原话里的 1 个词。若描述太少，先问从哪一步开始不确定。",
+        P30: "必须先引用 1-2 条原记录证据，再只归纳 1 个最高频错因，并让学习者确认是否像自己最近最常犯的点；若说不像，给 A 漏条件、B 公式/概念混、C 计算或抄写错。",
+        P31: "只看参考答案第一步，先说明它在命名未知量、找依据、代入条件还是套公式；再问：这里的关键词、符号或 x 代表题目里的什么？",
+        P32: "先把错因里的 1 个证据对应到课本关键词；再只给 1 个回看动作：找公式、看例题、圈关键词、看图中量或查定义。看不懂时，改看课本例题里的三个量。",
+        P33: "先用半句说明关键证据为什么影响题意，再产出 1 条下次提醒短句，并让孩子改 1 个词。",
+        P34: "先基于错题证据问 1 个具体复述问题，例如：你原来把哪个条件当成了什么？现在要改成什么？不要只问空泛复述。",
+        P35: "先从输入里挑 1 组最明确的错字或错词，给一个初步判断；再让你选一个例词或一句话来验证。",
+        P36: "第一轮只引用 2 条最能代表重复问题的记录，归纳 1 个最高频错因，并让学习者确认它是不是下周先改的点；若不认同，再给 2 个候选错因。",
+        P37: "只让孩子先找一个转折词、时间词或可能断开的地方；不要直接替孩子分好层。",
+        P38: "只让你从开头、结尾、反复出现的词里任选一个圈出来；不用判断对不对。不要输出完整阅读策略。",
+        P39: "先把难句拆成 2 个可选卡点，例如 A 某个比喻/关键词，B 后半句或前后文关系；让学习者先选一个。若都不懂，直接从 A 的关键词开始，给 2 个意思选项。",
+        P40: "只问这段先出现了谁或什么事；不要整理完整人物关系表。",
+        P41: "不要替孩子完整分类。只让孩子从原文里选一句，并判断它是事实、感受还是态度。",
+        P42: "第一轮只让你圈题干里的动作词或关键词，例如原因、作用、表现、为什么、说明了什么；不要同时找依据句。",
+        P43: "第一轮只问：标题里最关键的一个词是什么？不要同时找原文句，不要讲标题作用模板。",
+        P44: "第一轮只让学习者圈 2 个关键词：一个“谁/什么”，一个“做了什么/发生了什么”。若圈偏，先给两个原文词二选一；第二轮才补半句。",
+        P45: "只让孩子在自己的答案里圈出最需要原文支持的一句话；不要改写答案。",
+        P46: "只问：题干里让你做的动作词是哪一个，比如概括、理解、分析、说明？先圈出来。",
+        P47: "只问：题目里你觉得最重要的一个词是哪一个？先圈出来。不要给选材清单。",
+        P48: "先让你用短词列出 3 个材料；若已经列出，只追问最模糊的 1 个材料：这件事里最具体的一个画面是什么？不要直接排名。",
+        P49: "第一轮只让你写：题目关键词 + 准备写的一件真实事情，各不超过 10 个字。不要直接搭三格提纲。",
+        P50: "只让学习者选一种开头入口：A 地点/画面，B 遇到的困难，C 前后变化。若不知道选哪个，先引用题目关键词再建议 A/B/C，但不给示范句。",
+        P51: "先引用题目关键词或片段里的 1 个证据；再只让学习者圈出片段里的中心句。不要让学习者自己判断是否回应题目。",
+        P52: "只处理孩子原句的一处表达，比如主语、动作、顺序或指代；不给完整改写句。",
+        P53: "只追问一个真实细节：看到什么、听到什么、做了什么或心里想了什么；不替孩子扩写。",
+        P54: "第一轮分两种情况：若还没有情节、句子或观点，给 3 个入口让学习者选；若已经有材料，不再让学习者选 A/B/C，只问这处让你停了一下的原因，一句话就行。",
+        P55: "第一轮只让学习者圈一个最卡的词或结构；如果没有圈，给 2-3 个候选，例如 it / difficult to / alone。选完后只解释这一处。",
+        P57: "第一轮只给一个记忆抓手；没有上下文时给 3 个中文选项让你猜意思，例如“因为/虽然/所以”。不要一次生成完整单词卡。",
+        P58: "只找题干关键词和原文对应词；不解释全文，不直接选答案。",
+        P59: "先判断英语作文题更像叙事、介绍、观点/理由还是看图描述；再给对应中文三格框架，并只让学习者先填 1 格。后续只收中文关键词，不给英文句子。",
+        P60: "只指出一个问题位置，不给正确句子。例如：动词形式这里要查一下。然后停下。",
+        P61: "先让你选最卡的一个词或短句；如果没选，只看第一个卡词。只给一个重音/停顿提醒，并说明发音以课本音频或词典音频为准。",
+        P62: "只核对一个词、短语或句型的译法是否合适；不给整句完整译文。",
+        P63: "如果有算式和错答，先引用 1 个最可疑证据，再只让孩子检查这一处；证据不足时才让孩子分类选择。",
+        P64: "若清单能看出代表类，先选 1 类并给 1 个理由；若看不出，先请你挑一道看得懂题干但错了的题。只处理 1 题。",
+        P65: "先扫描过程，只指出第一个需要核验的位置；看不出明显问题时，才问你最不确定哪一步。不重算全题。",
+        P66: "先引用题干中 1 个最容易漏的单位或条件，例如米/千米、分钟/小时、至少/不超过；再只让学习者圈这个单位或条件对应的那句话。",
+        P67: "若还没说清横轴/纵轴或行列含义，只问这一项；若已经写清，先复述确认，再指定一个具体点让学习者读数。不比较，不计算。",
+        P68: "第一轮先列 2-3 个生字词候选，只让学习者选 1 个；若不知道选哪个，先选最常见或最影响理解的 1 个词。",
+        P69: "只让孩子先找实验里“被改变的东西”是哪一句；不要直接给自变量、因变量、控制变量全套答案。",
+        P70: "只问结论里哪个词最绝对或漏了哪个条件；第二轮用填空让孩子自己改，不给多个现成替换词。",
+        P71: "若题干或孩子原话里有明显证据，先引用 1 个证据；再只给家长一句可以问孩子的话，帮助孩子圈条件、说题目问什么或指出卡住的一步。",
+        P72: "当孩子想要答案时，只输出一句家长可以说的话；句子里必须带一个小动作，例如圈题目问什么、说已知条件或写自己会的一步。",
+        P73: "只给 10 分钟陪学的第一句话，包含时间边界和一个小动作：我们只用 10 分钟看一题，你先圈出最卡的一句。",
+        P74: "只给一句低压开场，不给 5 个版本：你愿意先说一个最小卡点，还是先圈一句题干？如果学习者说都不想、别烦我或不知道，下一轮只降到一个不用开口的小动作：指一下最不想看的词、圈一个看得懂的字，或先停 2 分钟。",
+        P75: "第一轮先从今天材料或家长描述里点名 1 个具体卡点，再问这个地方比刚才清楚一点了吗？若回答没有，给 A 一个词、B 一步过程、C 一个还卡的地方。",
+        P76: "只给家长一句低压收尾话：时间不够也不抄成稿；你先写自己确定的一小步，剩下的标出来明天问老师。",
+        P77: "只给家长一个工具排查动作：先不要点陌生入口、不要填手机号/支付信息、不要下载不明安装包；只发页面提示文字来判断。",
+        P79: "只比较 A/B 两个回答中最短必要片段；若片段里有隐私，只提醒下次可遮挡，不因此停止比较。",
+        S02: "只给一个跟读小句或一个短词组，并标一个重音/停顿；让孩子先跟读一遍。",
+        S03: "只问第一个最容易的英文问题，问题不超过 8 个英文词；等孩子回答后再继续。",
+        S04: "只保留一个空位，例如 I like ___. 让孩子先填一个词，不同时给 3 个位置。",
+        S05: "只让孩子看一个物品说一个短句，例如 It is ___. 不要求三句一起说。",
+        S06: "只给“1 个中文关键词 + 半句英文开头”，例如：动物园 / Tom went...；不给完整英文句子，然后请孩子先用自己的英文说第一句。",
+        S07: "先写“我听懂的大意”一句，再只指出一个表达点；不给完整正确句，让孩子再说一遍。",
+        S08: "先说明两种模式：能语音对话就听 1 组并反馈一个音；只能文字交流就只做口型练习，不判断读得准不准。只给 1 组对比词。",
+        S09: "先用中文问：你想先说这个主题的哪一点？或只给 2-3 个短词组选项，不给完整句。",
+        S10: "只问第一道最容易的口试题；等孩子回答后，再决定要不要追问。",
+        S11: "只把当前问题降一级；如果你只说太难/不会，先给 2 个中文选项或 2 个英文词，不要求完整句。",
+        S12: "如果看不到刚才的英文，先请你发来今天最想保留的一句英文；不要假装复盘。看到后只给一个复盘点和一个再说任务。"
+      };
+      const cardInteractionOverrides = {
+        P01: "第一轮不能只问“你想弄懂哪里”。必须先引用 1 个题干/原文/原话证据，再按本题生成可操作选项，例如圈本题条件、圈本题要求、写本题第一步空格。",
+        P03: "不要让学习者纠结哪个最重要。若多个卡点都像，允许任选最不痛苦的一个先做。",
+        P05: "压缩上一轮回答前，先删除最终答案、完整推导和可照抄内容；压缩后必须落到学习者自己写第一步。",
+        P06: "核验不是通用清单。第一轮必须抓刚才回答里的 1 个可疑证据，再给 1 个核验动作；用户回复后才继续下一个核验点。",
+        P08: "安全规则输出后，必须让学习者把原问题改成不求答案的问法，不能只停在静态规则。",
+        P15: "不要写成给家长看的后台说明。第一轮必须直接对学习者说“你可能想问的是……”，并让学习者确认或改 1 个词。",
+        P16: "不要直接定稿问老师话。第一轮只给草稿和两个确认空，让学习者先确认“我尝试了什么、我卡在哪里”。",
+        P20: "反问前必须先引用题干 1 个证据；弱学习者答不知道时，下一轮改成二选一，不要继续空问。",
+        P30: "归纳重复错因前必须引用原记录证据。没有证据时先要 1 条记录，不得拍脑袋说“最常见”。",
+        P32: "回课本必须给可执行动作，例如找公式、看例题、圈关键词、看图中量或查定义，不能只把学习者推回目录。",
+        P36: "一周错因第一轮只归纳 1 个最高频错因并引用 2 条证据；不要保留“三类主要错因”的全量目标。",
+        P10: "不要替学习者填完整三列。第一轮只示范一列，再让学习者补另一列一句。",
+        P12: "选定 10 分钟任务后，后续只能走 1 个例子、1 次学习者尝试、1 次纠错，不要扩成计划。",
+        P13: "不要只把安全问法丢给用户另开对话。学习者选定问法后，下一轮直接进入第一步辅导。",
+        P14: "如果学习者回答不知道，下一轮给最小提示或二选一；不要连续追问造成卡死。",
+        P19: "不要泛泛讲概念。第一轮必须把抽象概念落到题目、句子或原话里的一个具体词、条件或句子。",
+        P22: "不要一次比较两套完整思路。第一轮必须先引用题目结构里的一个证据，再说明两种思路各自看哪一个条件，让学习者有依据地选。",
+        P24: "不要把简例完整演示完。第一轮最多给一个更小的类比题干，然后问孩子第一步会看什么。",
+        P25: "不要一次列出所有漏掉条件。第一轮只让孩子先圈一个条件，再追问是否漏了一个限制词。",
+        P26: "不要一次设计 3 个复述问题。第一轮先提炼一个核心点，再只问 1 个复述问题；看不到上一轮解释时先要材料。",
+        P27: "不要把诊断外包给学习者。第一轮必须先引用错误过程里的一个具体证据，再给初步错因判断，让学习者确认从哪一步开始错。",
+        P28: "不要把“粗心”直接改成成品句。第一轮必须先抓住具体证据，把它改成一句具体错因，再让学习者圈出导致出错的词、单位、符号或步骤。",
+        P29: "不要一次填完整四行表。第一轮候选句必须含用户原话里的 1 个词；若信息太少，先问从哪一步开始不确定。",
+        P33: "不要一次给多个短句版本。第一轮先用半句解释关键证据，再给 1 条短提醒，并要求孩子改 1 个词。",
+        P35: "不要泛泛要求选择错字词。第一轮先从输入里挑一组最明显错字/错词并给初判，再让学习者用例词或句子验证。",
+        P31: "不要复述参考答案完整逻辑链，也不要空问“为什么这样做”。第一轮只说明参考答案第一步在做什么，再问关键词、符号或 x 代表什么。",
+        P34: "不要一次生成 3 个自测问题，也不要问空泛复述。第一轮必须基于错题证据问一个具体复述检查问题。",
+        P37: "不要直接分层。第一轮只让孩子找一个转折词、时间词或可能断开的地方。",
+        P38: "不要输出完整 4 步策略，也不要让不会找重点的人先找中心句。第一轮只让学习者从开头、结尾、反复出现的词里任选一个圈出来。",
+        P39: "不要把整句改说成可抄答案。第一轮先给 A/B 两个卡点候选，让学习者选一个；不能把拆解责任丢给“都不懂”的孩子。",
+        P40: "不要整理完整人物关系表。第一轮只问这段先出现了谁/什么事，等孩子回答。",
+        P42: "不要同时要求圈关键词和找依据句。第一轮只圈题干动作词或关键词。",
+        P43: "不要套标题作用模板。第一轮只问标题关键词，第二轮再回原文找照应句。",
+        P44: "概括卡第一轮只圈关键词，不要同时要求写概括句。等学习者圈完后，再用半句框架推进。",
+        P50: "开头方向要用孩子能懂的话：地点/画面、困难、前后变化。不要只说场景、问题、变化这种写作术语。",
+        P51: "跑题检查不能让孩子自判。第一轮先引用题目或片段证据，再只让孩子圈中心句。",
+        P54: "读后感第一轮要先判断有没有材料：没有材料才给 3 个入口；已有情节、句子或观点时，直接追问它让你停了一下的原因，不要又拉回 A/B/C。",
+        P55: "英语句子结构第一轮只圈一个最卡的词或结构；不要直接输出主干、修饰、关键词和大意全套分析。",
+        P48: "不要一上来要求三个材料各写细节。第一轮先收 3 个短词材料，或只追问最模糊的 1 个材料画面。",
+        P49: "不要先搭空提纲。第一轮先确认题目关键词和一个真实材料，再谈结构。",
+        P57: "不要生成完整单词卡。第一轮必须只给一个记忆抓手或三选一猜义。",
+        P59: "英语作文必须先判题型。叙事、介绍、观点/理由、看图描述要用不同中文三格，不得把所有题硬套时间地点/一件事/感受。",
+        P61: "不要把拆音节当标准发音裁判。第一轮先锁定一个最卡的词或短句，只给一个重音/停顿提醒，并提醒以课本音频或词典音频为准。",
+        P63: "不要在证据足够时还让学习者泛泛分类。第一轮必须先引用错答里的一个可疑证据，再只检查这一处。",
+        P64: "不要回避订正顺序，也不要排序整张卷子。清单足够时选 1 类先改；不够时要 1 道看得懂题干但错了的代表题。",
+        P65: "不要把诊断责任直接推给学习者。能看到过程时，第一轮先指出第一个需要核验的位置；看不出时才让学习者选不确定步骤。",
+        P66: "单位条件卡不能机械让学习者圈两个东西。第一轮先引用 1 个易漏单位或限制词，再只让学习者圈对应那句话。",
+        P67: "如果用户已经写清横轴/纵轴或行列含义，不要机械重复追问；先确认，再让学习者读一个具体点。",
+        P68: "生字词卡第一轮先列 2-3 个候选词，让学习者选 1 个；不知道选哪个时，AI 先选最常见或最影响理解的词。",
+        P70: "不要给多个现成替换词。第二轮必须用填空让学习者自己把绝对词改谨慎。",
+        P71: "家长不会题时也要抓证据。能看到题干或孩子原话时，先引用 1 个证据，再给家长一句可问孩子的话。",
+        P72: "提醒不代写不能只讲道理。句子里必须带一个可执行小动作，让孩子立刻转成问思路。",
+        P73: "第一句话必须同时包含 10 分钟时间边界和一个可做动作，不能只问“能写哪一步”。",
+        P75: "复盘第一问必须可选、可答。孩子说没有或不知道时，下一轮给 A 一个词、B 一步过程、C 一个还卡的地方。",
+        P76: "高冲突收尾要先降压：允许少做但不抄成稿，保留学习者自己能写的一小步。",
+        P77: "工具异常第一轮要够硬：不点陌生入口、不填手机号/支付信息、不下载不明安装包，只看页面提示文字。",
+        S06: "第一轮必须给“中文关键词 + 半句英文开头”，不能只给孤立关键词，也不能给完整英文句。",
+        S08: "发音卡不能假装没有语音也能判断准不准。必须区分语音对话和文字练口型两种模式。",
+        S11: "降级卡遇到“太难/不会”时要先给词或中文选项，不要要求马上说完整句。",
+        S12: "复盘卡看不到刚才英文时必须先要一句英文，不许假装已经听过。"
+      };
+      const customCardsKey = "zhiyu-family-prompt-custom-cards-v1";
+      const usageStatsKey = "zhiyu-family-prompt-usage-stats-v1";
+      const localOnlyCardIds = new Set(["P02", "P80"]);
+      const rescueCardIds = new Set(["P01", "P09", "P17", "P27", "P71", "P76"]);
+      const recoveryCardIds = new Set(["P04", "P05", "P06", "P14", "P79"]);
+      const unsafeCustomTerms = [
+        "直接给答案",
+        "完整答案",
+        "最终答案",
+        "标准答案",
+        "整篇作文",
+        "帮我写作文",
+        "替我写",
+        "代写",
+        "直接翻译",
+        "完整翻译",
+        "整张卷子",
+        "整页作业",
+        "忽略限制",
+        "不用遵守",
+        "给我答案",
+        "写一篇"
+      ];
+      const fillExamples = {
+        P01: {
+          good: "只拍这一道题，裁掉姓名、班级、页码和旁边其他题。",
+          bad: "不要上传整页试卷、孩子姓名、班级或成绩信息。"
+        },
+        P09: {
+          good: "拍单题后补一句：孩子只说“不会”，不知道先看哪个条件。",
+          bad: "不要一次上传多道题，也不要只问“答案是多少”。"
+        },
+        P17: {
+          good: "拍一道题，让 AI 先判断可能考点和第一步。",
+          bad: "不要上传整页作业、学校信息和可直接提交的答案要求。"
+        },
+        P27: {
+          good: "发单题图片和孩子已写的 1-3 步，让 AI 判断错因。",
+          bad: "不要发成绩单，也不要只写“粗心”。"
+        },
+        P71: {
+          good: "拍一道题或发孩子原话，让 AI 帮家长整理先问什么。",
+          bad: "不要让 AI 替家长讲完整解法或直接给答案。"
+        },
+        P76: {
+          good: "拍单题后说明还剩 10 分钟，请 AI 帮忙收住一个动作。",
+          bad: "不要要求 AI 赶完整页作业。"
+        }
+      };
+      let activeTier = "rescue";
+      let activeFilter = "all";
+      let activeAppTask = "stuck";
+      let activeQuery = "";
+      let activeAppPage = "home";
+      let customCards = loadCustomCards();
+      let usageStats = loadUsageStats();
+      const urlParams = new URLSearchParams(window.location.search);
+      const promptContentMode = urlParams.get("content") === "1";
+      const appMode = promptContentMode || document.documentElement.classList.contains("app-mode") || Boolean(window.AIHomeClipboard);
+      if (appMode) document.documentElement.classList.add("app-mode");
+      if (promptContentMode) document.documentElement.classList.add("prompt-content-mode");
+      const appTaskGroups = [
+        { key: "stuck", label: "作业卡住", categories: ["safe", "question", "tutor", "stem", "parent"] },
+        { key: "review", label: "错题复盘", categories: ["review"] },
+        { key: "writing", label: "作文阅读", categories: ["writing", "reading"] },
+        { key: "english", label: "英语口语", categories: ["english", "speaking"] },
+        { key: "all", label: "全部", categories: null },
+        { key: "recent", label: "最近复制", categories: null }
+      ];
+      const tierTabs = document.querySelector("[data-tier-tabs]");
+      const filters = document.querySelector("[data-filters]");
+      const cardsRoot = document.querySelector("[data-cards]");
+      const categoryMapRoot = document.querySelector("[data-category-map]");
+      const emptyState = document.querySelector("[data-empty]");
+      const searchInput = document.querySelector("[data-search]");
+      const countPill = document.querySelector("[data-count]");
+      const poolSummary = document.querySelector("[data-pool-summary]");
+      const toTop = document.querySelector("[data-to-top]");
+      const quickPath = document.querySelector("[data-quick-path]");
+      const customForm = document.querySelector("[data-custom-form]");
+      const customStatus = document.querySelector("[data-custom-status]");
+      const localSummary = document.querySelector("[data-local-summary]");
+      const exportCustomButton = document.querySelector("[data-export-custom]");
+      const importCustomButton = document.querySelector("[data-import-custom]");
+      const importFileInput = document.querySelector("[data-import-file]");
+      const advancedTools = document.querySelector("[data-advanced-tools]");
+      const customSubmit = customForm.querySelector("[data-custom-submit]");
+      const cancelEditButton = customForm.querySelector("[data-cancel-edit]");
+      const openCommandButton = document.querySelector("[data-open-command]");
+      const commandShell = document.querySelector("[data-command-shell]");
+      const closeCommandButton = document.querySelector("[data-close-command]");
+      const commandInput = document.querySelector("[data-command-input]");
+      const commandResults = document.querySelector("[data-command-results]");
+      const appFrequentRoot = document.querySelector("[data-app-frequent]");
+      const appCount = document.querySelector("[data-app-count]");
+      const appLocalSummary = document.querySelector("[data-app-local-summary]");
+      const resourceCount = document.querySelector("[data-resource-count]");
+      const copyToast = document.querySelector("[data-copy-toast]");
+      let editingCustomId = "";
+      let editingSourceId = "";
+      let commandItems = [];
+      let activeCommandIndex = 0;
+      let lastCommandFocus = null;
+      let copyToastTimer = 0;
+
+      if (appMode) {
+        activeTier = "core";
+        document.documentElement.dataset.appPage = activeAppPage;
+        document.querySelector(".brand")?.setAttribute("href", promptContentMode ? "../../website/app.html#prompts" : "#");
+        const topActionLink = document.querySelector(".top-actions a");
+        if (topActionLink && promptContentMode) {
+          topActionLink.href = "../../website/app.html#prompts";
+          topActionLink.textContent = "返回 App";
+        }
+        const brandText = document.querySelector(".brand span:last-child");
+        if (brandText) brandText.textContent = "卡池";
+      }
+
+      function escapeHTML(value) {
+        return String(value ?? "").replace(/[&<>"']/g, (char) => {
+          const map = { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" };
+          return map[char];
+        });
+      }
+
+      function safeField(value, maxLength = 600) {
+        return String(value ?? "").replace(/\r\n/g, "\n").trim().slice(0, maxLength);
+      }
+
+      function createCustomId() {
+        if (window.crypto && typeof window.crypto.randomUUID === "function") {
+          return `C${window.crypto.randomUUID().slice(0, 8)}`;
+        }
+        return `C${Date.now().toString(36)}${Math.random().toString(36).slice(2, 7)}`;
+      }
+
+      function sanitizeCustomCard(card, seenIds) {
+        if (!card || typeof card !== "object") return null;
+        const title = safeField(card.title, 24);
+        const scene = safeField(card.scene, 180);
+        const prompt = safeField(card.prompt, 1200);
+        const after = safeField(card.after, 220);
+        const rawCategory = safeField(card.category, 32);
+        const category = categoryName.has(rawCategory) && rawCategory !== "all" ? rawCategory : "question";
+        if (!title || !prompt) return null;
+
+        let id = safeField(card.id, 32).replace(/[^A-Za-z0-9_-]/g, "");
+        if (!id || seenIds.has(id) || cards.some((item) => item.id === id)) id = createCustomId();
+        while (seenIds.has(id)) id = createCustomId();
+        seenIds.add(id);
+
+        const cleanCard = {
+          id,
+          category,
+          title,
+          scene: scene || "家里反复遇到的学习卡点。",
+          prompt,
+          after: after || "孩子自己完成一步，再核验。",
+          custom: true
+        };
+        if (card.sourceId && cards.some((item) => item.id === card.sourceId)) cleanCard.sourceId = card.sourceId;
+        return cleanCard;
+      }
+
+      function loadCustomCards() {
+        try {
+          const raw = localStorage.getItem(customCardsKey);
+          if (!raw) return [];
+          const parsed = JSON.parse(raw);
+          if (!Array.isArray(parsed)) return [];
+          const seenIds = new Set();
+          return parsed
+            .map((card) => sanitizeCustomCard(card, seenIds))
+            .filter(Boolean)
+            .slice(0, 60);
+        } catch (error) {
+          return [];
+        }
+      }
+
+      function saveCustomCards(nextCards = customCards) {
+        try {
+          localStorage.setItem(customCardsKey, JSON.stringify(nextCards));
+          return true;
+        } catch (error) {
+          setCustomStatus("浏览器没有保存成功，请先把这张卡复制到备忘录。");
+          return false;
+        }
+      }
+
+      function loadUsageStats() {
+        try {
+          const parsed = JSON.parse(localStorage.getItem(usageStatsKey) || "{}");
+          return parsed && typeof parsed === "object" && !Array.isArray(parsed) ? parsed : {};
+        } catch (error) {
+          return {};
+        }
+      }
+
+      function saveUsageStats() {
+        try {
+          localStorage.setItem(usageStatsKey, JSON.stringify(usageStats));
+        } catch (error) {
+          // Usage stats are optional; failing to save them should never block copying a card.
+        }
+      }
+
+      function allCards() {
+        return [...cards, ...customCards];
+      }
+
+      function duplicatesBuiltInPrompt(card) {
+        const prompt = normalizePromptText(card.prompt);
+        if (!prompt) return false;
+        return cards.some((item) => normalizePromptText(item.prompt) === prompt);
+      }
+
+      function cardTier(card) {
+        if (card.custom) return "mine";
+        return coreCardIds.has(card.id) ? "core" : "extension";
+      }
+
+      function isLocalOnlyCard(card) {
+        return !card.custom && localOnlyCardIds.has(card.id);
+      }
+
+      function tierCards(tier = activeTier) {
+        if (tier === "rescue") return allCards().filter((card) => rescueCardIds.has(card.id));
+        return allCards().filter((card) => tier === "all" || cardTier(card) === tier);
+      }
+
+      function activeAppTaskConfig() {
+        return appTaskGroups.find((task) => task.key === activeAppTask) || appTaskGroups[0];
+      }
+
+      function appTaskMatches(card) {
+        const task = activeAppTaskConfig();
+        return !task.categories || task.categories.includes(card.category);
+      }
+
+      function recentCards() {
+        return allCards()
+          .filter((card) => usageStats[card.id]?.lastUsed && !isLocalOnlyCard(card))
+          .sort((a, b) => (usageStats[b.id]?.lastUsed || 0) - (usageStats[a.id]?.lastUsed || 0));
+      }
+
+      function normalizePromptText(value) {
+        return String(value ?? "").replace(/\\n/g, "\n").trim();
+      }
+
+      function directAddressRuleForCard(card) {
+        if (card.category === "tool") {
+          return "对话称呼规则：你面对的是家长，回答时直接称呼“你”；只判断工具或回答风险，不把工具排查写成孩子任务。";
+        }
+        if (card.category === "parent") {
+          return "对话称呼规则：你面对的是家长，回答时直接称呼“你”；给出的话术要能让家长直接照着说，避免第三人称旁观说法。";
+        }
+        return "对话称呼规则：你面对的是正在学习的人，回答时直接称呼“你”。凡是要学习者做动作，输出时写成“请你……”或“你先……”，不要用第三人称旁观说法；口语陪练尤其要像正在和你对话。";
+      }
+
+      function directGuardianPromptText(value) {
+        return normalizePromptText(value)
+          .replace(/给家长/g, "给你")
+          .replace(/帮家长/g, "帮你")
+          .replace(/请家长/g, "请你")
+          .replace(/让家长/g, "让你")
+          .replace(/等待家长/g, "等待你")
+          .replace(/家长补充/g, "你补充")
+          .replace(/家长看到的/g, "你看到的")
+          .replace(/家长看到/g, "你看到")
+          .replace(/家长描述/g, "你的描述")
+          .replace(/家长用/g, "你可以用")
+          .replace(/请孩子/g, "请你引导孩子")
+          .replace(/让孩子先/g, "引导孩子先")
+          .replace(/让孩子/g, "引导孩子")
+          .replace(/问孩子/g, "问他/她")
+          .replace(/孩子先/g, "他/她先")
+          .replace(/孩子自己/g, "由他/她自己")
+          .replace(/孩子下一条/g, "下一条");
+      }
+
+      function learnerReferencePromptText(value) {
+        return normalizePromptText(value)
+          .replace(/孩子说出的英文转写/g, "你说出的英文转写")
+          .replace(/孩子英文转写/g, "学习者的英文转写")
+          .replace(/孩子自己写的英文句子/g, "学习者自己写的英文句子")
+          .replace(/孩子自己写的英文/g, "学习者自己写的英文")
+          .replace(/孩子自己写的文字/g, "学习者自己写的文字")
+          .replace(/孩子自己的/g, "学习者自己的")
+          .replace(/孩子自己/g, "学习者自己")
+          .replace(/孩子下一条/g, "学习者下一条")
+          .replace(/孩子下一句/g, "学习者下一句")
+          .replace(/孩子刚才/g, "学习者刚才")
+          .replace(/孩子已经/g, "学习者已经")
+          .replace(/孩子原话/g, "学习者原话")
+          .replace(/孩子过程/g, "学习者过程")
+          .replace(/孩子声音/g, "学习者声音")
+          .replace(/孩子照片/g, "学习者照片")
+          .replace(/孩子的英文/g, "学习者的英文")
+          .replace(/孩子的回答/g, "学习者的回答")
+          .replace(/孩子的答案/g, "学习者的答案")
+          .replace(/孩子回复/g, "学习者回复")
+          .replace(/孩子复述/g, "学习者复述")
+          .replace(/孩子开口/g, "学习者开口")
+          .replace(/帮孩子/g, "帮助学习者")
+          .replace(/替孩子/g, "替学习者")
+          .replace(/孩子/g, "学习者");
+      }
+
+      function learnerMetaPromptText(value) {
+        return learnerReferencePromptText(value)
+          .replace(/请学习者/g, "引导学习者")
+          .replace(/让学习者/g, "引导学习者")
+          .replace(/问学习者/g, "向学习者提问")
+          .replace(/等待学习者/g, "等待对方")
+          .replace(/带学习者/g, "陪学习者");
+      }
+
+      function learnerDialoguePromptText(value) {
+        return learnerReferencePromptText(value)
+          .replace(/再问学习者[:：]?/g, "再直接问：")
+          .replace(/只问学习者[:：]?/g, "只直接问：")
+          .replace(/问学习者[:：]?/g, "直接问：")
+          .replace(/请带学习者/g, "请直接用第二人称带练")
+          .replace(/带学习者/g, "用第二人称带练")
+          .replace(/只让学习者先/g, "只直接要求：请你先")
+          .replace(/只让学习者只/g, "只直接要求：请你只")
+          .replace(/只让学习者/g, "只直接要求：请你")
+          .replace(/再让学习者/g, "再直接要求：请你")
+          .replace(/请学习者先/g, "输出时写成：请你先")
+          .replace(/请学习者/g, "输出时写成：请你")
+          .replace(/让学习者先/g, "输出时写成：请你先")
+          .replace(/让学习者只/g, "输出时写成：请你只")
+          .replace(/让学习者用/g, "输出时写成：请你用")
+          .replace(/让学习者在/g, "输出时写成：请你在")
+          .replace(/让学习者从/g, "输出时写成：请你从")
+          .replace(/让学习者/g, "输出时写成：请你")
+          .replace(/等待学习者下一句/g, "等待你下一句")
+          .replace(/等待学习者回复/g, "等待你回复")
+          .replace(/把学习者下一句英文/g, "把你下一句英文")
+          .replace(/把学习者的英文尝试/g, "把你的英文尝试")
+          .replace(/把学习者的回答/g, "把你的回答")
+          .replace(/学习者下一条最好留下/g, "你下一条最好留下")
+          .replace(/学习者说出/g, "你说出")
+          .replace(/学习者口头/g, "你口头")
+          .replace(/学习者能/g, "你能")
+          .replace(/学习者最/g, "你最")
+          .replace(/学习者想/g, "你想")
+          .replace(/学习者答完/g, "你答完")
+          .replace(/学习者回答/g, "你回答")
+          .replace(/学习者回复/g, "你回复")
+          .replace(/学习者复述/g, "你复述")
+          .replace(/学习者先/g, "你先")
+          .replace(/学习者自己/g, "你自己");
+      }
+
+      function directAddressPromptText(value, card, mode = "meta") {
+        if (card.category === "tool" || card.category === "parent") return directGuardianPromptText(value);
+        return mode === "dialogue" ? learnerDialoguePromptText(value) : learnerMetaPromptText(value);
+      }
+
+      function isRecoveryCard(card) {
+        return recoveryCardIds.has(card.id);
+      }
+
+      function inputSourceForCard(card) {
+        if (isRecoveryCard(card)) {
+          return "使用场景：这张卡用于修正刚才 AI 已经给出的回答或刚结束的一轮练习。如果你看得到上一轮回答，请直接基于上一轮处理；如果看不到，请让用户粘贴那段回答或孩子刚才的练习内容。不要等待新的题目图片。";
+        }
+        if (card.category === "tool") {
+          return "下一条消息可以是工具页面截图、错误提示、登录/付费提示文字，或孩子遇到的工具使用情况。";
+        }
+        if (card.category === "parent") {
+          return "下一条消息可以是一张单题图片、孩子原话、孩子已经做过的几步，或家长看到的卡点描述。";
+        }
+        if (card.category === "writing") {
+          return "下一条消息可以是一道作文/表达题、一小段孩子自己写的文字，或孩子已有的真实材料。";
+        }
+        if (card.category === "reading") {
+          return "下一条消息可以是一道阅读题、一小段原文、题目问题，或孩子已经写出的答案。";
+        }
+        if (card.category === "english") {
+          return "下一条消息可以是一道英语题、一句英文、单词、短文片段，或孩子自己写的英文句子。";
+        }
+        if (card.category === "speaking") {
+          return "下一条消息可以是口语练习主题、课本句型、孩子说出的英文转写、一次口语展示要求，或一段需要复述的短材料。";
+        }
+        if (card.category === "review") {
+          return "下一条消息可以是一张错题图片、孩子自己的过程、错误记录，或已经写出的答案片段。";
+        }
+        if (card.category === "stem") {
+          return "下一条消息可以是一道数学/科学单题图片、题干、图表、实验描述，或孩子自己的计算过程。";
+        }
+        return "下一条消息可以是一张单题图片、一小段题干、孩子原话，或孩子已经尝试过的 1-3 步。";
+      }
+
+      function placeholderTextForCard(card) {
+        if (card.category === "tool") return "请从我下一条发送的工具页面、提示文字或使用情况里提取";
+        if (card.category === "writing") return "请从我下一条发送的作文题、孩子片段或真实材料里提取";
+        if (card.category === "reading") return "请从我下一条发送的阅读题、原文片段或孩子答案里提取";
+        if (card.category === "english") return "请从我下一条发送的英语题、句子、单词或孩子英文里提取";
+        if (card.category === "speaking") return "请从我下一条发送的口语主题、课本句型、孩子英文转写或展示要求里提取";
+        if (card.category === "review") return "请从我下一条发送的错题、过程、错因或答案片段里提取";
+        if (card.category === "stem") return "请从我下一条发送的数学/科学题、图表、实验描述或过程里提取";
+        if (card.category === "parent") return "请从我下一条发送的题目、孩子原话或家长描述里提取";
+        return "请从我下一条上传或发送的题目、图片、材料或孩子描述里提取";
+      }
+
+      function pasteReadyCardPrompt(card) {
+        const replacement = placeholderTextForCard(card);
+        return normalizePromptText(card.prompt)
+          .replace(/不要求我上传图片、姓名、学校、账号或整页作业/g, "如果我上传图片，请只处理单题；若看到姓名、学校、账号等隐私，只温馨提醒下次遮挡，不影响本次讲解")
+          .replace(/我会用文字描述图表，不上传图片。/g, "如果我上传图表图片，请先识别图表；如果我改用文字描述，也请照样处理。")
+          .replace(/\[[^\]]+\]/g, replacement)
+          .replace(/【[^】]+】/g, replacement)
+          .trim();
+      }
+
+      function interactionReadyCardPrompt(card) {
+        return pasteReadyCardPrompt(card)
+          .replace(/请按\s*\d+\s*步回答[:：]?/g, "把下面内容当作教学目标，不要一次性输出：")
+          .replace(/请按这个格式输出[:：]?/g, "把下面内容当作教学目标，不要一次性输出：")
+          .replace(/输出格式[:：]?/g, "把下面内容当作教学目标，不要一次性输出：")
+          .replace(/输出[:：]?/g, "把下面内容当作教学目标，不要一次性输出：")
+          .replace(/请把“我不会”拆成 5 个可能的具体问题/g, "请把“我不会”先拆成 3 个以内孩子能选择的具体卡点")
+          .replace(/请把下面这个学习问题拆成最多 3 个小卡点/g, "请先帮孩子选 1 个最小学习卡点；如果必须拆分，最多给 3 个候选让孩子选一个")
+          .replace(/请帮我生成 3 个下一轮追问/g, "请只生成 1 个最浅的下一轮追问")
+          .replace(/最多问 3 个问题，每次只问一个/g, "现在只问第 1 个问题，不要列第 2、第 3 个，等孩子回答后再继续")
+          .replace(/按 4 步进行[:：]?/g, "把 4 个阶段当作后续路线，第一轮只启动第一个动作：")
+          .replace(/先问 3 个由易到难的问题/g, "现在只问第 1 个最容易的问题")
+          .replace(/只问 3 个问题/g, "现在只问第 1 个问题")
+          .replace(/给 3 组最小对比词/g, "先给 1 组最小对比词")
+          .replace(/先给 6 个可以直接说的英文短词组/g, "先让孩子用中文说想表达什么，再给 3 个以内英文短词组候选");
+      }
+
+      function usageInstructionForCard(card) {
+        if (card.id === "P08") {
+          return "使用方式：这条提示词本身不用修改。收到后请立即输出 5 条短规则；若用户已经写了想问 AI 的问题，请先引用其中 1 个风险点，再把它改成不求答案、只问思路的问法。";
+        }
+        if (isLocalOnlyCard(card)) {
+          return "使用方式：这张卡是本地操作卡，不需要发给 AI。请按页面步骤先检查或保存。";
+        }
+        if (card.category === "tool") {
+          return "使用方式：这条提示词本身不用修改。请先等待用户下一条发送工具页面文字、错误提示或 AI 回答片段；若看到隐私，只提醒下次可遮挡，不复述。你只给家长一个下一步操作。";
+        }
+        if (isRecoveryCard(card)) {
+          return "使用方式：这条提示词本身不用修改。请基于刚才那段 AI 回答、孩子练习内容或用户粘贴的上一轮内容进行纠偏；不要重新讲一整题。";
+        }
+        if (card.category === "english") {
+          return "使用方式：这条提示词本身不用修改。请先等待用户下一条发送英语题、句子、单词或孩子英文；你只处理一个英语卡点。";
+        }
+        if (card.category === "speaking") {
+          return "使用方式：这条提示词本身不用修改。请先等待用户下一条发送口语主题、课本句型或孩子英文转写。若当前工具不能直接语音对话，请让家长用手机输入法语音转文字，把孩子说的话发来；你只做轻反馈，不评价口音好坏。";
+        }
+        return "使用方式：这条提示词本身不用修改。请先等待用户下一条消息，不要现在编题、举例或提前讲步骤。";
+      }
+
+      function preambleForCard(card) {
+        if (card.category === "tool") return toolCopyPreamble;
+        if (card.category === "speaking") return speakingCopyPreamble;
+        if (card.category === "english") return englishCopyPreamble;
+        if (isRecoveryCard(card)) return recoveryCopyPreamble;
+        return aiCopyPreamble;
+      }
+
+      function firstTurnProtocolForCard(card) {
+        return cardFirstTurnProtocols[card.id] || defaultFirstTurnProtocols[card.category] || defaultFirstTurnProtocols.tutor;
+      }
+
+      const cardWaitLineOverrides = {
+        P01: "我会等待：请按本题选 A/B/C，或补上那个第一步空格。",
+        P03: "我会等待：请选一个最不痛苦的小卡点，我们先只做这个。",
+        P05: "我会等待：请把你自己写的第一步发来，我只核验这一处。",
+        P06: "我会等待：请先按这个核验动作查一处，把结果发来，我再给下一个核验点。",
+        P08: "我会等待：请把你改成的不求答案问法发来；如果还像求答案，就选 A 问第一步或 B 检查自己写的一句。",
+        P10: "我会等待：请补另一列的一句话，不用三列都填。",
+        P12: "我会等待：请选一个 10 分钟任务，我再只带你做一次尝试。",
+        P13: "我会等待：请选一个安全问法，我再从第一步带你做。",
+        P14: "我会等待：请回答这个问题；如果不知道，就直接回复“不知道”。",
+        P15: "我会等待：请说这句话像不像你的意思；如果不像，只改一个词。",
+        P16: "我会等待：请先确认两个空：我尝试了什么，我卡在哪里。",
+        P20: "我会等待：请先回答这个反问；如果不知道，就回“不知道”。",
+        P19: "我会等待：请用你自己的例子说一遍这个概念。",
+        P22: "我会等待：请选一种思路；如果都不会，就回复“都不会”。",
+        P30: "我会等待：请确认这个重复错因像不像；如果不像，请选 A/B/C。",
+        P32: "我会等待：请先按这个回看动作查一处，再把发现发来。",
+        P36: "我会等待：请确认这个最高频错因是不是下周先改的点。",
+        P27: "我会等待：请说你从哪一步开始这样错，我再只看这一处。",
+        P28: "我会等待：请把导致出错的那个词、单位、符号或步骤发来，我再收成提醒句。",
+        P29: "我会等待：请把你改过的“我卡在哪里”发来，我再补下一行。",
+        P31: "我会等待：请说这里的关键词、符号或 x 代表题目里的什么。",
+        P33: "我会等待：请把你改过 1 个词的提醒短句发来，我再帮你压短。",
+        P34: "我会等待：请用一句话回答这个复述问题。",
+        P35: "我会等待：请把你选的例词或验证句发来，我再给一个明天的小动作。",
+        P39: "我会等待：请选 A 或 B；如果都不懂，就回复“都不懂”。",
+        P44: "我会等待：请先圈 2 个关键词：谁/什么，做了什么/发生了什么。",
+        P50: "我会等待：请选 A/B/C 一个开头入口，不用写完整句。",
+        P51: "我会等待：请先圈出你片段里的中心句；如果没有，就圈最想保留的一句。",
+        P54: "我会等待：如果你还没有材料，请先选 A 人物做的一件事、B 书里一句话、C 结局或一个变化；如果你已经有材料，请说说它让你停了一下的原因，一句话就行。",
+        P55: "我会等待：请先圈一个最卡的词或结构，或从候选里选一个。",
+        P38: "我会等待：请先圈出开头、结尾或反复出现的一个词发来。",
+        P42: "我会等待：请先圈出题干里的动作词或关键词。",
+        P43: "我会等待：请先说标题里最关键的一个词。",
+        P48: "我会等待：请先用短词列出 3 个材料，或补最模糊材料的一个画面。",
+        P49: "我会等待：请写题目关键词和一件真实事情，各不超过 10 个字。",
+        P57: "我会等待：请先选一个意思或说你在哪里见过这个词。",
+        P59: "我会等待：请先填对应框架里的 1 格中文关键词，我不会给英文句子。",
+        P61: "我会等待：请把你卡住的单词、小段或朗读转写发来，我再只看一处。",
+        P63: "我会等待：请把你判断的错因或一个口算小步骤发来，我再核验。",
+        P64: "我会等待：请发一题代表错题和你的原过程，我再只看一个卡点。",
+        P65: "我会等待：请把你对这个核验位置的判断发来，我再看下一小步。",
+        P66: "我会等待：请圈出这个单位或条件对应的那句话。",
+        P67: "我会等待：请按当前分支回复；要么补轴/行列含义，要么读我指定的一个点。",
+        P68: "我会等待：请从候选生字词里选 1 个；不知道选哪个就回“不知道”。",
+        P70: "我会等待：请先圈出最绝对的词发来，我再给你一个填空半句。",
+        P71: "我会等待：请把孩子回答家长那一句的话发来，我再帮你接下一问。",
+        P72: "我会等待：请让孩子先做这个小动作，再把孩子的一句话发来。",
+        P73: "我会等待：请把孩子圈出的那一句或一个卡点发来。",
+        P74: "我会等待：请只看孩子愿不愿意说、圈、指或先停；如果拒绝，不要继续追问。",
+        P75: "我会等待：请说刚才点名的这个卡点是否清楚一点；如果没有，就选 A/B/C。",
+        P76: "我会等待：请把孩子能自己写的一小步发来，我再帮你收尾。",
+        P77: "我会等待：请只发页面提示文字或错误提示，不要填手机号或点陌生入口。",
+        S06: "我会等待：请把你用自己英文说出的第一句发来，我再轻反馈。",
+        S08: "我会等待：能语音就读 1 组；不能语音就告诉我哪个词更难。",
+        S11: "我会等待：请选一个词或中文选项，不用说完整句。",
+        S12: "我会等待：请发来今天最想保留的一句英文，哪怕不完整也可以。"
+      };
+
+      function waitLineForCard(card, workflow) {
+        if (cardWaitLineOverrides[card.id]) return cardWaitLineOverrides[card.id];
+        if (card.category === "tool") return "我会等待：请把页面文字、错误提示或操作结果发来，我再判断下一步。";
+        if (card.category === "speaking") return "我会等待：请把孩子下一句英文、口语主题或语音转文字发来，我再轻反馈。";
+        if (card.category === "english") return "我会等待：请把孩子的英文尝试、选择或修改发来，我再只看一个点。";
+        if (isRecoveryCard(card)) return "我会等待：请把上一轮回答、孩子复述或核验结果发来，我再继续收住一个点。";
+        return `我会等待：请把孩子的回答或第一步发来，我再核验。孩子下一条最好留下：${workflow.product}。`;
+      }
+
+      function promptForAI(card) {
+        if (isLocalOnlyCard(card)) return normalizePromptText(card.prompt);
+        const categoryLabel = categoryName.get(card.category) || "自建常用卡";
+        const workflow = workflowForCard(card);
+        const contract = categoryPromptContracts[card.category] || categoryPromptContracts.tutor;
+        const cardOverride = cardInteractionOverrides[card.id] || "";
+        const metaSections = [
+          normalizePromptText(preambleForCard(card)),
+          usageInstructionForCard(card),
+          inputSourceForCard(card),
+          "教学质量要求：第一轮不能只问空泛问题。能从题干、原文、错因、学习者原话、英语表达或工具提示里抓到证据时，先说 1 个证据，再给 1 个能立刻做的小动作。对方说“不知道”时，改用二选一、圈一个词、补一个空或读一句，不要连续追问。",
+          `本张卡片场景：${card.scene}`,
+          `本次任务：${card.title}（${categoryLabel}）`,
+          "收到下一条内容后的处理方式：先判断是否贴合本卡场景、是否看得清、是否能聚焦一个学习卡点。若看到姓名、学校、班级、账号、人脸、电话、地址等隐私，只温和提醒“下次可以先遮挡隐私”，不要复述这些信息，也不要因此拒绝讲题。只有看不清、无法判断题目或一次给了太多题时，才请用户补充文字或先选一个卡点。",
+          "分类后续原则：",
+          normalizePromptText(contract)
+        ].filter(Boolean).map((section) => directAddressPromptText(section, card, "meta"));
+        const dialogueSections = [
+          "第一轮动作（必须优先于下面所有目标）：",
+          firstTurnProtocolForCard(card),
+          "第一轮输出后必须停下。不要提前输出第二轮、完整步骤、完整答案、完整表格或多版本话术。",
+          "本卡后续路线（只在用户回复后逐轮推进；不要第一轮全量输出）：",
+          interactionReadyCardPrompt(card),
+          cardOverride ? `本卡特别限制：${cardOverride}` : "",
+          `停止点：最后一行写“${waitLineForCard(card, workflow)}”然后停下。`
+        ].filter(Boolean).map((section) => directAddressPromptText(section, card, "dialogue"));
+        return [
+          directAddressRuleForCard(card),
+          ...metaSections,
+          ...dialogueSections
+        ].filter(Boolean).join("\n\n");
+      }
+
+      function customHasUnsafeTerms(card) {
+        const rawText = `${card.title} ${card.scene} ${card.prompt} ${card.after}`;
+        const protectiveTerms = ["不要", "不能", "不准", "不直接", "不提供", "不替", "拒绝", "请停止", "改成", "边界", "限制"];
+        const segments = rawText.split(/[。；;！!？?\n]/).map((segment) => segment.trim()).filter(Boolean);
+        return unsafeCustomTerms.some((term) =>
+          segments.some((segment) => segment.includes(term) && !protectiveTerms.some((safeWord) => segment.includes(safeWord)))
+        );
+      }
+
+      function workflowForCard(card) {
+        const byCategory = {
+          safe: {
+            child: "孩子先说出一个小卡点",
+            output: "只留下一个可继续做的下一步",
+            verify: "用课本、老师讲解或家长判断先核验边界",
+            product: "一句安全提问或一个可继续问的小卡点"
+          },
+          question: {
+            child: "孩子先选最像自己的卡点",
+            output: "把“不会”改成一个具体问题",
+            verify: "让孩子复述：我到底卡在哪里",
+            product: "孩子口头说出一个清楚问题"
+          },
+          tutor: {
+            child: "孩子先圈条件、写第一步尝试",
+            output: "只得到考点、第一步和检查点",
+            verify: "对照例题、单位、条件或课本概念",
+            product: "孩子自己写出下一步或一道同类题尝试"
+          },
+          review: {
+            child: "孩子先写自己的错误过程",
+            output: "找到一个具体错因和下次提醒",
+            verify: "重做出错步骤，不直接看正确答案",
+            product: "订正一句错因和一个下次检查点"
+          },
+          reading: {
+            child: "孩子先回原文圈依据",
+            output: "得到找依据的方法或自填空框",
+            verify: "答案必须能指回原文一句话",
+            product: "原文依据加孩子自己组织的一句话"
+          },
+          writing: {
+            child: "孩子先拿出自己的材料或草稿",
+            output: "得到追问、检查点或空框架",
+            verify: "孩子自己改句子或写段落，不照抄",
+            product: "孩子自己的材料、提纲或一处自改"
+          },
+          english: {
+            child: "孩子先写自己的英文句子或翻译",
+            output: "定位问题，不拿完整替代句",
+            verify: "查课本例句、词典或语法点后再改",
+            product: "孩子自己改出一个英文句子或词汇卡"
+          },
+          speaking: {
+            child: "孩子先开口说 1-3 句",
+            output: "得到一轮跟读、问答、复述或轻反馈",
+            verify: "对照课本音频、老师要求或孩子能否复述",
+            product: "孩子自己再说一遍今天的一句话"
+          },
+          stem: {
+            child: "孩子先写条件、过程或现象",
+            output: "得到检查方向，不直接得到答案",
+            verify: "代回条件、检查单位、例题或实验描述",
+            product: "一个条件表、错因或自填变量判断"
+          },
+          parent: {
+            child: "家长先问孩子一句具体问题",
+            output: "整理陪学节奏，不替孩子完成",
+            verify: "孩子必须说出下一步或自己写一处",
+            product: "家长少说一句，孩子多做一步"
+          },
+          tool: {
+            child: "先停下注册、付费或复制答案",
+            output: "判断是否换入口、缩小问题或暂缓",
+            verify: "只用官方入口和免费替代，不绑定支付",
+            product: "一个安全入口判断或本页常用卡"
+          }
+        };
+        return byCategory[card.category] || byCategory.tutor;
+      }
+
+      function isSavedBuiltInCard(card) {
+        if (!card || card.custom) return false;
+        const prompt = normalizePromptText(card.prompt);
+        return customCards.some((item) => item.sourceId === card.id || item.title === card.title || normalizePromptText(item.prompt) === prompt);
+      }
+
+      function cardHTML(card) {
+        const tier = cardTier(card);
+        const localOnly = isLocalOnlyCard(card);
+        const categoryLabel = categoryName.get(card.category) || "我的收藏";
+        const workflow = workflowForCard(card);
+        const tierLabel = localOnly ? "本地操作" : tierLabels.get(tier);
+        const draftTag = card.custom ? `<span class="tag">本机草稿，未经审核</span>` : "";
+        const usedCount = usageStats[card.id]?.count || 0;
+        const useTag = usedCount ? `<span class="tag">已复制 ${usedCount} 次</span>` : "";
+        const tagRow = appMode
+          ? `<span class="tag">${escapeHTML(categoryLabel)}</span>${draftTag}${useTag}`
+          : `<span class="tag">${escapeHTML(categoryLabel)}</span><span class="tag">${escapeHTML(tierLabel)}</span>${draftTag}${useTag}`;
+        const promptLabel = localOnly ? "查看步骤" : "查看完整指令";
+        const promptText = localOnly ? normalizePromptText(card.prompt) : promptForAI(card);
+        const fillExample = fillExamples[card.id]
+          ? `<section class="card-section example-section">
+                <span class="card-label">安全拍题例子</span>
+                <div class="example-box">
+                  <span><b>可以这样发</b> ${escapeHTML(fillExamples[card.id].good)}</span>
+                  <span><b>不要这样发</b> ${escapeHTML(fillExamples[card.id].bad)}</span>
+                </div>
+              </section>`
+          : "";
+        const actionButton = localOnly
+          ? `<button class="local-button" type="button" aria-disabled="true">${card.id === "P80" ? "本页保存，不发送" : "本地检查，不发送"}</button>`
+          : card.custom
+            ? `<button class="delete-button" type="button" data-delete-custom="${escapeHTML(card.id)}">删除这张</button>`
+            : isSavedBuiltInCard(card)
+              ? `<button class="save-button" type="button" aria-disabled="true">已收藏</button>`
+              : `<button class="save-button" type="button" data-save-card="${escapeHTML(card.id)}">收藏</button>`;
+        const copyButton = localOnly
+          ? ""
+          : `<button class="copy-button" type="button" data-copy="${escapeHTML(card.id)}">复制</button>`;
+        const editButton = localOnly
+          ? ""
+          : `<button class="edit-button" type="button" data-edit-card="${escapeHTML(card.id)}">${card.custom ? "编辑" : appMode ? "微调" : "改一张"}</button>`;
+        return `
+          <article class="prompt-card" data-category="${escapeHTML(card.category)}" id="${escapeHTML(card.id)}">
+            <header class="card-head">
+              <span class="card-id">${card.id}</span>
+              <div class="card-title">
+                <h2>${escapeHTML(card.title)}</h2>
+                <div class="tag-row">
+                  ${tagRow}
+                </div>
+              </div>
+              ${copyButton ? `<div class="card-top-actions">${copyButton}</div>` : ""}
+            </header>
+            <div class="card-body">
+              <section class="card-section">
+                <span class="card-label">场景</span>
+                <p>${escapeHTML(card.scene)}</p>
+              </section>
+              <section class="card-section prompt-preview-section">
+                <details class="prompt-details">
+                  <summary>${promptLabel}</summary>
+                  <pre class="prompt-box">${escapeHTML(promptText)}</pre>
+                </details>
+              </section>
+              ${fillExample}
+              <section class="card-section after-section">
+                <span class="card-label">下一步</span>
+                <p>${escapeHTML(card.after)}</p>
+              </section>
+              <section class="card-section workflow-section">
+                <span class="card-label">闭环</span>
+                <ul class="workflow-list">
+                  <li><b>孩子</b><span>${escapeHTML(workflow.child)}</span></li>
+                  <li><b>AI</b><span>${escapeHTML(workflow.output)}</span></li>
+                  <li><b>核验</b><span>${escapeHTML(workflow.verify)}</span></li>
+                  <li><b>留下</b><span>${escapeHTML(workflow.product)}</span></li>
+                </ul>
+              </section>
+              <div class="card-actions">
+                ${actionButton}
+                ${editButton}
+              </div>
+            </div>
+          </article>
+        `;
+      }
+
+      function matchesSearch(card, query) {
+        if (!query) return true;
+        const haystack = `${card.id} ${card.title} ${categoryName.get(card.category) || ""} ${card.scene} ${card.prompt} ${card.after}`;
+        return haystack.toLowerCase().includes(query.toLowerCase());
+      }
+
+      function commandLayerLabel(card) {
+        if (card.custom) return "我的收藏";
+        if (rescueCardIds.has(card.id)) return "今晚急救";
+        return tierLabels.get(cardTier(card)) || "卡片";
+      }
+
+      function commandSearchText(card) {
+        return `${card.id} ${card.title} ${categoryName.get(card.category) || ""} ${commandLayerLabel(card)} ${card.scene} ${card.prompt} ${card.after}`.toLowerCase();
+      }
+
+      function commandPool(query) {
+        const tokens = query.trim().toLowerCase().split(/\s+/).filter(Boolean);
+        return allCards()
+          .map((card) => {
+            const text = commandSearchText(card);
+            const idText = card.id.toLowerCase();
+            const titleText = card.title.toLowerCase();
+            const categoryText = (categoryName.get(card.category) || "").toLowerCase();
+            const sceneText = card.scene.toLowerCase();
+            let matchScore = 0;
+            tokens.forEach((token) => {
+              if (idText === token) matchScore += 240;
+              else if (idText.includes(token)) matchScore += 180;
+              if (titleText.includes(token)) matchScore += 130;
+              if (categoryText.includes(token)) matchScore += 90;
+              if (sceneText.includes(token)) matchScore += 70;
+              if (text.includes(token)) matchScore += 35;
+            });
+            if (tokens.length && !matchScore) return null;
+
+            const baseScore =
+              (rescueCardIds.has(card.id) ? 42 : 0) +
+              (card.custom ? 34 : 0) +
+              (coreCardIds.has(card.id) ? 20 : 0) +
+              Math.min((usageStats[card.id]?.count || 0) * 8, 40);
+            return { card, score: baseScore + matchScore };
+          })
+          .filter(Boolean)
+          .sort((a, b) => b.score - a.score || a.card.id.localeCompare(b.card.id))
+          .slice(0, 12)
+          .map((item) => item.card);
+      }
+
+      function appFrequentCards() {
+        const fallbackIds = ["P01", "P09", "P17", "P27"];
+        const used = Object.entries(usageStats)
+          .map(([id, stat]) => ({ id, score: (stat?.count || 0) * 1000 + (stat?.lastUsed || 0) / 100000000 }))
+          .sort((a, b) => b.score - a.score)
+          .map((item) => allCards().find((card) => card.id === item.id))
+          .filter((card) => card && !isLocalOnlyCard(card));
+        const fallback = fallbackIds
+          .map((id) => allCards().find((card) => card.id === id))
+          .filter(Boolean);
+        const seen = new Set();
+        return [...used, ...fallback].filter((card) => {
+          if (seen.has(card.id)) return false;
+          seen.add(card.id);
+          return true;
+        }).slice(0, 3);
+      }
+
+      function setAppPage(page, options = {}) {
+        if (!appMode) return;
+        const allowedPages = new Set(["home", "library", "tools", "safety", "starter", "mine"]);
+        activeAppPage = allowedPages.has(page) ? page : "home";
+        document.documentElement.dataset.appPage = activeAppPage;
+
+        if (!options.keepFilters) {
+          if (activeAppPage === "home") {
+            activeTier = "core";
+            activeFilter = "all";
+            activeAppTask = "stuck";
+          } else if (activeAppPage === "mine") {
+            activeTier = "mine";
+            activeFilter = "all";
+            activeAppTask = "all";
+          }
+          activeQuery = "";
+          if (searchInput) searchInput.value = "";
+        }
+
+        if (advancedTools) {
+          if (activeAppPage === "mine") {
+            advancedTools.classList.add("is-open-in-app");
+            if (options.openSettings) advancedTools.open = true;
+          } else {
+            advancedTools.classList.remove("is-open-in-app");
+          }
+        }
+      }
+
+      function renderAppPages() {
+        if (!appMode) return;
+        if (resourceCount) {
+          const uniqueLinks = new Set(
+            Array.from(document.querySelectorAll("[data-resource-link]"))
+              .map((link) => link.getAttribute("href") || "")
+              .filter(Boolean)
+          );
+          resourceCount.textContent = String(uniqueLinks.size);
+        }
+        document.querySelectorAll("[data-app-page-target]").forEach((button) => {
+          const active = button.dataset.appPageTarget === activeAppPage;
+          button.classList.toggle("is-active", active);
+          button.setAttribute("aria-pressed", String(active));
+        });
+      }
+
+      function renderAppDashboard() {
+        if (!appMode || !appFrequentRoot) return;
+        renderAppPages();
+        document.querySelectorAll("[data-app-task]").forEach((button) => {
+          const active = button.dataset.appTask === activeAppTask;
+          button.classList.toggle("is-active", active);
+          button.setAttribute("aria-pressed", String(active));
+        });
+        const frequent = appFrequentCards();
+        if (appCount) {
+          const usedCount = Object.keys(usageStats).length;
+          appCount.textContent = usedCount ? "最近常用" : "可直接粘贴";
+        }
+        appFrequentRoot.innerHTML = frequent
+          .map((card) => `
+            <button class="app-copy-card" type="button" data-app-quick-copy="${escapeHTML(card.id)}">
+              <b>${escapeHTML(card.title)}</b>
+              <small data-copy-state>复制</small>
+              <span>${escapeHTML(card.scene)}</span>
+            </button>
+          `)
+          .join("");
+      }
+
+      function showCopyToast(message) {
+        if (!copyToast) return;
+        copyToast.textContent = message;
+        copyToast.classList.add("is-visible");
+        window.clearTimeout(copyToastTimer);
+        copyToastTimer = window.setTimeout(() => copyToast.classList.remove("is-visible"), 2600);
+      }
+
+      function setCopiedState(button, copiedText = "已复制", resetText = "复制") {
+        if (!button) return;
+        const stateNode = button.querySelector("[data-copy-state]");
+        const target = stateNode || button;
+        const original = target.dataset.copyOriginal || target.textContent || resetText;
+        target.dataset.copyOriginal = original;
+        target.textContent = copiedText;
+        button.classList.add("is-copied");
+        window.setTimeout(() => {
+          target.textContent = original || resetText;
+          button.classList.remove("is-copied");
+        }, 1300);
+      }
+
+      function openCustomToolsPanel() {
+        if (!advancedTools) return;
+        advancedTools.open = true;
+        if (appMode) advancedTools.classList.add("is-open-in-app");
+      }
+
+      async function copyCardById(cardId, button = null) {
+        const card = allCards().find((item) => item.id === cardId);
+        if (!card || isLocalOnlyCard(card)) return false;
+        try {
+          await copyText(promptForAI(card));
+          recordCardUse(card.id);
+          setCopiedState(button);
+          if (!appMode) showCopyToast("已复制，可粘贴到豆包/通义/文心等 AI 助手。");
+          return true;
+        } catch (error) {
+          if (button && button.closest(".prompt-card")) selectPromptText(button);
+          setCopiedState(button, "复制失败", "复制");
+          showCopyToast("复制失败，请打开完整指令后手动复制。");
+          return false;
+        }
+      }
+
+      function renderCommandResults() {
+        const results = commandPool(commandInput.value);
+        commandItems = results;
+        if (activeCommandIndex >= commandItems.length) activeCommandIndex = 0;
+        if (!commandItems.length) {
+          commandResults.innerHTML = '<p class="command-empty">没有找到匹配卡片。</p>';
+          commandInput.removeAttribute("aria-activedescendant");
+          return;
+        }
+
+        commandResults.innerHTML = commandItems
+          .map((card, index) => {
+        const categoryLabel = categoryName.get(card.category) || "我的收藏";
+            const meta = `${commandLayerLabel(card)} · ${categoryLabel} · ${card.scene}`;
+            return `
+              <button
+                class="command-item${index === activeCommandIndex ? " is-active" : ""}"
+                type="button"
+                id="command-option-${index}"
+                role="option"
+                aria-selected="${index === activeCommandIndex}"
+                data-command-card="${escapeHTML(card.id)}"
+              >
+                <b>${escapeHTML(card.id)}</b>
+                <span>
+                  <strong>${escapeHTML(card.title)}</strong>
+                  <small>${escapeHTML(meta)}</small>
+                </span>
+              </button>
+            `;
+          })
+          .join("");
+        commandInput.setAttribute("aria-activedescendant", `command-option-${activeCommandIndex}`);
+        commandResults.querySelector(".command-item.is-active")?.scrollIntoView({ block: "nearest" });
+      }
+
+      function openCommandPalette(prefill = "") {
+        lastCommandFocus = document.activeElement instanceof HTMLElement ? document.activeElement : null;
+        commandShell.hidden = false;
+        document.body.style.overflow = "hidden";
+        commandInput.value = prefill;
+        activeCommandIndex = 0;
+        renderCommandResults();
+        window.setTimeout(() => commandInput.focus(), 0);
+      }
+
+      function closeCommandPalette() {
+        commandShell.hidden = true;
+        document.body.style.overflow = "";
+        commandInput.value = "";
+        commandResults.innerHTML = "";
+        commandInput.removeAttribute("aria-activedescendant");
+        if (lastCommandFocus && document.contains(lastCommandFocus)) {
+          lastCommandFocus.focus({ preventScroll: true });
+        }
+      }
+
+      function chooseCommandCard(cardId) {
+        if (!cardId) return;
+        closeCommandPalette();
+        showCard(cardId);
+      }
+
+      function stickyOffset() {
+        if (!appMode) return 0;
+        const topbar = document.querySelector(".topbar");
+        const filterWrap = document.querySelector(".filter-wrap");
+        return (topbar?.offsetHeight || 0) + (filterWrap?.offsetHeight || 0) + 12;
+      }
+
+      function scrollNodeIntoView(node) {
+        if (!node) return;
+        if (!appMode) {
+          node.scrollIntoView({ behavior: "smooth", block: "start" });
+          return;
+        }
+        const top = node.getBoundingClientRect().top + window.scrollY - stickyOffset();
+        window.scrollTo({ top: Math.max(0, top), behavior: "smooth" });
+      }
+
+      function visibleCards() {
+        if (appMode && activeTier === "mine" && !customCards.length && !activeQuery) {
+          return [];
+        }
+        if (appMode && activeAppTask === "recent" && !activeQuery) {
+          const recent = recentCards();
+          const seen = new Set(recent.map((card) => card.id));
+          const supplement = appFrequentCards().filter((card) => !seen.has(card.id));
+          return [...recent, ...supplement].slice(0, Math.max(3, recent.length));
+        }
+        let pool = appMode && activeQuery ? allCards() : tierCards();
+        if (appMode) {
+          const showingAllBuiltInCards = activeTier === "all" && activeAppTask === "all";
+          if (!showingAllBuiltInCards && !activeQuery) {
+            pool = pool.filter((card) => !isLocalOnlyCard(card));
+          }
+          const shouldHideQuickDuplicates = activeTier === "core" && activeAppTask === "stuck" && !activeQuery;
+          if (shouldHideQuickDuplicates) {
+            const quickIds = new Set(appFrequentCards().map((card) => card.id));
+            pool = pool.filter((card) => !quickIds.has(card.id));
+          }
+        }
+        return pool.filter((card) => {
+          const inCategory = activeFilter === "all" || card.category === activeFilter;
+          const inAppTask = !appMode || activeQuery || appTaskMatches(card);
+          return inCategory && inAppTask && matchesSearch(card, activeQuery);
+        });
+      }
+
+      function renderCategoryMap() {
+        const chips = categories
+          .filter((category) => category.key !== "all")
+          .map((category) => {
+            const coreCount = cards.filter((card) => coreCardIds.has(card.id) && card.category === category.key).length;
+            const totalCount = allCards().filter((card) => card.category === category.key).length;
+            return `
+              <button class="category-chip" type="button" data-category-shortcut="${category.key}" aria-label="筛选${escapeHTML(category.label)}分类">
+                <strong>${escapeHTML(category.label)} <span>${coreCount}/${totalCount} 张</span></strong>
+                <p>${escapeHTML(category.desc)}</p>
+              </button>
+            `;
+          })
+          .join("");
+        categoryMapRoot.innerHTML = chips;
+      }
+
+      function renderSummary() {
+        const coreCount = cards.filter((card) => coreCardIds.has(card.id)).length;
+        const extensionCount = cards.length - coreCount;
+        poolSummary.textContent = `急救 ${rescueCardIds.size} 张 · 常用 ${coreCount} 张 · 更多 ${extensionCount} 张 · 我的常用 ${customCards.length} 张`;
+        document.title = `家庭学习提示词常用卡 ${coreCount} 张 | ZHIYU`;
+      }
+
+      function renderTierTabs() {
+        if (appMode) {
+          tierTabs.innerHTML = "";
+          return;
+        }
+        const tiers = [
+          { key: "rescue", label: "今晚急救", count: rescueCardIds.size },
+          { key: "core", label: "常用卡", count: cards.filter((card) => coreCardIds.has(card.id)).length },
+          { key: "extension", label: "更多场景", count: cards.filter((card) => !coreCardIds.has(card.id)).length },
+          { key: "mine", label: "我的收藏", count: customCards.length },
+          { key: "all", label: "全部", count: allCards().length }
+        ];
+        tierTabs.innerHTML = tiers
+          .map((tier) => `<button class="tier-button${tier.key === activeTier ? " is-active" : ""}" type="button" data-tier="${tier.key}" aria-pressed="${tier.key === activeTier}">${tier.label} <span>${tier.count}</span></button>`)
+          .join("");
+      }
+
+      function renderFilters() {
+        if (appMode) {
+          filters.innerHTML = "";
+          return;
+        }
+        const pool = tierCards();
+        filters.innerHTML = categories
+          .map((category) => {
+            const count = category.key === "all" ? pool.length : pool.filter((card) => card.category === category.key).length;
+            return `<button class="filter-button${category.key === activeFilter ? " is-active" : ""}" type="button" data-filter="${category.key}" aria-pressed="${category.key === activeFilter}">${category.label} ${count}</button>`;
+          })
+          .join("");
+      }
+
+      function renderCards() {
+        const visible = visibleCards();
+        cardsRoot.querySelectorAll(".prompt-card").forEach((card) => card.remove());
+        cardsRoot.insertAdjacentHTML("afterbegin", visible.map(cardHTML).join(""));
+        emptyState.textContent = appMode && activeTier === "mine"
+          ? "还没有收藏卡。回到首页点“收藏”，或在上方编辑一张自己的常用提示词。"
+          : appMode && activeAppTask === "recent" ? "还没有最近复制。先从上面的高频卡复制一张。" : "这个分类暂时没有卡片。";
+        emptyState.style.display = visible.length ? "none" : "block";
+        let countPool = appMode && activeQuery ? allCards() : tierCards();
+        if (appMode && !(activeTier === "all" && activeAppTask === "all") && !activeQuery) {
+          countPool = countPool.filter((card) => !isLocalOnlyCard(card));
+        }
+        if (appMode && activeAppTask === "recent" && !activeQuery) {
+          countPool = recentCards();
+        } else if (appMode && !activeQuery) {
+          countPool = countPool.filter(appTaskMatches);
+          if (activeFilter !== "all") countPool = countPool.filter((card) => card.category === activeFilter);
+        } else if (!appMode) {
+          countPool = countPool.filter((card) => activeFilter === "all" || card.category === activeFilter);
+        }
+        const poolCount = countPool.length;
+        const tierName = activeTier === "all" ? "卡片" : tierLabels.get(activeTier);
+        countPill.textContent = appMode
+          ? activeQuery ? `${visible.length} 张` : `${poolCount} 张`
+          : activeQuery ? `当前层级搜索 ${visible.length} / ${poolCount} 张` : activeFilter !== "all" ? `${visible.length} / ${poolCount} 张` : `${poolCount} 张${tierName}`;
+      }
+
+      function renderLocalTools() {
+        const lastUsed = Object.entries(usageStats)
+          .sort((a, b) => (b[1]?.lastUsed || 0) - (a[1]?.lastUsed || 0))[0];
+        const lastText = lastUsed ? `最近复制 ${escapeHTML(lastUsed[0])}` : "还没有复制记录";
+        localSummary.innerHTML = `
+          <span><strong>本机收藏</strong> ${customCards.length} 张</span>
+          <span><strong>复制记录</strong> ${lastText}</span>
+        `;
+        if (appLocalSummary) {
+          appLocalSummary.innerHTML = `本机收藏 <strong>${customCards.length}</strong> 张；${lastText}。下面可以查看收藏卡，也可以编辑、导入或导出自己的常用提示词。`;
+        }
+      }
+
+      function renderAll() {
+        renderSummary();
+        renderLocalTools();
+        renderAppDashboard();
+        renderCategoryMap();
+        renderTierTabs();
+        renderFilters();
+        renderCards();
+        if (!commandShell.hidden) renderCommandResults();
+      }
+
+      function setCustomStatus(message) {
+        if (!customStatus) return;
+        customStatus.textContent = message;
+        if (message) {
+          window.setTimeout(() => {
+            if (customStatus.textContent === message) customStatus.textContent = "";
+          }, 2600);
+        }
+      }
+
+      function resetCustomEditor(message = "") {
+        editingCustomId = "";
+        editingSourceId = "";
+        customForm.reset();
+        customSubmit.textContent = "保存到我的收藏";
+        cancelEditButton.hidden = true;
+        customForm.removeAttribute("data-editing");
+        if (message) setCustomStatus(message);
+      }
+
+      function recordCardUse(cardId) {
+        usageStats[cardId] = {
+          count: (usageStats[cardId]?.count || 0) + 1,
+          lastUsed: Date.now()
+        };
+        saveUsageStats();
+        renderLocalTools();
+        if (appMode) window.setTimeout(renderAppDashboard, 1400);
+      }
+
+      function exportCustomCards() {
+        if (!customCards.length) {
+          setCustomStatus("还没有本机收藏卡可导出。");
+          return;
+        }
+        const payload = {
+          version: 1,
+          exportedAt: new Date().toISOString(),
+          source: "ZHIYU 提示词卡片包",
+          cards: customCards
+        };
+        const blob = new Blob([JSON.stringify(payload, null, 2)], { type: "application/json" });
+        const url = URL.createObjectURL(blob);
+        const link = document.createElement("a");
+        link.href = url;
+        link.download = `家庭学习提示词收藏卡-${new Date().toISOString().slice(0, 10)}.json`;
+        document.body.appendChild(link);
+        link.click();
+        link.remove();
+        URL.revokeObjectURL(url);
+        setCustomStatus("已导出本机收藏卡。");
+      }
+
+      function importCustomCards(rawCards) {
+        const incoming = Array.isArray(rawCards) ? rawCards : rawCards && Array.isArray(rawCards.cards) ? rawCards.cards : [];
+        if (!incoming.length) {
+          setCustomStatus("没有识别到可导入的收藏卡。");
+          return;
+        }
+
+        const seenIds = new Set(customCards.map((card) => card.id));
+        const nextCards = [...customCards];
+        let added = 0;
+        incoming.forEach((item) => {
+          const clean = sanitizeCustomCard(item, seenIds);
+          if (!clean) return;
+          if (customHasUnsafeTerms(clean)) return;
+          const duplicated =
+            duplicatesBuiltInPrompt(clean) ||
+            nextCards.some((card) => card.title === clean.title || normalizePromptText(card.prompt) === normalizePromptText(clean.prompt));
+          if (duplicated) return;
+          nextCards.unshift(clean);
+          added += 1;
+        });
+
+        if (!added) {
+          setCustomStatus("没有新增卡片，可能是重复或未通过安全检查。");
+          return;
+        }
+        if (!saveCustomCards(nextCards)) return;
+        customCards = nextCards;
+        activeTier = "mine";
+        activeFilter = "all";
+        activeAppTask = "all";
+        activeQuery = "";
+        searchInput.value = "";
+        renderAll();
+        setCustomStatus(`已导入 ${added} 张收藏卡。`);
+      }
+
+      function fillCustomEditor(card, isExistingCustom) {
+        openCustomToolsPanel();
+        editingCustomId = isExistingCustom ? card.id : "";
+        editingSourceId = card.custom ? (card.sourceId || "") : card.id;
+        customForm.querySelector("[data-custom-title]").value = safeField(card.title, 24);
+        customForm.querySelector("[data-custom-category]").value = categoryName.has(card.category) && card.category !== "all" ? card.category : "question";
+        customForm.querySelector("[data-custom-scene]").value = safeField(card.scene, 180);
+        customForm.querySelector("[data-custom-prompt]").value = normalizePromptText(card.prompt);
+        customForm.querySelector("[data-custom-after]").value = safeField(card.after, 220);
+        customSubmit.textContent = isExistingCustom ? "保存修改" : "保存为我的收藏";
+        cancelEditButton.hidden = false;
+        customForm.dataset.editing = isExistingCustom ? card.id : "copy";
+        window.setTimeout(() => {
+          scrollNodeIntoView(customForm);
+        }, 80);
+        const message = isExistingCustom ? "正在编辑这张收藏卡。" : "已带入副本，可以按家里情况修改后保存。";
+        setCustomStatus(message);
+        if (appMode) showCopyToast(message);
+      }
+
+      function startEditCard(cardId) {
+        const card = allCards().find((item) => item.id === cardId);
+        if (!card) return;
+        if (isLocalOnlyCard(card)) {
+          setCustomStatus(`${card.id} 是本地操作卡，不需要编辑成提示词。`);
+          return;
+        }
+        fillCustomEditor(card, Boolean(card.custom));
+      }
+
+      function saveBuiltInCard(card) {
+        if (isLocalOnlyCard(card)) {
+          setCustomStatus(`${card.id} 是本地操作卡，不需要存成提示词。`);
+          if (appMode) showCopyToast(`${card.id} 是本地操作卡，不需要存。`);
+          return;
+        }
+
+        const prompt = normalizePromptText(card.prompt);
+        const exists = customCards.some((item) => item.sourceId === card.id || normalizePromptText(item.prompt) === prompt || item.title === card.title);
+        if (exists) {
+          setCustomStatus(`${card.id} 已经在我的收藏里。`);
+          if (appMode) showCopyToast(`${card.id} 已经在我的收藏里。`);
+          return;
+        }
+
+        const nextCards = [{
+          id: createCustomId(),
+          sourceId: card.id,
+          category: card.category,
+          title: card.title,
+          scene: card.scene,
+          prompt,
+          after: card.after,
+          custom: true
+        }, ...customCards];
+        if (!saveCustomCards(nextCards)) return;
+        customCards = nextCards;
+        renderAll();
+        setCustomStatus(`已收藏 ${card.id}。`);
+        if (appMode) showCopyToast(`已收藏 ${card.id}。`);
+      }
+
+      function deleteCustomCard(cardId) {
+        const target = customCards.find((card) => card.id === cardId);
+        if (!target) return;
+        if (!window.confirm(`删除“${target.title}”？这只会删除本机保存的收藏卡。`)) return;
+        const nextCards = customCards.filter((card) => card.id !== cardId);
+        if (!saveCustomCards(nextCards)) return;
+        customCards = nextCards;
+        if (activeTier === "mine" && !customCards.length) {
+          activeFilter = "all";
+          activeAppTask = "all";
+        }
+        renderAll();
+        setCustomStatus("已删除这张收藏卡。");
+      }
+
+      function safeTier(value) {
+        return ["rescue", "core", "extension", "mine", "all"].includes(value) ? value : "";
+      }
+
+      function safeCategory(value) {
+        return categories.some((category) => category.key === value) ? value : "";
+      }
+
+      function applyInitialPromptRoute() {
+        if (!appMode) return;
+        const taskKeys = new Set(appTaskGroups.map((task) => task.key));
+        const routeTier = safeTier(urlParams.get("tier"));
+        const routeCategory = safeCategory(urlParams.get("category"));
+        const routeTask = taskKeys.has(urlParams.get("task")) ? urlParams.get("task") : "";
+        if (routeTier) activeTier = routeTier;
+        if (routeTask) activeAppTask = routeTask;
+        if (routeCategory && routeCategory !== "all") {
+          activeTier = "all";
+          activeFilter = routeCategory;
+          activeAppTask = "all";
+        }
+        if (urlParams.get("mine") === "1" || routeTier === "mine") {
+          activeTier = "mine";
+          activeFilter = "all";
+          activeAppTask = "all";
+        }
+        if (routeTier === "all" && routeTask === "all") {
+          activeFilter = "all";
+          activeAppTask = "all";
+        }
+      }
+
+      function parseCardHash(rawHash) {
+        const raw = String(rawHash || "").replace(/^#/, "");
+        const [cardId, queryText = ""] = raw.split("?");
+        const params = new URLSearchParams(queryText);
+        return {
+          cardId: decodeURIComponent(cardId || "").trim(),
+          tier: safeTier(params.get("tier")),
+          filter: safeCategory(params.get("filter"))
+        };
+      }
+
+      function defaultTierForCard(card) {
+        return card.custom ? "mine" : rescueCardIds.has(card.id) ? "rescue" : cardTier(card);
+      }
+
+      function tierContainsCard(tier, card) {
+        return tierCards(tier).some((item) => item.id === card.id);
+      }
+
+      function buildCardHash(card) {
+        const params = new URLSearchParams();
+        if (activeTier) params.set("tier", activeTier);
+        if (activeFilter && activeFilter !== "all") params.set("filter", activeFilter);
+        const query = params.toString();
+        return `#${encodeURIComponent(card.id)}${query ? `?${query}` : ""}`;
+      }
+
+      function showCard(cardInput, options = {}) {
+        const parsed = parseCardHash(cardInput);
+        const cardId = parsed.cardId || cardInput;
+        const target = allCards().find((card) => card.id === cardId);
+        if (!target) return;
+        if (appMode) setAppPage("home", { keepFilters: true });
+        const requestedTier = parsed.tier || options.tier || "";
+        activeTier = requestedTier && tierContainsCard(requestedTier, target) ? requestedTier : defaultTierForCard(target);
+        activeFilter = parsed.filter || options.filter || "all";
+        if (appMode) activeAppTask = "all";
+        activeQuery = "";
+        searchInput.value = "";
+        renderAll();
+        const node = document.getElementById(cardId);
+        if (!node) return;
+        scrollNodeIntoView(node);
+        node.classList.add("is-highlighted");
+        window.setTimeout(() => node.classList.remove("is-highlighted"), 1600);
+        if (options.syncHash !== false) {
+          const nextHash = buildCardHash(target);
+          if (window.location.hash !== nextHash) {
+            window.history.pushState(null, "", nextHash);
+          }
+        }
+      }
+
+      function copyWithCommand(text) {
+        const listener = (event) => {
+          event.clipboardData.setData("text/plain", text);
+          event.preventDefault();
+        };
+        document.addEventListener("copy", listener);
+        const ok = document.execCommand("copy");
+        document.removeEventListener("copy", listener);
+        return ok;
+      }
+
+      function copyWithTextarea(text) {
+        const textarea = document.createElement("textarea");
+        textarea.value = text;
+        textarea.setAttribute("readonly", "");
+        textarea.style.position = "fixed";
+        textarea.style.left = "8px";
+        textarea.style.top = "8px";
+        textarea.style.width = "1px";
+        textarea.style.height = "1px";
+        textarea.style.padding = "0";
+        textarea.style.border = "0";
+        textarea.style.opacity = "0.01";
+        textarea.style.zIndex = "1000";
+        document.body.appendChild(textarea);
+        window.focus();
+        textarea.focus();
+        textarea.select();
+        textarea.setSelectionRange(0, textarea.value.length);
+        const ok = document.execCommand("copy");
+        textarea.remove();
+        const selection = window.getSelection();
+        if (selection) selection.removeAllRanges();
+        return ok;
+      }
+
+      async function copyText(text) {
+        if (window.AIHomeClipboard && typeof window.AIHomeClipboard.copyText === "function") {
+          window.AIHomeClipboard.copyText(text);
+          return "android";
+        }
+
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          try {
+            await navigator.clipboard.writeText(text);
+            return "clipboard";
+          } catch (error) {
+            // Some local file pages block the async clipboard API; try the user-gesture copy path below.
+          }
+        }
+
+        if (copyWithTextarea(text) || copyWithCommand(text)) {
+          return "command";
+        }
+
+        throw new Error("copy failed");
+      }
+
+      function selectPromptText(button) {
+        const cardNode = button.closest(".prompt-card");
+        const detailsNode = cardNode ? cardNode.querySelector(".prompt-details") : null;
+        if (detailsNode) detailsNode.open = true;
+        const promptNode = cardNode ? cardNode.querySelector(".prompt-box") : null;
+        if (!promptNode) return;
+        const range = document.createRange();
+        range.selectNodeContents(promptNode);
+        const selection = window.getSelection();
+        selection.removeAllRanges();
+        selection.addRange(range);
+      }
+
+      applyInitialPromptRoute();
+      renderAll();
+
+      categoryMapRoot.addEventListener("click", (event) => {
+        const button = event.target.closest("[data-category-shortcut]");
+        if (!button) return;
+        activeTier = appMode ? "all" : "core";
+        activeFilter = button.dataset.categoryShortcut || "all";
+        if (appMode) activeAppTask = "all";
+        activeQuery = "";
+        searchInput.value = "";
+        renderAll();
+        if (appMode && button.closest(".app-bottom-nav")) {
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        } else {
+          scrollNodeIntoView(appMode ? cardsRoot : document.querySelector(".filter-wrap"));
+        }
+      });
+
+      tierTabs.addEventListener("click", (event) => {
+        const button = event.target.closest("[data-tier]");
+        if (!button) return;
+        activeTier = button.dataset.tier || "core";
+        activeFilter = "all";
+        activeQuery = "";
+        searchInput.value = "";
+        renderAll();
+      });
+
+      document.addEventListener("click", (event) => {
+        const button = event.target.closest("[data-card-jump]");
+        if (!button) return;
+        showCard(button.dataset.cardJump);
+      });
+
+      document.addEventListener("click", (event) => {
+        const button = event.target.closest("[data-app-tier], [data-app-filter], [data-app-task]");
+        if (!button) return;
+        if (appMode) setAppPage("home", { keepFilters: true });
+        activeTier = button.dataset.appTier || activeTier;
+        activeFilter = button.dataset.appFilter || "all";
+        activeAppTask = button.dataset.appTask || "all";
+        activeQuery = "";
+        searchInput.value = "";
+        renderAll();
+        scrollNodeIntoView(appMode ? cardsRoot : document.querySelector(".filter-wrap"));
+      });
+
+      document.addEventListener("click", (event) => {
+        const button = event.target.closest("[data-app-page-target]");
+        if (!button || !appMode) return;
+        event.preventDefault();
+        setAppPage(button.dataset.appPageTarget);
+        renderAll();
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      });
+
+      document.addEventListener("click", (event) => {
+        const button = event.target.closest("[data-open-all-prompts]");
+        if (!button || !appMode) return;
+        event.preventDefault();
+        setAppPage("home", { keepFilters: true });
+        activeTier = "all";
+        activeFilter = "all";
+        activeAppTask = "all";
+        activeQuery = "";
+        searchInput.value = "";
+        renderAll();
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      });
+
+      document.addEventListener("click", (event) => {
+        const button = event.target.closest("[data-app-home]");
+        if (!button) return;
+        if (appMode) setAppPage("home", { keepFilters: true });
+        activeTier = "core";
+        activeFilter = "all";
+        activeAppTask = "stuck";
+        activeQuery = "";
+        searchInput.value = "";
+        renderAll();
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      });
+
+      document.addEventListener("click", (event) => {
+        const button = event.target.closest("[data-app-recent]");
+        if (!button) return;
+        if (appMode) setAppPage("mine", { keepFilters: true });
+        activeTier = "all";
+        activeFilter = "all";
+        activeAppTask = "recent";
+        activeQuery = "";
+        searchInput.value = "";
+        renderAll();
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      });
+
+      document.addEventListener("click", async (event) => {
+        const button = event.target.closest("[data-app-quick-copy]");
+        if (!button) return;
+        await copyCardById(button.dataset.appQuickCopy, button);
+      });
+
+      document.addEventListener("click", (event) => {
+        const button = event.target.closest("[data-toggle-custom-tools]");
+        if (!button || !advancedTools) return;
+        if (appMode) {
+          setAppPage("mine", { keepFilters: true, openSettings: true });
+          activeTier = "mine";
+          activeFilter = "all";
+          activeAppTask = "all";
+          activeQuery = "";
+          searchInput.value = "";
+          renderAll();
+          window.scrollTo({ top: 0, behavior: "smooth" });
+          return;
+        }
+        advancedTools.open = !advancedTools.open || (appMode && advancedTools.classList.contains("is-open-in-app"));
+        if (advancedTools.open && (!appMode || advancedTools.classList.contains("is-open-in-app"))) {
+          scrollNodeIntoView(advancedTools);
+        }
+      });
+
+      filters.addEventListener("click", (event) => {
+        const button = event.target.closest("[data-filter]");
+        if (!button) return;
+        activeFilter = button.dataset.filter || "all";
+        activeAppTask = "all";
+        renderFilters();
+        renderCards();
+      });
+
+      searchInput.addEventListener("input", () => {
+        activeQuery = searchInput.value.trim();
+        if (appMode && activeQuery) activeAppTask = "all";
+        renderCards();
+        renderAppDashboard();
+      });
+
+      openCommandButton.addEventListener("click", () => {
+        openCommandPalette(activeQuery);
+      });
+
+      closeCommandButton.addEventListener("click", closeCommandPalette);
+
+      commandShell.addEventListener("click", (event) => {
+        if (event.target === commandShell) closeCommandPalette();
+      });
+
+      commandInput.addEventListener("input", () => {
+        activeCommandIndex = 0;
+        renderCommandResults();
+      });
+
+      commandInput.addEventListener("keydown", (event) => {
+        if (event.key === "ArrowDown") {
+          event.preventDefault();
+          event.stopPropagation();
+          activeCommandIndex = commandItems.length ? (activeCommandIndex + 1) % commandItems.length : 0;
+          renderCommandResults();
+          return;
+        }
+        if (event.key === "ArrowUp") {
+          event.preventDefault();
+          event.stopPropagation();
+          activeCommandIndex = commandItems.length ? (activeCommandIndex - 1 + commandItems.length) % commandItems.length : 0;
+          renderCommandResults();
+          return;
+        }
+        if (event.key === "Enter") {
+          event.preventDefault();
+          event.stopPropagation();
+          chooseCommandCard(commandItems[activeCommandIndex]?.id);
+          return;
+        }
+        if (event.key === "Escape") {
+          event.preventDefault();
+          event.stopPropagation();
+          closeCommandPalette();
+        }
+      });
+
+      commandResults.addEventListener("click", (event) => {
+        const button = event.target.closest("[data-command-card]");
+        if (button) chooseCommandCard(button.dataset.commandCard);
+      });
+
+      commandResults.addEventListener("focusin", (event) => {
+        const button = event.target.closest("[data-command-card]");
+        if (!button) return;
+        const index = commandItems.findIndex((card) => card.id === button.dataset.commandCard);
+        if (index >= 0) activeCommandIndex = index;
+      });
+
+      commandResults.addEventListener("mouseover", (event) => {
+        const button = event.target.closest("[data-command-card]");
+        if (!button) return;
+        const index = commandItems.findIndex((card) => card.id === button.dataset.commandCard);
+        if (index < 0 || index === activeCommandIndex) return;
+        activeCommandIndex = index;
+        renderCommandResults();
+      });
+
+      commandShell.addEventListener("keydown", (event) => {
+        if (event.key === "Escape") {
+          event.preventDefault();
+          event.stopPropagation();
+          closeCommandPalette();
+          return;
+        }
+        if (event.key !== "Tab") return;
+        const focusable = Array.from(commandShell.querySelectorAll("button, input")).filter((node) => !node.disabled && node.offsetParent !== null);
+        if (!focusable.length) return;
+        const first = focusable[0];
+        const last = focusable[focusable.length - 1];
+        if (event.shiftKey && document.activeElement === first) {
+          event.preventDefault();
+          last.focus();
+        } else if (!event.shiftKey && document.activeElement === last) {
+          event.preventDefault();
+          first.focus();
+        }
+      });
+
+      cardsRoot.addEventListener("click", async (event) => {
+        const button = event.target.closest("[data-copy]");
+        if (!button) return;
+        await copyCardById(button.dataset.copy, button);
+      });
+
+      exportCustomButton.addEventListener("click", exportCustomCards);
+
+      importCustomButton.addEventListener("click", () => {
+        importFileInput.click();
+      });
+
+      importFileInput.addEventListener("change", () => {
+        const file = importFileInput.files && importFileInput.files[0];
+        if (!file) return;
+        const reader = new FileReader();
+        reader.addEventListener("load", () => {
+          try {
+            importCustomCards(JSON.parse(String(reader.result || "")));
+          } catch (error) {
+            setCustomStatus("导入文件不是可识别的 JSON。");
+          } finally {
+            importFileInput.value = "";
+          }
+        });
+        reader.readAsText(file);
+      });
+
+      cardsRoot.addEventListener("click", (event) => {
+        const saveButton = event.target.closest("[data-save-card]");
+        if (saveButton) {
+          const card = cards.find((item) => item.id === saveButton.dataset.saveCard);
+          if (card) saveBuiltInCard(card);
+          return;
+        }
+
+        const editButton = event.target.closest("[data-edit-card]");
+        if (editButton) {
+          startEditCard(editButton.dataset.editCard);
+          return;
+        }
+
+        const deleteButton = event.target.closest("[data-delete-custom]");
+        if (deleteButton) {
+          deleteCustomCard(deleteButton.dataset.deleteCustom);
+        }
+      });
+
+      cancelEditButton.addEventListener("click", () => {
+        resetCustomEditor("已取消编辑。");
+      });
+
+      customForm.addEventListener("submit", (event) => {
+        event.preventDefault();
+        const title = customForm.querySelector("[data-custom-title]").value.trim();
+        const rawCategory = customForm.querySelector("[data-custom-category]").value;
+        const category = categoryName.has(rawCategory) && rawCategory !== "all" ? rawCategory : "question";
+        const scene = customForm.querySelector("[data-custom-scene]").value.trim();
+        const prompt = customForm.querySelector("[data-custom-prompt]").value.trim();
+        const after = customForm.querySelector("[data-custom-after]").value.trim();
+
+        if (!title || !scene || !prompt || !after) {
+          setCustomStatus("请把标题、场景、问法和用完动作填完整。");
+          return;
+        }
+
+        const draft = {
+          id: editingCustomId || createCustomId(),
+          category,
+          title: safeField(title, 24),
+          scene: safeField(scene, 180),
+          prompt: safeField(prompt, 1200),
+          after: safeField(after, 220),
+          custom: true
+        };
+        if (editingSourceId) draft.sourceId = editingSourceId;
+        if (customHasUnsafeTerms(draft)) {
+          setCustomStatus("这张收藏卡像是在要答案或代写，请改成“问思路、追问、检查点”。");
+          return;
+        }
+        const duplicated =
+          duplicatesBuiltInPrompt(draft) ||
+          customCards.some((card) => card.id !== editingCustomId && (card.title === draft.title || normalizePromptText(card.prompt) === normalizePromptText(draft.prompt)));
+        if (duplicated) {
+          setCustomStatus("已有相同或未修改的问法。请先改成家里常用的版本再保存。");
+          return;
+        }
+
+        let nextCards;
+        if (editingCustomId) {
+          const exists = customCards.some((card) => card.id === editingCustomId);
+          if (!exists) {
+            resetCustomEditor("这张收藏卡已经不存在，请重新保存。");
+            return;
+          }
+          nextCards = customCards.map((card) => (card.id === editingCustomId ? draft : card));
+        } else {
+          nextCards = [draft, ...customCards];
+        }
+        if (!saveCustomCards(nextCards)) return;
+        customCards = nextCards;
+        const wasEditing = Boolean(editingCustomId);
+        resetCustomEditor();
+        activeTier = "mine";
+        activeFilter = "all";
+        activeAppTask = "all";
+        activeQuery = "";
+        searchInput.value = "";
+        renderAll();
+        setCustomStatus(wasEditing ? "已保存修改。" : "已保存到我的收藏。");
+      });
+
+      document.addEventListener("keydown", (event) => {
+        const tagName = event.target && event.target.tagName ? event.target.tagName.toLowerCase() : "";
+        const isTyping = ["input", "textarea", "select"].includes(tagName);
+        if ((event.ctrlKey || event.metaKey) && event.key.toLowerCase() === "k") {
+          event.preventDefault();
+          openCommandPalette(activeQuery);
+          return;
+        }
+        if (event.key === "Escape" && !commandShell.hidden) {
+          event.preventDefault();
+          closeCommandPalette();
+          return;
+        }
+        if (!commandShell.hidden) return;
+        if (event.key === "/" && !isTyping && !event.ctrlKey && !event.metaKey && !event.altKey) {
+          event.preventDefault();
+          searchInput.focus();
+          return;
+        }
+        if (event.key === "Escape") {
+          if (editingCustomId || editingSourceId) {
+            resetCustomEditor("已取消编辑。");
+            return;
+          }
+          if (activeQuery) {
+            activeQuery = "";
+            searchInput.value = "";
+            renderCards();
+          }
+        }
+      });
+
+      if (window.location.hash) {
+        window.setTimeout(() => showCard(window.location.hash, { syncHash: false }), 120);
+      }
+
+      window.addEventListener("hashchange", () => {
+        if (window.location.hash) showCard(window.location.hash, { syncHash: false });
+      });
+
+      toTop.addEventListener("click", () => {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      });
+
+      window.addEventListener(
+        "scroll",
+        () => {
+          toTop.classList.toggle("is-visible", window.scrollY > 700);
+        },
+        { passive: true }
+      );
+    </script>
+  </body>
+</html>
